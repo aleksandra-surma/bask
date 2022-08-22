@@ -61,6 +61,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'jsx-closing-bracket-location': 'off',
     'react/jsx-closing-bracket-location': 1,
+    'jsx-a11y/label-has-associated-control': 'off',
+
     // 'object-curly-newline': 'off',
   },
 };
