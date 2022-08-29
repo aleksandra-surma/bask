@@ -2,11 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/*@layer base {*/
-/*  * {*/
-/*    @apply p-0;*/
-/*  }*/
-/*}*/
+@layer base {
+  /*h1 {*/
+  /*  @apply text-2xl;*/
+  /*}*/
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*margin: 0;*/
+    /*padding: 0;*/
+  }
+
+  html {
+    font-family: poppins, sans-serif;
+    font-size: 62.5%;
+  }
+
+  body {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+}
+/*font-weight: 200;*/
+/*font-style: normal;*/
 
 /*.btn-primary{*/
 /*    @apply text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg;*/
