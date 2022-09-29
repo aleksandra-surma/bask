@@ -1,89 +1,132 @@
-import Image from 'next/image';
-import { LockClosedIcon } from '@heroicons/react/solid';
-import HeadMeta from 'src/HeadMeta';
+import BaseLayout from 'components/BaseLayout';
+import HeroPhotos from 'components/HeroPhotos';
+
+const title = 'Bask - stroje kąpielowe UV dla dzieci';
+const description = '';
+const canonical = '';
+const ogData = {};
 
 export default function Home() {
+  const seoData = { title, description, canonical, ogData };
+
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <HeadMeta />
+    <BaseLayout seoData={seoData}>
+      <HeroPhotos />
 
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <Image className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="Workflow" />
-          <h2 className="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900">Sign in to your account</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{' '}
-            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-              start your 14-day free trial
-            </a>
-          </p>
+      <section className="w-full">
+        <div className="m-auto justify-between items-center min-h-[60vh] max-w-screen-xl flex">
+          <div className="flex flex-col justify-between bg-lime-100 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
+          <div className="flex flex-col justify-between bg-lime-200 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
+          <div className="flex flex-col justify-between bg-lime-100 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
+          <div className="flex flex-col justify-between bg-lime-200 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
-          <input type="hidden" name="remember" defaultValue="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
+      </section>
+
+      <section className="w-full bg-gray-50 my-[10vh]">
+        <div className="m-auto justify-between relative items-center min-h-[60vh] max-w-screen-xl flex">
+          <div className="w-1/2">
+            <div className="w-[25%] h-full absolute bottom-[-100px] left-0 bg-blue-300">Photo</div>
+          </div>
+          <div className="w-1/2">
+            <h2>O NAS</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, placeat quis. Accusamus ad architecto asperiores autem, consequatur
+              culpa deleniti distinctio et facere facilis fugiat incidunt inventore iste libero nesciunt non nulla porro qui recusandae rerum vero
+              vitae voluptate voluptatibus! Amet, dolore doloremque eaque eligendi expedita, fugit incidunt minima nihil quam quas qui recusandae,
+              tenetur voluptate. Aliquid culpa deserunt optio, perspiciatis quasi rerum temporibus! Beatae excepturi labore neque non nostrum.
+            </p>
             <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-              />
+              <p>Więcej...</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full">
+        <div className="m-auto justify-between relative items-center min-h-[60vh] max-w-screen-xl flex">
+          <div className="w-1/2">
+            <h2>ECO + PL</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, placeat quis. Accusamus ad architecto asperiores autem, consequatur
+              culpa deleniti distinctio et facere facilis fugiat incidunt inventore iste libero nesciunt non nulla porro qui recusandae rerum vero
+              vitae voluptate voluptatibus! Amet, dolore doloremque eaque eligendi expedita, fugit incidunt minima nihil quam quas qui recusandae,
+              tenetur voluptate. Aliquid culpa deserunt optio, perspiciatis quasi rerum temporibus! Beatae excepturi labore neque non nostrum.
+            </p>
             <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
+              <p>Więcej...</p>
             </div>
           </div>
+          <div className="w-1/2">
+            <div className="w-[50vh] h-[50vh] absolute top-0 right-[-200px] bg-blue-300">Photo</div>
+          </div>
+        </div>
+      </section>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
-            </div>
-
-            <div className="text-sm">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                Forgot your password?
-              </a>
+      <section className="w-full bg-gray-50 mt-[10vh]">
+        <div className="m-auto justify-between relative items-center min-h-[60vh] max-w-screen-xl flex">
+          <div className="w-1/2">
+            <div className="w-[35%] h-[640px] absolute top-[-100px] left-[-160px] bg-blue-300">Photo</div>
+          </div>
+          <div className="w-1/2">
+            <h2>UV A ZDROWIE</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, placeat quis. Accusamus ad architecto asperiores autem, consequatur
+              culpa deleniti distinctio et facere facilis fugiat incidunt inventore iste libero nesciunt non nulla porro qui recusandae rerum vero
+              vitae voluptate voluptatibus! Amet, dolore doloremque eaque eligendi expedita, fugit incidunt minima nihil quam quas qui recusandae,
+              tenetur voluptate. Aliquid culpa deserunt optio, perspiciatis quasi rerum temporibus! Beatae excepturi labore neque non nostrum.
+            </p>
+            <div>
+              <p>Więcej...</p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
-              </span>
-              Sign in
-            </button>
+      <section className="w-full">
+        <div className="m-auto justify-between items-center min-h-[60vh] max-w-screen-xl flex">
+          <div className="flex flex-col justify-between bg-lime-100 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
           </div>
-        </form>
-      </div>
-    </div>
+          <div className="flex flex-col justify-between bg-lime-200 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
+          <div className="flex flex-col justify-between bg-lime-100 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
+          <div className="flex flex-col justify-between bg-lime-200 w-[20%] h-[420px]">
+            <div className="h-[320px] bg-lime-300">photo</div>
+            <p>Product title</p>
+            <p>120zł</p>
+          </div>
+        </div>
+      </section>
+
+      {/* <HiglightedOffers /> */}
+      {/* <AboutUs /> */}
+      {/* <IdeaBask /> */}
+      {/* <AboutUs /> */}
+    </BaseLayout>
   );
 }

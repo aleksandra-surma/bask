@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import 'styles/globals.css';
 
 /*
         This example requires updating your template:
