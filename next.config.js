@@ -4,8 +4,11 @@ const { PHASE_PRODUCTION_BUILD } = require('next/constants');
 const nextConfig = (phase) => {
   const reactStrictMode = true;
   const swcMinify = true;
-  const env = {};
   const isProd = phase === PHASE_PRODUCTION_BUILD;
+
+  const env = {
+    IS_PROD: isProd,
+  };
 
   const rewrites = () => {
     return [

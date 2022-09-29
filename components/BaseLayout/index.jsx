@@ -9,6 +9,7 @@ export default function BaseLayout({ children, seoData }) {
   return (
     <>
       <HeadMeta />
+
       <NextSeo title={title} description={description} canonical={canonical} openGraph={ogData} />
 
       <main className="min-h-full flex flex-col items-center justify-center">
