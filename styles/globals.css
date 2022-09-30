@@ -1,4 +1,5 @@
 @import 'components/Header/header.css';
+@import 'components/HeroPhotos/heroPhotos.css';
 
 @tailwind base;
 @tailwind components;

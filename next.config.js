@@ -35,7 +35,7 @@ const nextConfig = (phase) => {
     ];
   };
 
-  return { reactStrictMode, swcMinify, rewrites, env, isProd };
+  return { reactStrictMode, swcMinify, rewrites, env };
 };
 
 module.exports = nextConfig;
