@@ -1,26 +1,20 @@
 import Image from 'next/image';
 import ecoPl from 'public/images/bask-eco-pl-test-image-01.jpg';
+import ShortDescription from '../ShortDescription';
+
+const title = 'ECO + PL';
+const description = `Pragniemy podzielić się naszą wiedzą i doświadczeniem, które wykorzystujemy w dążeniu do zdrowia i piękna. Podstawową wartością naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów, które tworzymy dla Was z zachowaniem wszystkich standardów i norm. Dbamy o każdy detal aby jak najlepiej spełniać Państwa oczekiwania.`;
+const moreHref = '/aboutCompany';
+const moreAs = '/o-firmie';
 
 export default function EcoPl() {
   return (
-    <section className="w-full">
-      <div className="m-auto justify-between relative items-center min-h-[60vh] max-w-screen-xl flex">
-        <div className="w-1/2">
-          <h2>ECO + PL</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, placeat quis. Accusamus ad architecto asperiores autem, consequatur
-            culpa deleniti distinctio et facere facilis fugiat incidunt inventore iste libero nesciunt non nulla porro qui recusandae rerum vero vitae
-            voluptate voluptatibus! Amet, dolore doloremque eaque eligendi expedita, fugit incidunt minima nihil quam quas qui recusandae, tenetur
-            voluptate. Aliquid culpa deserunt optio, perspiciatis quasi rerum temporibus! Beatae excepturi labore neque non nostrum.
-          </p>
-          <div>
-            <p>Więcej...</p>
-          </div>
-        </div>
-        <div>
-          <div className="w-[50vh] h-[50vh] absolute top-0 right-[-200px]">
-            <Image src={ecoPl} layout="fill" objectFit="cover" quality={80} priority alt="" />
-          </div>
+    <section className="w-full px-4 tablet:px-8 desktop:my-20">
+      <div className="flex flex-col m-auto justify-center relative items-center laptop:items-start min-h-[60vh] max-w-screen-xl">
+        <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
+
+        <div className="relative block w-full h-[500px] laptop:w-[45%] desktop:w-3/5 laptop:h-[80%] desktop:h-[100%] laptop:absolute desktop:mt-0 laptop:top-[10%] desktop:top-0 laptop:right-[-40px] desktop:right-[-200px]">
+          <Image src={ecoPl} layout="fill" objectFit="cover" quality={80} priority alt="" />
         </div>
       </div>
     </section>

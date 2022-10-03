@@ -71,7 +71,7 @@ module.exports = {
         desktop: '1280px',
         // => @media (min-width: 1280px) { ... }
 
-        desktopLg: '1536px',
+        desktopBig: '1536px',
         // => @media (min-width: 1536px) { ... }
 
         tall: { raw: '(min-height: 900px)' },

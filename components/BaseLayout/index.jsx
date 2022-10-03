@@ -12,7 +12,7 @@ export default function BaseLayout({ children, seoData }) {
 
       <NextSeo title={title} description={description} canonical={canonical} openGraph={ogData} />
 
-      <main className="min-h-full flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center justify-center">
         <Header />
         {children}
         <Footer />

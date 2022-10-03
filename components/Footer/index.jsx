@@ -4,16 +4,16 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col my-20 w-full m-auto max-w-screen-xl text-gray-700">
-      <div className="flex justify-between">
-        <div className="w-1/5">
+    <footer className="flex flex-col my-8 laptop:my-20 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
+      <div className="flex flex-col justify-between laptop:flex-row">
+        <div className="mb-12 laptop:w-1/5">
           <h3 className="font-semibold mb-4">Bask</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium architecto deserunt, doloremque facere maiores perferendis placeat
             quos. Animi aperiam at consequuntur dolores ducimus molestiae nihil odio ratione rerum suscipit!
           </p>
         </div>
-        <div>
+        <div className="mb-12">
           <h3 className="font-semibold mb-4">Płatność i dostawa</h3>
           <ul>
             <li className="mb-2">BLIK</li>
@@ -22,7 +22,7 @@ export default function Footer() {
             <li className="mb-2">Płatność kartą lub przelewem</li>
           </ul>
         </div>
-        <div>
+        <div className="mb-12">
           <h3 className="font-semibold mb-4">Polityka sklepu</h3>
           <ul>
             <li className="mb-2">Wysyłka</li>
@@ -32,7 +32,7 @@ export default function Footer() {
             <li className="mb-2">Zgłoś błąd</li>
           </ul>
         </div>
-        <div>
+        <div className="mb-12">
           <h3 className="font-semibold mb-4">Kontakt</h3>
           <p className="mb-2">Obsługa Klienta</p>
           <p className="mb-2">Pn. - Pt. 9:00 - 16:00</p>
@@ -42,7 +42,7 @@ export default function Footer() {
           <p className="mb-2">wspolpraca@bask.com.pl</p>
         </div>
       </div>
-      <div className="flex justify-between mt-20">
+      <div className="flex justify-between mt-8 laptop:mt-20">
         <div>Social media</div>
         <div className="">
           <Link href="https://www.ioten.io">
