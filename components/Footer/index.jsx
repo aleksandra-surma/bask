@@ -10,8 +10,30 @@ export default function Footer() {
           <h3 className="font-semibold mb-4">Bask</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium architecto deserunt, doloremque facere maiores perferendis placeat
-            quos. Animi aperiam at consequuntur dolores ducimus molestiae nihil odio ratione rerum suscipit!
+            quos.
           </p>
+          <ul className="mt-8">
+            <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
+              <Link href="/storeBask" as="sklep">
+                <a href="">Sklep</a>
+              </Link>
+            </li>
+            <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
+              <Link href="/uvEducation" as="edukacja-uv">
+                <a href="">Edukacja UV</a>
+              </Link>
+            </li>
+            <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
+              <Link href="/aboutCompany" as="o-firmie">
+                <a href="">O firmie</a>
+              </Link>
+            </li>
+            <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
+              <Link href="/contact" as="kontakt">
+                <a href="">Kontakt</a>
+              </Link>
+            </li>
+          </ul>
         </div>
         <div className="mb-12">
           <h3 className="font-semibold mb-4">Płatność i dostawa</h3>

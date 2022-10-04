@@ -17,11 +17,11 @@ export default function Header() {
           {/*    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /> */}
           {/*  </svg> */}
           {/* </div> */}
-          <div className="flex flex-col justify-between items-center cursor-pointer text-gray-700 hover:text-green-500">
+          <div className="flex flex-col justify-between items-center cursor-pointer text-gray-700 hover:text-primary">
             <UserIcon width={24} height={24} />
             <p>Zaloguj</p>
           </div>
-          <div className="header-basket__wrapper flex flex-col justify-between items-center cursor-pointer text-gray-700 hover:text-green-500">
+          <div className="header-basket__wrapper flex flex-col justify-between items-center cursor-pointer text-gray-700 hover:text-primary">
             <div className="flex relative">
               <ShoppingBagIcon width={24} height={24} />
               <div className="header-basket__items-counter absolute top-0.5 flex justify-center right-[-110%] w-[22px] h-[22px] bg-black text-white rounded-xl leading-[23px] hover:bg-green-500">

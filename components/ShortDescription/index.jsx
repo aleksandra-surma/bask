@@ -7,7 +7,7 @@ export default function ShortDescription({ title, description, moreHref, moreAs 
       <p className="text-gray-600">{description}</p>
       <div className="mt-4">
         <Link href={moreHref} as={moreAs}>
-          <a className="cursor-pointer hover:text-black">Więcej...</a>
+          <a className="cursor-pointer hover:text-black hover:underline hover:decoration-primary underline-offset-4">Więcej...</a>
         </Link>
       </div>
     </div>

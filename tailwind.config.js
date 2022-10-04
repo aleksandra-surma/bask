@@ -29,6 +29,7 @@ module.exports = {
       },
       colors: {
         black: 'hsl(0, 0%, 15%)',
+        primary: 'rgb(34 197 94)',
         // blue: 'hsl(213, 99%, 39%)',
         // blueLight: 'hsl(222, 83%, 77%)',
         // darkestGray: 'hsl(0, 0%, 22%)',
