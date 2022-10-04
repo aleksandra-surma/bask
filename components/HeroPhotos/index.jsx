@@ -6,8 +6,8 @@ import hero4 from 'public/images/bask-hero-test-image-04.jpg';
 
 export default function HeroPhotos() {
   return (
-    <section className="flex relative tablet:top-[20vh] h-4/5 laptop:top-1/4 laptop:h-3/5 left-0 laptop:left-[unset] w-full">
-      <div className="flex relative justify-center items-center w-full h-[500px] tablet:w-1/2 laptop:w-1/4">
+    <section className="flex relative h-4/5 laptop:top-1/4 h-[600px] left-0 laptop:left-[unset] w-full">
+      <div className="flex relative justify-center items-center w-full tablet:w-1/2 laptop:w-1/4">
         <Image src={hero1} layout="fill" objectFit="cover" quality={80} priority className="hero-photos__image" alt="" />
       </div>
       <div className="hidden relative tablet:flex justify-center items-center tablet:w-1/2 laptop:w-1/4 bg-gray-200">
