@@ -28,6 +28,19 @@ const nextConfig = (phase) => {
         source: '/kontakt',
         destination: '/contact',
       },
+      {
+        source: '/moje-konto/zaloguj',
+        destination: '/userAccount/logIn',
+      },
+      {
+        source: '/moje-konto/nowe-konto',
+        destination: '/userAccount/createAccount',
+      },
+      {
+        source: '/koszyk',
+        destination: '/cardSummary',
+      },
+
       // {
       //   source: '/polityka-prywatnosci',
       //   destination: '/policy',

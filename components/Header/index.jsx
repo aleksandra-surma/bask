@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import baskLogo from 'public/images/bask-logo-plus-text.svg';
 import Navigation from 'components/Navigation';
-import UserSummary from '../UserSummary';
+import UserSummary from 'components/UserSummary';
 
 export default function Header() {
   return (
