@@ -8,6 +8,9 @@ const nextConfig = (phase) => {
 
   const env = {
     IS_PROD: isProd,
+
+    AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
+    AIRTABLE_BASE: process.env.AIRTABLE_BASE,
   };
 
   const rewrites = () => {
@@ -35,6 +38,10 @@ const nextConfig = (phase) => {
       {
         source: '/moje-konto/nowe-konto',
         destination: '/userAccount/createAccount',
+      },
+      {
+        source: '/moje-konto/odzyskanie-hasla',
+        destination: '/userAccount/passwordRecovery',
       },
       {
         source: '/koszyk',

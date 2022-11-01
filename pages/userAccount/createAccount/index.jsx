@@ -1,5 +1,6 @@
 import BaseLayout from 'components/BaseLayout';
 import { SparklesIcon } from '@heroicons/react/outline';
+import Link from 'next/link';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -70,6 +71,15 @@ export default function CreateAccount() {
                   required
                   className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm"
                 />
+              </div>
+            </div>
+            <div className="flex items-center">
+              <div className="text-sm mb-8 mr-10">
+                <Link href="/userAccount/passwordRecovery" as="/moje-konto/odzyskanie-hasla">
+                  <a>
+                    <p className="font-medium text-green-700 hover:text-green-600">Mam konto chcę się zalogować...</p>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>

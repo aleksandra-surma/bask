@@ -43,9 +43,11 @@ export default function LogInForm() {
 
           <div className="flex items-center justify-between">
             <div className="text-sm my-8">
-              <a href="#" className="font-medium text-green-700 hover:text-green-600">
-                Zapomniałaś(eś) hasło?
-              </a>
+              <Link href="/userAccount/passwordRecovery" as="/moje-konto/odzyskanie-hasla">
+                <a>
+                  <p className="font-medium text-green-700 hover:text-green-600">Zapomniałaś(eś) hasło?</p>
+                </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ecoPl from 'public/images/bask-eco-pl-test-image-01.jpg';
-import ShortDescription from '../ShortDescription';
+import ShortDescription from 'components/ShortDescription';
 
 const title = 'ECO + PL';
 const description = `Pragniemy podzielić się naszą wiedzą i doświadczeniem, które wykorzystujemy w dążeniu do zdrowia i piękna. Podstawową wartością naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów, które tworzymy dla Was z zachowaniem wszystkich standardów i norm. Dbamy o każdy detal aby jak najlepiej spełniać Państwa oczekiwania.`;
@@ -9,7 +9,7 @@ const moreAs = '/o-firmie';
 
 export default function EcoPl() {
   return (
-    <section className="w-full px-4 tablet:px-8 desktop:my-20">
+    <section className="w-full px-4 tablet:px-8 desktop:my-20 overflow-hidden">
       <div className="flex flex-col m-auto justify-center relative items-center laptop:items-start min-h-[60vh] max-w-screen-xl">
         <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
 
