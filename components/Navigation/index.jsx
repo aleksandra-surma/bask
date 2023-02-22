@@ -10,7 +10,7 @@ export default function Navigation() {
       </Link>
       <Link href="/storeBask" as="sklep">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
-          🐚 SKLEP
+          SKLEP
         </a>
       </Link>
       <Link href="/uvEducation" as="edukacja-uv">
@@ -20,7 +20,7 @@ export default function Navigation() {
       </Link>
       <Link href="/aboutCompany" as="o-firmie">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
-          O FIRMIE🇵🇱
+          O FIRMIE
         </a>
       </Link>
       <Link href="/contact" as="kontakt">

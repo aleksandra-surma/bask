@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { PHASE_PRODUCTION_BUILD } = require('next/constants');
+const { pathsMap } = require('./data/pathMap');
 
 const nextConfig = (phase) => {
   const reactStrictMode = true;
@@ -13,49 +14,20 @@ const nextConfig = (phase) => {
     AIRTABLE_BASE: process.env.AIRTABLE_BASE,
   };
 
-  const rewrites = () => {
-    return [
-      {
-        source: '/sklep',
-        destination: '/storeBask',
-      },
-      {
-        source: '/edukacja-uv',
-        destination: '/uvEducation',
-      },
-      {
-        source: '/o-firmie',
-        destination: '/aboutCompany',
-      },
-      {
-        source: '/kontakt',
-        destination: '/contact',
-      },
-      {
-        source: '/moje-konto/zaloguj',
-        destination: '/userAccount/logIn',
-      },
-      {
-        source: '/moje-konto/nowe-konto',
-        destination: '/userAccount/createAccount',
-      },
-      {
-        source: '/moje-konto/odzyskanie-hasla',
-        destination: '/userAccount/passwordRecovery',
-      },
-      {
-        source: '/koszyk',
-        destination: '/cardSummary',
-      },
+  const rewrites = () =>
+    pathsMap.map(({ source, destination }) => {
+      return {
+        source,
+        destination,
+      };
+    });
 
-      // {
-      //   source: '/polityka-prywatnosci',
-      //   destination: '/policy',
-      // },
-    ];
+  return {
+    reactStrictMode,
+    swcMinify,
+    rewrites,
+    env,
   };
-
-  return { reactStrictMode, swcMinify, rewrites, env };
 };
 
 module.exports = nextConfig;
