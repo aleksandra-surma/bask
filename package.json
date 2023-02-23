@@ -26,10 +26,13 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@react-email/render": "^0.0.6",
+    "@sendgrid/mail": "^7.7.0",
     "airtable": "^0.11.5",
     "axios": "^1.1.2",
     "next": "12.2.5",
     "next-seo": "^5.5.0",
+    "nodemailer": "^6.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.37.0",
