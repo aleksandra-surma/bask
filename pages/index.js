@@ -2,7 +2,7 @@ import BaseLayout from 'components/BaseLayout';
 import HeroPhotos from 'components/HeroPhotos';
 import HighlightedOffers from 'components/HighlightedOffers';
 import AboutCompany from 'components/AboutCompany';
-import BestsellersOffers from 'components/BestsellersOffers';
+// import BestsellersOffers from 'components/BestsellersOffers';
 import EcoPl from 'components/EcoPl';
 import UvHealth from 'components/UvHealth';
 
@@ -26,7 +26,7 @@ export default function Home() {
 
       <UvHealth />
 
-      <BestsellersOffers />
+      {/* <BestsellersOffers /> */}
     </BaseLayout>
   );
 }

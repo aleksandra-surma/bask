@@ -1,4 +1,8 @@
 import 'styles/globals.css';
+import { DefaultSeo } from 'next-seo';
+import SEO from 'next-seo.config';
+// import { SessionProvider } from 'next-auth/react';
+// import HeadMeta from 'components/Page/HeadMeta';
 
 /*
         This example requires updating your template:
@@ -11,8 +15,16 @@ import 'styles/globals.css';
         tailwind UI requirement
 */
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  return (
+    // <SessionProvider session={session}>
+    <>
+      {/* <HeadMeta /> */}
+      <DefaultSeo {...SEO} />
+      <Component {...pageProps} />
+    </>
+    // </SessionProvider>
+  );
 }
 
 export default MyApp;

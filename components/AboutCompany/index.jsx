@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import about from 'public/images/bask-about-test-image-01.jpg';
+import about from 'public/images/bask-about-us.jpg';
 import ShortDescription from 'components/ShortDescription';
 
 const title = 'O NAS';

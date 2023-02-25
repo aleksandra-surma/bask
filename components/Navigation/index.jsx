@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Navigation() {
   return (
-    <nav className="flex flex-col tablet:flex-row justify-center mt-8 tablet:mt-10 tablet:mb-16 px-6 w-full bg-gray-50 tablet:mx-0 text-gray-500 tablet:bg-white">
+    <nav className="flex flex-col tablet:flex-row justify-center mt-8 tablet:mt-2 tablet:mb-6 px-6 w-full bg-gray-50 tablet:mx-0 text-gray-500 tablet:bg-white">
       <Link href="/">
         <a className="cursor-pointer hover:text-black p-4 pt-8 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           HOME
