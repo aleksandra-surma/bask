@@ -23,7 +23,7 @@ export default function Navigation() {
           O FIRMIE
         </a>
       </Link>
-      <Link href="/contact" as="kontakt">
+      <Link href="/contact" as="/kontakt">
         <a className="cursor-pointer hover:text-black p-4 pb-8 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           KONTAKT
         </a>

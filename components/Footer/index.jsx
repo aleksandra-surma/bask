@@ -29,7 +29,7 @@ export default function Footer() {
               </Link>
             </li>
             <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
-              <Link href="/contact" as="kontakt">
+              <Link href="/contact" as="/kontakt">
                 <a href="">Kontakt</a>
               </Link>
             </li>

@@ -1,5 +1,3 @@
-import { v1 as uuid } from 'uuid';
-
 /**
  * EmailContact - component for emails -> reset password and activation account
  *
@@ -10,7 +8,7 @@ import { v1 as uuid } from 'uuid';
  * exact link to logo: https://i.postimg.cc/T1Mzv5fR/bask-logo.png
  */
 
-const EmailContactTemplate = ({ text }) => {
+const EmailContactTemplate = ({ payload: { fullName, mobile, email, message } }) => {
   return (
     <html lang="pl">
       {/* eslint-disable-next-line @next/next/no-head-element */}
@@ -36,14 +34,18 @@ const EmailContactTemplate = ({ text }) => {
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://i.postimg.cc/T1Mzv5fR/bask-logo.png" style={{ width: '120px', height: '25px' }} alt="Bask logo" />
+            <img src="https://i.postimg.cc/T1Mzv5fR/bask-logo.png" style={{ width: '120px', height: '60px' }} alt="Bask logo" />
 
-            {/*  todo: add here text or something, maybe copy from odkurza.cz */}
-            <div style={{ fontSize: '14px', margin: '30px 0 40px 0' }}>
-              {text.map((textItem) => (
-                <p key={uuid()}>{textItem}</p>
-              ))}
-            </div>
+            <p style={{}}>Imię i nazwisko: {fullName}</p>
+            <p style={{}}>Telefon: {mobile}</p>
+            <p style={{}}>Email: {email}</p>
+            <p style={{}}>Wiadomość: {message}</p>
+
+            {/* <div style={{ fontSize: '14px', margin: '30px 0 40px 0' }}> */}
+            {/*  {message.map((textItem) => ( */}
+            {/*    <p key={uuid()}>{textItem}</p> */}
+            {/*  ))} */}
+            {/* </div> */}
           </div>
         </main>
       </body>
