@@ -12,6 +12,10 @@ const HeadMeta = () => {
       <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
       <link rel="manifest" href="icons/site.webmanifest" />
       <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
+      <link rel="icon" href="/icons/favicon.ico" />
+
+      <meta name="msapplication-TileColor" content="#da532c" />
+      <meta name="theme-color" content="#ffffff" />
 
       <link rel="stylesheet" href="https://use.typekit.net/prw8yuu.css" />
 

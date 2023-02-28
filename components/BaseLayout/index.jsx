@@ -1,6 +1,5 @@
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import HeadMeta from 'components/HeadMeta';
 import { NextSeo } from 'next-seo';
 import InfoBar from 'components/InfoBar';
 import useFlags from 'hooks/useFlags';
@@ -13,8 +12,6 @@ export default function BaseLayout({ children, seoData, indexPage = false }) {
   const { showNewsBar } = useFlags();
   return (
     <>
-      <HeadMeta />
-
       <NextSeo title={title} description={description} canonical={canonical} openGraph={ogData} noindex={!indexPage} nofollow={!indexPage} />
 
       <main className="flex flex-col items-center justify-center">
