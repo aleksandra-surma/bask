@@ -1,4 +1,7 @@
 import BaseLayout from 'components/BaseLayout';
+import EcoPl from 'components/EcoPl';
+import Fabric from 'components/Fabric';
+import AboutUs from 'components/AboutCompany';
 
 const title = '';
 const description = '';
@@ -11,7 +14,11 @@ export default function AboutCompany() {
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
-      <p>O firmie</p>
+      <AboutUs />
+
+      <EcoPl />
+
+      <Fabric />
     </BaseLayout>
   );
 }
