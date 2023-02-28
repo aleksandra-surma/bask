@@ -5,6 +5,7 @@ import AboutCompany from 'components/AboutCompany';
 // import BestsellersOffers from 'components/BestsellersOffers';
 import EcoPl from 'components/EcoPl';
 import UvHealth from 'components/UvHealth';
+import UnderConstruction from 'components/UnderConstruction';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -13,20 +14,28 @@ const ogData = {};
 
 export default function Home() {
   const seoData = { title, description, canonical, ogData };
+  const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
+  const isUnderConstruction = true;
 
   return (
-    <BaseLayout seoData={seoData}>
-      <HeroPhotos />
+    <div>
+      {isUnderConstruction ? (
+        <UnderConstruction />
+      ) : (
+        <BaseLayout seoData={seoData} indexPage={indexingCondition}>
+          <HeroPhotos />
 
-      <HighlightedOffers />
+          <HighlightedOffers />
 
-      <AboutCompany />
+          <AboutCompany shortDescription />
 
-      <EcoPl />
+          <EcoPl shortDescription />
 
-      <UvHealth />
+          <UvHealth shortDescription />
 
-      {/* <BestsellersOffers /> */}
-    </BaseLayout>
+          {/* <BestsellersOffers /> */}
+        </BaseLayout>
+      )}
+    </div>
   );
 }

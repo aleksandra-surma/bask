@@ -1,25 +1,45 @@
 import axios from 'axios';
 
 // nc(reset, watch, setError, setMessage, formType))}>
-export default async function submitFunc(reset, getFormValues, setError, formType, setMessage = () => {}) {
-  try {
-    setError('');
+export default async function submitFunc(reset, watch, error, setError, sendingProcess, setSendingProcess, setMessageSent, captchaRef) {
+  console.log('sendingProcess TEST: ', watch());
+  // captchaRef.current.reset();
+  if (sendingProcess) return;
+  setMessageSent(false);
 
-    const payload = getFormValues();
-    // console.log('sumbitFunc payload + formType --', { ...payload, formType });
+  const captchaToken = await captchaRef.current.executeAsync();
 
-    setMessage({ ...payload, formType });
-
-    // console.log('payload ->', payload);
-
-    const response = await axios.post('/api/contact', { ...payload, formType }).catch((responseError) => setError(responseError.data.error));
-
-    if (response.status === 200) {
-      // reset form
-      reset();
-    }
-  } catch (error) {
-    // console.log('error', error);
-    setError(error);
+  if (!captchaToken) {
+    setError('reCaptcha failed');
+    return;
   }
+  console.log('test ');
+  setError('');
+  setSendingProcess(true);
+  setMessageSent(false);
+
+  const payload = watch();
+
+  payload.captchaToken = captchaToken;
+  // console.log('sumbitFunc payload + formType --', { ...payload, formType });
+
+  const { response } = await axios
+    .post('/api/contact', payload)
+    .catch((responseError) => {
+      setError(responseError.response.data.error);
+      return responseError;
+    })
+    .finally(() => {
+      captchaRef.current.reset();
+    });
+
+  if (!response?.data?.error) {
+    // reset();
+    setMessageSent(true);
+    setSendingProcess(false);
+  }
+  reset();
+  setError('');
+  // setMessageSent(false);
+  setSendingProcess(false);
 }

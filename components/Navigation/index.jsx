@@ -8,22 +8,22 @@ export default function Navigation() {
           HOME
         </a>
       </Link>
-      <Link href="/storeBask" as="sklep">
+      <Link href="/storeBask" as="/sklep">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           SKLEP
         </a>
       </Link>
-      <Link href="/uvEducation" as="edukacja-uv">
+      <Link href="/uvEducation" as="/edukacja-uv">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           EDUKACJA UV
         </a>
       </Link>
-      <Link href="/aboutCompany" as="o-firmie">
+      <Link href="/aboutCompany" as="/o-firmie">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           O FIRMIE
         </a>
       </Link>
-      <Link href="/contact" as="kontakt">
+      <Link href="/contact" as="/kontakt">
         <a className="cursor-pointer hover:text-black p-4 pb-8 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           KONTAKT
         </a>

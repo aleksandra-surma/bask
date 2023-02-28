@@ -15,13 +15,14 @@ import EmailContactTemplate from 'components/Email/ContactTemplate';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendEmailWithLink = async (textContent) => {
-  const html = render(<EmailContactTemplate text={textContent} />, {
+const sendEmailWithLink = async (payload) => {
+  console.log('payload sendEmailWithLink: ', payload);
+  const html = render(<EmailContactTemplate payload={payload} />, {
     pretty: true,
   });
 
   try {
-    if (process.env.IS_PROD) {
+    if (process.env.IS_PROD === 'PROD') {
       const messageOptions = {
         to: `bask.lublin@gmail.com`,
         from: 'bask.lublin@gmail.com', // Change to your verified sender

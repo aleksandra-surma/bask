@@ -1,22 +1,26 @@
 import Image from 'next/image';
 import uvHealth from 'public/images/bask-uv-health.jpg';
 import ShortDescription from 'components/ShortDescription';
+import Description from '../Descritpion';
 
 const title = 'UV A ZDROWIE';
 const description = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, placeat quis. Accusamus ad architecto asperiores autem, consequatur culpa deleniti distinctio et facere facilis fugiat incidunt inventore iste libero nesciunt non nulla porro qui recusandae rerum vero vitae voluptate voluptatibus! Amet, dolore doloremque eaque eligendi expedita, fugit incidunt minima nihil quam quas qui recusandae, tenetur voluptate. Aliquid culpa deserunt optio, perspiciatis quasi rerum temporibus! Beatae excepturi labore neque non nostrum.`;
 const moreHref = '/uvEducation';
 const moreAs = '/edukacja-uv';
 
-export default function UvHealth() {
+export default function UvHealth({ shortDescription }) {
   return (
     <section className="w-full bg-gray-50 px-4 tablet:px-8 pb-20 mb-[100px]">
       <div className="flex flex-col-reverse m-auto justify-center relative items-center laptop:items-end min-h-[60vh] max-w-screen-xl">
         <div className="relative block h-[500px] w-[100%] laptop:w-[40%] laptop:h-full laptop:absolute laptop:bottom-[-100px] laptop:left-0 desktop:bottom-[-200px] desktop:h-[120%]">
           <Image src={uvHealth} layout="fill" objectFit="cover" quality={80} priority alt="" />
         </div>
-
-        <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
-        {/* <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} /> */}
+        {shortDescription ? (
+          <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
+        ) : (
+          <Description title={title} description={description} />
+        )}
+        s
       </div>
     </section>
 
