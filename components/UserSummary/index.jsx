@@ -11,7 +11,7 @@ export default function UserSummary() {
       {/*    <p>Zaloguj</p> */}
       {/*  </a> */}
       {/* </Link> */}
-      <Link href="/cardSummary" as="/koszyk">
+      <Link href="/card-summary" as="/koszyk">
         <a className="header-basket__wrapper flex flex-col justify-between items-center cursor-pointer text-gray-700 hover:text-primary">
           <div className="flex relative">
             <ShoppingBagIcon width={24} height={24} />

@@ -5,7 +5,7 @@ import Description from '../Descritpion';
 
 const title = 'ECO + PL';
 const description = `Pragniemy podzielić się naszą wiedzą i doświadczeniem, które wykorzystujemy w dążeniu do zdrowia i piękna. Podstawową wartością naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów, które tworzymy dla Was z zachowaniem wszystkich standardów i norm. Dbamy o każdy detal aby jak najlepiej spełniać Państwa oczekiwania.`;
-const moreHref = '/aboutCompany';
+const moreHref = '/about-company';
 const moreAs = '/o-firmie';
 
 export default function EcoPl({ shortDescription = false }) {

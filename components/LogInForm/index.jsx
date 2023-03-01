@@ -43,7 +43,7 @@ export default function LogInForm() {
 
           <div className="flex items-center justify-between">
             <div className="text-sm my-8">
-              <Link href="/userAccount/passwordRecovery" as="/moje-konto/odzyskanie-hasla">
+              <Link href="/userAccount/password-recovery" as="/moje-konto/odzyskanie-hasla">
                 <a>
                   <p className="font-medium text-green-700 hover:text-green-600">Zapomniałaś(eś) hasło?</p>
                 </a>
@@ -61,7 +61,7 @@ export default function LogInForm() {
             </span>
             Zaloguj się
           </button>
-          <Link href="/userAccount/createAccount" as="/moje-konto/nowe-konto">
+          <Link href="/userAccount/create-account" as="/moje-konto/nowe-konto">
             <a className="group mt-2 relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-gray-800 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
               Utwórz konto
             </a>

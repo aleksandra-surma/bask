@@ -1,20 +1,22 @@
 import BaseLayout from 'components/BaseLayout';
-import PasswordRecoveryForm from 'components/PasswordRecoveryForm';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
 const canonical = '';
 const ogData = {};
 
-export default function PasswordRecovery() {
+export default function SizeGuide() {
   const seoData = { title, description, canonical, ogData };
 
   return (
     <BaseLayout seoData={seoData}>
-      <PasswordRecoveryForm />
+      <div>
+        <p>Size guide</p>
+      </div>
+      <div>
+        <p>*table*</p>
+      </div>
     </BaseLayout>
   );
 }
-
-// source: '/moje-konto/odzyskanie-hasla',
-//   destination: '/userAccount/passwordRecovery',
+// wDyy4UH@rz@7L7C6

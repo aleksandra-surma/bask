@@ -75,7 +75,7 @@ export default function CreateAccount() {
             </div>
             <div className="flex items-center">
               <div className="text-sm mb-8 mr-10">
-                <Link href="/userAccount/passwordRecovery" as="/moje-konto/odzyskanie-hasla">
+                <Link href="/user-account/password-recovery" as="/moje-konto/odzyskanie-hasla">
                   <a>
                     <p className="font-medium text-green-700 hover:text-green-600">Mam konto chcę się zalogować...</p>
                   </a>

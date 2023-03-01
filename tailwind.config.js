@@ -1,4 +1,7 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {(options?: {strategy?: "base" | "class"}) => Function} */
+const forms = require('@tailwindcss/forms');
+const aspectRatio = require('@tailwindcss/aspect-ratio');
+
 // const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -8,6 +11,9 @@ module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+      },
       width: {
         recaptcha: '304px', // recaptcha width
       },
@@ -88,5 +94,7 @@ module.exports = {
     extend: {},
   },
   // eslint-disable-next-line global-require
-  plugins: [require('@tailwindcss/forms')],
+
+  plugins: [forms, aspectRatio],
+  // plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
 };

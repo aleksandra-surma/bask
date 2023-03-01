@@ -15,7 +15,7 @@ export default function Footer() {
           </p>
           <ul className="mt-8">
             <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
-              <Link href="/storeBask" as="/sklep">
+              <Link href="/store-bask" as="/sklep">
                 <a href="">Sklep</a>
               </Link>
             </li>
@@ -25,7 +25,7 @@ export default function Footer() {
               </Link>
             </li>
             <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
-              <Link href="/aboutCompany" as="/o-firmie">
+              <Link href="/about-company" as="/o-firmie">
                 <a href="">O firmie</a>
               </Link>
             </li>
