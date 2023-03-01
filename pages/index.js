@@ -15,7 +15,7 @@ const ogData = {};
 export default function Home() {
   const seoData = { title, description, canonical, ogData };
   const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
-  const isUnderConstruction = true;
+  const isUnderConstruction = false;
 
   return (
     <div>

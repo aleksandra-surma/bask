@@ -1,4 +1,6 @@
 import BaseLayout from 'components/BaseLayout';
+import EcoPl from 'components/EcoPl';
+import UvHealth from 'components/UvHealth';
 
 const title = '';
 const description = '';
@@ -11,7 +13,9 @@ export default function UvEducation() {
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
-      <p>UV edukacja</p>
+      <UvHealth />
+
+      <EcoPl />
     </BaseLayout>
   );
 }
