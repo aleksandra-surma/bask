@@ -8,7 +8,7 @@ export default function Navigation() {
           HOME
         </a>
       </Link>
-      <Link href="/storeBask" as="/sklep">
+      <Link href="/store-bask" as="/sklep">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           SKLEP
         </a>
@@ -18,7 +18,7 @@ export default function Navigation() {
           EDUKACJA UV
         </a>
       </Link>
-      <Link href="/aboutCompany" as="/o-firmie">
+      <Link href="/about-company" as="/o-firmie">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           O FIRMIE
         </a>
