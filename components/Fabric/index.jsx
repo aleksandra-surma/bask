@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import ecoPl from 'public/images/bask-eco-pl-test-image-01.jpg';
+import { fabricTextContent } from 'data/textData';
 // import ShortDescription from 'components/ShortDescription';
 import Description from '../Descritpion';
-
-const title = 'Materiał';
-const description = `Pragniemy podzielić się naszą wiedzą i doświadczeniem, które wykorzystujemy w dążeniu do zdrowia i piękna. Podstawową wartością naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów, które tworzymy dla Was z zachowaniem wszystkich standardów i norm. Dbamy o każdy detal aby jak najlepiej spełniać Państwa oczekiwania.`;
 
 export default function Fabric({ shortDescription }) {
   return (
@@ -16,7 +14,7 @@ export default function Fabric({ shortDescription }) {
 
         {shortDescription ? null : (
           // <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
-          <Description title={title} description={description} />
+          <Description title={fabricTextContent.title} description={fabricTextContent.description} />
         )}
       </div>
     </section>
