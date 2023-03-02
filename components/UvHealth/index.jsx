@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import uvHealth from 'public/images/bask-uv-health.jpg';
+import { healthTextContent } from 'data/textData';
 import ShortDescription from 'components/ShortDescription';
 import Description from '../Descritpion';
 
-const title = 'UV A ZDROWIE';
-const description = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, placeat quis. Accusamus ad architecto asperiores autem, consequatur culpa deleniti distinctio et facere facilis fugiat incidunt inventore iste libero nesciunt non nulla porro qui recusandae rerum vero vitae voluptate voluptatibus! Amet, dolore doloremque eaque eligendi expedita, fugit incidunt minima nihil quam quas qui recusandae, tenetur voluptate. Aliquid culpa deserunt optio, perspiciatis quasi rerum temporibus! Beatae excepturi labore neque non nostrum.`;
 const moreHref = '/uvEducation';
 const moreAs = '/edukacja-uv';
 
@@ -16,9 +15,9 @@ export default function UvHealth({ shortDescription }) {
           <Image src={uvHealth} layout="fill" objectFit="cover" quality={80} priority alt="" />
         </div>
         {shortDescription ? (
-          <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
+          <ShortDescription title={healthTextContent.title} description={healthTextContent.shortDescription} moreHref={moreHref} moreAs={moreAs} />
         ) : (
-          <Description title={title} description={description} />
+          <Description title={healthTextContent.title} description={healthTextContent.description} />
         )}
         s
       </div>

@@ -12,7 +12,6 @@ function classNames(...classes) {
 
 export async function getStaticPaths() {
   const paths = products.map((product) => {
-    console.log('product: ', product);
     return { params: { productId: product.slug } };
   });
 

@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import about from 'public/images/bask-about-us.jpg';
+import { aboutUsTextContent } from 'data/textData';
 import ShortDescription from 'components/ShortDescription';
 import Description from '../Descritpion';
 
-const title = 'O NAS';
-const description = `Pragniemy podzielić się naszą wiedzą i doświadczeniem, które wykorzystujemy w dążeniu do zdrowia i piękna. Podstawową wartością naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów, które tworzymy dla Was z zachowaniem wszystkich standardów i norm. Dbamy o każdy detal aby jak najlepiej spełniać Państwa oczekiwania.`;
 const moreHref = '/about-company';
 const moreAs = '/o-firmie';
 
@@ -17,9 +16,9 @@ export default function AboutUs({ shortDescription }) {
         </div>
 
         {shortDescription ? (
-          <ShortDescription title={title} description={description} moreHref={moreHref} moreAs={moreAs} />
+          <ShortDescription title={aboutUsTextContent.title} description={aboutUsTextContent.shortDescription} moreHref={moreHref} moreAs={moreAs} />
         ) : (
-          <Description title={title} description={description} />
+          <Description title={aboutUsTextContent.title} description={aboutUsTextContent.description} />
         )}
       </div>
     </section>
