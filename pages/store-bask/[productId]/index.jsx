@@ -3,18 +3,17 @@ import Image from 'next/image';
 import { useState } from 'react';
 // import { StarIcon } from '@heroicons/react/solid';
 import { RadioGroup } from '@headlessui/react';
-import { products } from '../../data/mock/products';
+import { products } from 'data/mock/products';
+import Link from 'next/link';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 export async function getStaticPaths() {
-  // const paths = Object.values(investmentObj).map((value) => {
-  //   return { params: { productId: value } };
-  // });
   const paths = products.map((product) => {
-    return { params: { productId: product.id } };
+    console.log('product: ', product);
+    return { params: { productId: product.slug } };
   });
 
   return {
@@ -24,8 +23,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { productId } }) {
-  const productData = products.find((product) => product.id === productId);
-  console.log('productData: ', productData);
+  const productData = products.find((product) => product.slug === productId);
 
   return {
     props: {
@@ -40,7 +38,8 @@ const canonical = '';
 const ogData = {};
 
 export default function Investment({ productData: product }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const startColor = product.startColor === 'white' ? product.colors[0] : product.colors[1];
+  const [selectedColor, setSelectedColor] = useState(startColor);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   const seoData = { title, description, canonical, ogData };
@@ -76,24 +75,65 @@ export default function Investment({ productData: product }) {
 
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-              <Image src={product.images[0].src} alt={product.images[0].alt} className="h-full w-full object-cover object-center" />
-            </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                <Image src={product.images[0].src} alt={product.images[0].alt} className="h-full w-full object-cover object-center" />
-              </div>
-              <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                <Image src={product.images[0].src} alt={product.images[0].alt} className="h-full w-full object-cover object-center" />
-              </div>
-            </div>
-            <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-              <Image src={product.images[0].src} alt={product.images[0].alt} className="h-full w-full object-cover object-center" />
-            </div>
+            {selectedColor.name === 'white' ? (
+              <>
+                <div className="  hidden overflow-hidden rounded-lg lg:block">
+                  <Image
+                    src={product.images.white[0].src}
+                    alt={product.images.white[0].alt}
+                    quality={80}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                <div className="  overflow-hidden rounded-lg">
+                  <Image
+                    src={product.images.white[1].src}
+                    alt={product.images.white[1].alt}
+                    quality={80}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                <div className="  overflow-hidden rounded-lg">
+                  <Image
+                    src={product.images.white[2].src}
+                    alt={product.images.white[2].alt}
+                    quality={80}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="  hidden overflow-hidden rounded-lg lg:block">
+                  <Image
+                    src={product.images.black[0].src}
+                    alt={product.images.black[0].alt}
+                    quality={80}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                <div className="  overflow-hidden rounded-lg">
+                  <Image
+                    src={product.images.black[1].src}
+                    alt={product.images.black[1].alt}
+                    quality={80}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                <div className="  overflow-hidden rounded-lg">
+                  <Image
+                    src={product.images.black[2].src}
+                    alt={product.images.black[2].alt}
+                    quality={80}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </>
+            )}
           </div>
 
           {/* Product info */}
-          <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+          <div className="mx-auto max-w-2xl px-4 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 ">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
               <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
             </div>
@@ -101,7 +141,8 @@ export default function Investment({ productData: product }) {
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+              {/* Price */}
+              <p className="text-4xl tracking-tight text-gray-900 font-semibold">{product.price} zł</p>
 
               <form className="mt-10">
                 {/* Colors */}
@@ -141,9 +182,9 @@ export default function Investment({ productData: product }) {
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Rozmiary</h3>
-                    <a href="#" className="text-sm font-medium text-green-600 hover:text-green-500">
+                    <Link href="/size-guide" as="/tabela-rozmiarow" className="text-sm font-medium text-green-600 hover:text-green-500">
                       Tabela rozmiarów
-                    </a>
+                    </Link>
                   </div>
 
                   <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
