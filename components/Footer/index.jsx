@@ -5,9 +5,9 @@ import { Icon } from '@iconify/react';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col my-8 laptop:my-20 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
+    <footer className="flex flex-col my-8 laptop:mb-8 laptop:mt-16 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
       <div className="flex flex-col justify-between laptop:flex-row">
-        <div className="mb-12 laptop:w-1/5">
+        <div className="laptop:w-1/5">
           <h3 className="font-semibold mb-4">Bask</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium architecto deserunt, doloremque facere maiores perferendis placeat
@@ -78,7 +78,7 @@ export default function Footer() {
           {/*  </a> */}
           {/* </Link> */}
         </div>
-        <div className="">
+        <div className="hover:scale-105 transition">
           <Link href="https://www.ioten.io">
             <a target="_blank" title="autor strony" rel="noopener noreferrer" className="flex">
               <p className="text-xs font-extralight text-neutral-700 leading-5">Created by</p>

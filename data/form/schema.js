@@ -27,7 +27,7 @@ const email = Joi.string()
   .required();
 
 const fullName = Joi.string().min(5).max(50).required().messages({
-  'string.empty': 'Pole "Twoja wiadomość" jest wymagane',
+  'string.empty': 'Pole "Imię i nazwisko" jest wymagane',
   'string.min': 'Wiadomość jest zbyt krótka, postaraj się bardziej!',
   'string.max': 'Wiadomość jest zbyt długa, przekroczyła 1000 znaków.',
 });

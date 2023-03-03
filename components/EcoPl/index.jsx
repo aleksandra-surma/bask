@@ -17,7 +17,7 @@ export default function EcoPl({ shortDescription = false }) {
           <Description title={ecoTextContent.title} description={ecoTextContent.description} />
         )}
 
-        <div className="relative block w-full h-[500px] laptop:w-[45%] desktop:w-3/5 laptop:h-[80%] desktop:h-[100%] laptop:absolute desktop:mt-0 laptop:top-[10%] desktop:top-0 laptop:right-[-40px] desktop:right-[-200px]">
+        <div className="relative block w-full h-[500px] laptop:w-[40%] desktop:w-2/5 laptop:h-[80%] desktop:h-[100%] laptop:absolute desktop:mt-0 laptop:top-[10%] desktop:top-0 laptop:right-[-40px]">
           <Image src={ecoPl} layout="fill" objectFit="cover" quality={80} priority alt="" />
         </div>
       </div>

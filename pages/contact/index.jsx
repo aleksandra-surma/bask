@@ -18,7 +18,7 @@ export default function Contact() {
             <div className="flex flex-col laptop:w-2/5 mr-16">
               <div className="px-4 sm:px-0 tablet:px-6 w-full mb-12">
                 <h3 className="text-4xl font-bold leading-6 text-gray-900">KONTAKT</h3>
-                <p className="mt-1 text-sm tablet:text-base tablet:leading-6 text-gray-700 py-8">
+                <p className="mt-1 text-sm tablet:text-base tablet:leading-6 text-gray-700 py-8 text-justify">
                   Pragniemy podzielić się naszą wiedzą i doświadczeniem, które wykorzystujemy w dążeniu do zdrowia i piękna. Podstawową wartością
                   naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów.
                 </p>
