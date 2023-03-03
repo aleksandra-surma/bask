@@ -6,7 +6,7 @@ export default function ShortDescription({ title, description, moreHref, moreAs 
     <div className="w-full laptop:w-1/2 py-20">
       <h2 className="text-gray-700 mb-4">{title}</h2>
       {description.map((textItem) => (
-        <p key={uuid()} className="tablet:text-lg text-gray-600 mb-2">
+        <p key={uuid()} className="tablet:text-lg text-gray-600 mb-2 text-justify">
           {textItem}
         </p>
       ))}

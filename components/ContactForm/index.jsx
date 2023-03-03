@@ -56,7 +56,6 @@ export default function ContactForm() {
                   </label>
                   <input
                     type="text"
-                    // autoComplete="fullName"
                     {...register('fullName')}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                   />
@@ -69,7 +68,6 @@ export default function ContactForm() {
                   </label>
                   <input
                     type="text"
-                    // autoComplete="tel"
                     {...register('mobile')}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                   />
@@ -82,7 +80,6 @@ export default function ContactForm() {
                   </label>
                   <input
                     type="email"
-                    // autoComplete="email"
                     {...register('email')}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                   />
