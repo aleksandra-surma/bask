@@ -20,7 +20,7 @@ export default function Footer() {
               </Link>
             </li>
             <li className="mb-2 hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
-              <Link href="/uvEducation" as="/edukacja-uv">
+              <Link href="/uv-education" as="/edukacja-uv">
                 <a href="">Edukacja UV</a>
               </Link>
             </li>

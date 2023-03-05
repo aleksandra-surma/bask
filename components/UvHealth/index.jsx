@@ -4,7 +4,7 @@ import { healthTextContent } from 'data/textData';
 import ShortDescription from 'components/ShortDescription';
 import Description from '../Descritpion';
 
-const moreHref = '/uvEducation';
+const moreHref = '/uv-education';
 const moreAs = '/edukacja-uv';
 
 export default function UvHealth({ shortDescription }) {

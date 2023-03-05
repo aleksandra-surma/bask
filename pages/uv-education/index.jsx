@@ -1,8 +1,8 @@
 import BaseLayout from 'components/BaseLayout';
 import Image from 'next/image';
-import uvHealth from '../../public/images/bask-uv-health.jpg';
-import { fabricTextContent, healthTextContent } from '../../data/textData';
-import Description from '../../components/Descritpion';
+import uvHealth from 'public/images/bask-uv-health.jpg';
+import { fabricTextContent, healthTextContent } from 'data/textData';
+import Description from 'components/Descritpion';
 
 const title = '';
 const description = '';

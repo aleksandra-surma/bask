@@ -9,7 +9,7 @@ export default function Products() {
       {products.map((item) => {
         return (
           <Link key={uuid()} href={`/store-bask/${item.slug}`} as={`/sklep/${item.slug}`}>
-            <div className="mb-8 w-[45%] laptop:w-[30%] tablet:mb-16 cursor-pointer">
+            <a className="mb-8 w-[45%] laptop:w-[30%] tablet:mb-16 cursor-pointer">
               <div className="w-full h-[450px] tablet:h-[650px] desktop:h-[600px] relative">
                 <Image src={item.images[item.startColor][0].src} layout="fill" objectFit="cover" alt="" />
               </div>
@@ -17,7 +17,7 @@ export default function Products() {
                 <p className="font-semibold">{item.name}</p>
                 <p>{item.price} zł</p>
               </div>
-            </div>
+            </a>
           </Link>
         );
       })}
