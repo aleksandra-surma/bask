@@ -23,7 +23,7 @@ export default function Contact() {
                   naszej marki jest chęć dawania przyjemności ze stosowania naszych produktów.
                 </p>
                 <div className="hidden laptop:block">
-                  <Link href="/uvEducation" as="edukacja-uv">
+                  <Link href="/uv-education" as="edukacja-uv">
                     <p className="inline-block text-sm underline cursor-pointer">DOWIEDZ SIĘ WIĘCEJ...</p>
                   </Link>
                 </div>

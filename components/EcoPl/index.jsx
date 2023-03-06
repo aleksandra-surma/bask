@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import ecoPl from 'public/images/bask-eco-pl-test-image-01.jpg';
+import ecoPl from 'public/images/bask-box-top.jpg';
 import { ecoTextContent } from 'data/textData';
 import ShortDescription from 'components/ShortDescription';
 import Description from '../Descritpion';

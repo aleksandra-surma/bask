@@ -13,7 +13,7 @@ export default function Navigation() {
           SKLEP
         </a>
       </Link>
-      <Link href="/uvEducation" as="/edukacja-uv">
+      <Link href="/uv-education" as="/edukacja-uv">
         <a className="cursor-pointer hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition">
           EDUKACJA UV
         </a>

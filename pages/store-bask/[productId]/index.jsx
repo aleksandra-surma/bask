@@ -5,6 +5,10 @@ import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { products } from 'data/mock/products';
 import Link from 'next/link';
+import useGlobalState from 'hooks/useBasketState';
+import { addProduct } from '../../../utils/handleBasket';
+// import handleBasket from 'utils/handleBasket';
+// import { actionTypes } from '../../../reducers/basketReducer';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -41,9 +45,14 @@ export default function Investment({ productData: product }) {
   const [selectedColor, setSelectedColor] = useState(startColor);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
+  const { state, dispatch } = useGlobalState();
+
   const seoData = { title, description, canonical, ogData };
 
   const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
+
+  console.log('state: ', state);
+  console.log('product: ', product);
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
@@ -235,7 +244,9 @@ export default function Investment({ productData: product }) {
                 </div>
 
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={() => addProduct(product, selectedColor, selectedSize, dispatch)}
+                  // onClick={() => handleBasket.addProduct(product, selectedColor, selectedSize, dispatch)}
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-neutral-600 py-3 px-8 text-base font-medium text-white hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
                   Dodaj do koszyka
