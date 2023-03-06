@@ -64,9 +64,10 @@ export const products = [
       { name: 'black', class: 'bg-neutral-800', selectedClass: 'ring-neutral-900', startColor: false },
     ],
     sizes: [
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
+      { name: '86/92', inStock: true },
+      { name: '98/104', inStock: true },
+      { name: '110/116', inStock: true },
+      { name: '122/128', inStock: true },
     ],
     description:
       'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -116,9 +117,10 @@ export const products = [
       { name: 'black', class: 'bg-neutral-800', selectedClass: 'ring-neutral-900' },
     ],
     sizes: [
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
+      { name: '86/92', inStock: true },
+      { name: '98/104', inStock: true },
+      { name: '110/116', inStock: true },
+      { name: '122/128', inStock: true },
     ],
     description:
       'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -171,9 +173,10 @@ export const products = [
     },
 
     sizes: [
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
+      { name: '86/92', inStock: true },
+      { name: '98/104', inStock: true },
+      { name: '110/116', inStock: true },
+      { name: '122/128', inStock: true },
     ],
     description:
       'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -222,9 +225,10 @@ export const products = [
       { name: 'black', class: 'bg-neutral-800', selectedClass: 'ring-neutral-900' },
     ],
     sizes: [
-      { name: 'S', inStock: true },
-      { name: 'M', inStock: true },
-      { name: 'L', inStock: true },
+      { name: '86/92', inStock: true },
+      { name: '98/104', inStock: true },
+      { name: '110/116', inStock: true },
+      { name: '122/128', inStock: true },
     ],
     description:
       'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',

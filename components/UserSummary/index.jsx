@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export default function UserSummary() {
   // const { state, dispatch } = useContext(BasketContext);
 
-  const [currentBasket, setCurrentBasket] = useState(0);
+  const [basketItemsAmount, setBasketItemsAmount] = useState(0);
 
   //
   // const [storedBasket, setStoredBasket] = useState({});
@@ -16,11 +16,12 @@ export default function UserSummary() {
     if (!window) return;
 
     const item = JSON.parse(localStorage.getItem('bask-basket'));
-    console.log('item: ', item.basket.length);
 
-    setCurrentBasket(item.basket.length);
+    if (!item?.basket) {
+      return;
+    }
 
-    // setCurrentBasket(item);
+    setBasketItemsAmount(item?.basket.length);
   }, []);
 
   //
@@ -46,8 +47,8 @@ export default function UserSummary() {
           <div className="flex relative">
             <ShoppingBagIcon width={24} height={24} />
             <div className="header-basket__items-counter absolute top-0.5 flex justify-center right-[-110%] w-[22px] h-[22px] bg-black text-white rounded-xl leading-[23px] hover:bg-green-500">
-              {/* {currentBasket?.basket.length} */}
-              {currentBasket}
+              {/* {basketItemsAmount?.basket.length} */}
+              {basketItemsAmount}
             </div>
           </div>
           <p>Koszyk</p>
