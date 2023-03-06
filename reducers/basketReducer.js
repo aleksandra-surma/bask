@@ -6,6 +6,7 @@ const initialState = {
 // Define the types of actions that can be dispatched to the reducer
 const actionTypes = {
   ADD_TO_BASKET: 'ADD_TO_BASKET',
+  COUNT_ITEMS_BASKET: 'COUNT_ITEMS_BASKET',
   REMOVE_FROM_BASKET: 'REMOVE_FROM_BASKET',
 };
 
@@ -32,6 +33,8 @@ const basketReducer = (state, action) => {
     //     ...state,
     //     basket: newBasket,
     //   };
+    case actionTypes.COUNT_ITEMS_BASKET:
+      return 0;
     default:
       return state;
   }

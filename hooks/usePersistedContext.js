@@ -13,9 +13,6 @@ export default function usePersistedContext(key, reducer, initialState) {
     if (typeof window !== 'undefined') {
       localStorage.setItem(key, JSON.stringify(state));
     }
-    // else {
-    //   localStorage.setItem(key, JSON.stringify({}));
-    // }
   }, [state, key]);
 
   return [state, dispatch];

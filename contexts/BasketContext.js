@@ -1,5 +1,5 @@
-import { createContext, useEffect } from 'react';
-import { initialState, basketReducer } from '../reducers/basketReducer';
+import { createContext, useState } from 'react';
+import { basketReducer } from '../reducers/basketReducer';
 import usePersistedContext from '../hooks/usePersistedContext';
 
 const initialBasketState = { basket: [] };
@@ -10,13 +10,15 @@ export const BasketContext = createContext(initialBasketState);
 export const BasketProvider = ({ children }) => {
   const [state, dispatch] = usePersistedContext('bask-basket', basketReducer, initialBasketState);
 
-  useEffect(() => {
-    console.log('initialState: ', initialState);
-    // dispatch({ type: actionTypes.ADD_TO_BASKET });
-  }, []);
-  console.log('state: ', state);
+  const [basketItemsAmount, setBasketItemsAmount] = useState(0);
 
-  return <BasketContext.Provider value={{ state, dispatch }}>{children}</BasketContext.Provider>;
+  // useEffect(() => {
+  //   console.log('initialState: ', initialState);
+  // dispatch({ type: actionTypes.ADD_TO_BASKET });
+  // }, []);
+  // console.log('state: ', state);
+
+  return <BasketContext.Provider value={{ state, dispatch, basketItemsAmount, setBasketItemsAmount }}>{children}</BasketContext.Provider>;
 };
 
 // BasketProvider.getInitialProps = async () => {
