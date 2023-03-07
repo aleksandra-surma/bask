@@ -1,18 +1,13 @@
 import BaseLayout from 'components/BaseLayout';
 import Image from 'next/image';
 import { useState } from 'react';
-// import { StarIcon } from '@heroicons/react/solid';
 import { RadioGroup } from '@headlessui/react';
 import { products } from 'data/mock/products';
 import Link from 'next/link';
-import useGlobalState from 'hooks/useBasketState';
-import { addProduct } from '../../../utils/handleBasket';
-// import handleBasket from 'utils/handleBasket';
-// import { actionTypes } from '../../../reducers/basketReducer';
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import useBasketState from 'hooks/useBasketState';
+import handleBasket from 'utils/handleBasket';
+import ProductAdded from '../../../components/ProductAdded';
+import classNames from '../../../helpers/classNames';
 
 export async function getStaticPaths() {
   const paths = products.map((product) => {
@@ -40,22 +35,24 @@ const description = '';
 const canonical = '';
 const ogData = {};
 
-export default function Investment({ productData: product }) {
+export default function Product({ productData: product }) {
   const startColor = product.startColor === 'white' ? product.colors[0] : product.colors[1];
   const [selectedColor, setSelectedColor] = useState(startColor);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [addedProduct, setAddedProduct] = useState(null);
 
-  const { state, dispatch } = useGlobalState();
+  const { dispatch, setBasketItemsAmount } = useBasketState();
 
   const seoData = { title, description, canonical, ogData };
 
   const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
 
-  console.log('state: ', state);
-  console.log('product: ', product);
-
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
+      {addedProduct ? (
+        <ProductAdded addedProduct={addedProduct} setAddedProduct={setAddedProduct} selectedColor={selectedColor} selectedSize={selectedSize} />
+      ) : null}
+      {/* {addedProduct ? <ProductAdded addedProduct={addedProduct} setAddedProduct={setAddedProduct} /> : null} */}
       <div className="bg-white">
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
@@ -85,55 +82,55 @@ export default function Investment({ productData: product }) {
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             {selectedColor.name === 'white' ? (
               <>
-                <div className="  hidden overflow-hidden rounded-lg lg:block">
+                <div className="">
                   <Image
                     src={product.images.white[0].src}
                     alt={product.images.white[0].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.white[1].src}
                     alt={product.images.white[1].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.white[2].src}
                     alt={product.images.white[2].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
               </>
             ) : (
               <>
-                <div className="  hidden overflow-hidden rounded-lg lg:block">
+                <div className="">
                   <Image
                     src={product.images.black[0].src}
                     alt={product.images.black[0].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.black[1].src}
                     alt={product.images.black[1].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.black[2].src}
                     alt={product.images.black[2].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
               </>
@@ -245,8 +242,10 @@ export default function Investment({ productData: product }) {
 
                 <button
                   type="button"
-                  onClick={() => addProduct(product, selectedColor, selectedSize, dispatch)}
-                  // onClick={() => handleBasket.addProduct(product, selectedColor, selectedSize, dispatch)}
+                  onClick={() => {
+                    setAddedProduct(product);
+                    handleBasket.addProduct(product, selectedColor, selectedSize, dispatch, setBasketItemsAmount);
+                  }}
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-neutral-600 py-3 px-8 text-base font-medium text-white hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
                   Dodaj do koszyka

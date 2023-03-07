@@ -11,6 +11,7 @@ module.exports = {
     { source: '/moje-konto/nowe-konto', destination: '/userAccount/create-account' },
     { source: '/moje-konto/odzyskanie-hasla', destination: '/userAccount/password-recovery' },
     { source: '/koszyk', destination: '/card-summary' },
+    { source: '/koszyk/podsumowanie', destination: '/card-summary/checkout' },
     { source: '/tabela-rozmiarow', destination: '/size-guide' },
     { source: '/polityka-prywatnosci', destination: '/policy' },
   ],

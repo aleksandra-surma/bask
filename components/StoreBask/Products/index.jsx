@@ -11,7 +11,7 @@ export default function Products() {
           <Link key={uuid()} href={`/store-bask/${item.slug}`} as={`/sklep/${item.slug}`}>
             <a className="mb-8 w-[45%] laptop:w-[30%] tablet:mb-16 cursor-pointer">
               <div className="w-full h-[450px] tablet:h-[650px] desktop:h-[600px] relative">
-                <Image src={item.images[item.startColor][0].src} layout="fill" objectFit="cover" alt="" />
+                <Image src={item.images[item.startColor][0].src} layout="fill" objectFit="cover" alt="" className="rounded-lg" />
               </div>
               <div className="mt-2 text-lg">
                 <p className="font-semibold">{item.name}</p>
