@@ -41,14 +41,11 @@ export default function Product({ productData: product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const [addedProduct, setAddedProduct] = useState(null);
 
-  const { state, dispatch, setBasketItemsAmount } = useBasketState();
+  const { dispatch, setBasketItemsAmount } = useBasketState();
 
   const seoData = { title, description, canonical, ogData };
 
   const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
-
-  console.log('state: ', state);
-  console.log('product: ', product);
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
@@ -85,55 +82,55 @@ export default function Product({ productData: product }) {
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             {selectedColor.name === 'white' ? (
               <>
-                <div className="  hidden overflow-hidden rounded-lg lg:block">
+                <div className="">
                   <Image
                     src={product.images.white[0].src}
                     alt={product.images.white[0].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.white[1].src}
                     alt={product.images.white[1].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.white[2].src}
                     alt={product.images.white[2].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
               </>
             ) : (
               <>
-                <div className="  hidden overflow-hidden rounded-lg lg:block">
+                <div className="">
                   <Image
                     src={product.images.black[0].src}
                     alt={product.images.black[0].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.black[1].src}
                     alt={product.images.black[1].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
-                <div className="  overflow-hidden rounded-lg">
+                <div className="">
                   <Image
                     src={product.images.black[2].src}
                     alt={product.images.black[2].alt}
                     quality={80}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center rounded-lg"
                   />
                 </div>
               </>

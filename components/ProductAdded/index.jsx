@@ -17,7 +17,9 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
           </button>
         </div>
         <div className="flex">
-          <Image src={imgSrc} width={160} height={240} className="rounded-xl" />
+          <div className="relative w-[160px] h-[280px]">
+            <Image src={imgSrc} className="rounded-xl" layout="fill" objectFit="cover" />
+          </div>
           <div className="mx-auto justify-center px-6">
             <h3 className="text-2xl font-semibold">{addedProduct.name}</h3>
             <div className="flex my-6">

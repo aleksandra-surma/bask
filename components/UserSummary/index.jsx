@@ -11,11 +11,16 @@ export default function UserSummary() {
 
     const item = JSON.parse(localStorage.getItem('bask-basket'));
 
-    if (!item?.basket) {
+    if (!item) {
       return;
     }
 
-    setBasketItemsAmount(item?.basket.length);
+    const basketProductsQuantity = item?.basket?.reduce((prevItem, currItem) => {
+      return prevItem + currItem.quantity;
+    }, 0);
+
+    setBasketItemsAmount(basketProductsQuantity);
+    // setBasketItemsAmount(item?.basket.length);
   }, [basketItemsAmount, setBasketItemsAmount]);
 
   return (
