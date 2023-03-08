@@ -50,7 +50,7 @@ export default function Product({ productData: product }) {
     return () => {
       setError(null);
     };
-  }, [selectedSize]);
+  }, [error, selectedSize]);
 
   const { dispatch, setBasketItemsAmount } = useBasketState();
 
