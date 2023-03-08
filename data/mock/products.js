@@ -26,7 +26,7 @@ import shortsBlack04 from 'public/images/products/spodenki-czarne-04.jpg';
 export const products = [
   {
     id: '01',
-    slug: 'komplet-bialy-01',
+    slug: 'komplet-uv-01',
     name: 'Zestaw kąpielowy UV - bluzka i spodenki',
     price: 239,
     // breadcrumbs: [
@@ -91,7 +91,7 @@ export const products = [
   },
   {
     id: '02',
-    slug: 'bluzka-biala-01',
+    slug: 'bluzka-uv-01',
     name: 'Bluzka UV',
     price: 129,
     images: {
@@ -153,7 +153,7 @@ export const products = [
 
   {
     id: '04',
-    slug: 'komplet-czarny-01',
+    slug: 'komplet-uv-02',
     name: 'Zestaw kąpielowy UV - bluzka i spodenki',
     price: 239,
     images: {
@@ -213,7 +213,7 @@ export const products = [
   },
   {
     id: '06',
-    slug: 'bluzka-czarna-01',
+    slug: 'bluzka-uv-02',
     name: 'Bluzka UV',
     price: 129,
     images: {
@@ -274,7 +274,7 @@ export const products = [
   },
   {
     id: '03',
-    slug: 'spodenki-czarne-01',
+    slug: 'spodenki-uv-02',
     name: 'Spodenki UV',
     price: 109,
 
@@ -338,7 +338,7 @@ export const products = [
   },
   {
     id: '05',
-    slug: 'spodenki-biale-01',
+    slug: 'spodenki-uv-01',
     name: 'Spodenki UV',
     price: 109,
 
