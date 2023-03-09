@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 // import classNames from 'helpers/classNames';
 import useBasketState from 'hooks/useBasketState';
 import ProductBasket from 'components/ProductBasket';
+import classNames from '../../helpers/classNames';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -36,6 +37,8 @@ export default function CardSummary() {
     setBasket(storedBasket.basket);
   }, [state.basket, basketItemsAmount, setBasketItemsAmount]);
 
+  const isCheckoutDisabled = finalPrice < 1;
+
   return (
     <BaseLayout seoData={seoData}>
       <div className="flex flex-col my-8 laptop:mb-8 laptop:mt-8 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
@@ -61,8 +64,15 @@ export default function CardSummary() {
 
         <div className="flex justify-end mt-8">
           <Link href="/card-summary/checkout" as="/koszyk/podsumowanie">
-            <button type="button" className="bg-black rounded hover:bg-green-600 w-full laptop:w-[420px]">
-              <p className="text-white font-semibold py-3">PRZEJDŹ DO PŁATNOŚCI</p>
+            <button
+              type="button"
+              disabled={isCheckoutDisabled}
+              className={classNames(
+                'bg-black rounded w-full laptop:w-[420px]',
+                isCheckoutDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
+              )}
+            >
+              <p className="font-semibold py-3">PRZEJDŹ DO PŁATNOŚCI</p>
             </button>
           </Link>
         </div>
@@ -71,5 +81,4 @@ export default function CardSummary() {
   );
 }
 
-// todo: add action: SET_BASKET - take basket from localStorage
 // todo: hook for taking state from localStorage
