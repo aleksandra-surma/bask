@@ -24,8 +24,6 @@ export default function ProductBasket({ product }) {
       return product.name === localProduct.name && product.size.name === localProduct.size.name && product.color.name === localProduct.color.name;
     });
 
-    console.log('basketProduct: ', basketProduct);
-
     setProductQuantity(basketProduct?.quantity);
 
     const basketAllProductsQuantity = localBasket.basket?.reduce((prevItem, currItem) => {

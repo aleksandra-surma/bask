@@ -21,15 +21,12 @@ const handleBasket = {
     setBasketItemsAmount((state) => state + 1); // <- todo: check if necessary
   },
   incrementQuantity: (product, dispatch) => {
-    console.log('incrementQuantity()');
-
     dispatch({
       type: actionTypes.INCREMENT_PRODUCT_QUANTITY,
       payload: { product },
     });
   },
   decrementQuantity: (product, dispatch) => {
-    console.log('decrementQuantity()');
     dispatch({
       type: actionTypes.DECREMENT_PRODUCT_QUANTITY,
       payload: { product },
@@ -37,7 +34,6 @@ const handleBasket = {
   },
 
   removeProduct: (product, dispatch) => {
-    console.log('handleBasket.deleteProduct()');
     dispatch({
       type: actionTypes.REMOVE_FROM_BASKET,
       payload: { product },

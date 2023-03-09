@@ -57,7 +57,6 @@ const basketReducer = (state, action) => {
           product.size.name === incrementProduct.size.name &&
           product.color.name === incrementProduct.color.name
         ) {
-          console.log('product.quantity: ', product.quantity);
           const updatedQuantity = product.quantity + 1;
           return { ...product, quantity: updatedQuantity };
         }
@@ -86,7 +85,6 @@ const basketReducer = (state, action) => {
           product.size.name === decrementProduct.size.name &&
           product.color.name === decrementProduct.color.name
         ) {
-          console.log('product.quantity: ', product.quantity);
           const updatedQuantity = product.quantity - 1;
           return { ...product, quantity: updatedQuantity };
         }
