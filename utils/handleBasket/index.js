@@ -28,12 +28,20 @@ const handleBasket = {
       payload: { product },
     });
   },
-  decrementQuantity: () => {
+  decrementQuantity: (product, dispatch) => {
     console.log('decrementQuantity()');
+    dispatch({
+      type: actionTypes.DECREMENT_PRODUCT_QUANTITY,
+      payload: { product },
+    });
   },
 
-  deleteProduct: () => {
+  removeProduct: (product, dispatch) => {
     console.log('handleBasket.deleteProduct()');
+    dispatch({
+      type: actionTypes.REMOVE_FROM_BASKET,
+      payload: { product },
+    });
   },
 
   getAllProducts: () => {

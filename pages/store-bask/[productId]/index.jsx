@@ -6,8 +6,8 @@ import { products } from 'data/mock/products';
 import Link from 'next/link';
 import useBasketState from 'hooks/useBasketState';
 import handleBasket from 'utils/handleBasket';
-import ProductAdded from '../../../components/ProductAdded';
-import classNames from '../../../helpers/classNames';
+import ProductAdded from 'components/ProductAdded';
+import classNames from 'helpers/classNames';
 
 export async function getStaticPaths() {
   const paths = products.map((product) => {
@@ -38,7 +38,7 @@ const ogData = {};
 export default function Product({ productData: product }) {
   const startColor = product.startColor === 'white' ? product.colors[0] : product.colors[1];
   const [selectedColor, setSelectedColor] = useState(startColor);
-  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedSize, setSelectedSize] = useState(null);
   const [addedProduct, setAddedProduct] = useState(null);
   const [error, setError] = useState(null);
 
@@ -50,7 +50,7 @@ export default function Product({ productData: product }) {
     return () => {
       setError(null);
     };
-  }, [error, selectedSize]);
+  }, [selectedSize]);
 
   const { dispatch, setBasketItemsAmount } = useBasketState();
 

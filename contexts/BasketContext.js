@@ -12,12 +12,6 @@ export const BasketProvider = ({ children }) => {
 
   const [basketItemsAmount, setBasketItemsAmount] = useState(0);
 
-  // useEffect(() => {
-  //   console.log('initialState: ', initialState);
-  // dispatch({ type: actionTypes.ADD_TO_BASKET });
-  // }, []);
-  // console.log('state: ', state);
-
   return <BasketContext.Provider value={{ state, dispatch, basketItemsAmount, setBasketItemsAmount }}>{children}</BasketContext.Provider>;
 };
 

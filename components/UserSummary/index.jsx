@@ -20,7 +20,6 @@ export default function UserSummary() {
     }, 0);
 
     setBasketItemsAmount(basketProductsQuantity);
-    // setBasketItemsAmount(item?.basket.length);
   }, [basketItemsAmount, setBasketItemsAmount]);
 
   return (

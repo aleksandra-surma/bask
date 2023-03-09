@@ -3,9 +3,9 @@ import Link from 'next/link';
 import BaseLayout from 'components/BaseLayout';
 import { v4 as uuid } from 'uuid';
 // import Image from 'next/image';
-// import classNames from '../../helpers/classNames';
-import useBasketState from '../../hooks/useBasketState';
-import ProductBasket from '../../components/ProductBasket';
+// import classNames from 'helpers/classNames';
+import useBasketState from 'hooks/useBasketState';
+import ProductBasket from 'components/ProductBasket';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';

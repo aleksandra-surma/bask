@@ -70,6 +70,55 @@ const basketReducer = (state, action) => {
       };
     }
 
+    case actionTypes.DECREMENT_PRODUCT_QUANTITY: {
+      if (!state) {
+        return null;
+      }
+      const decrementProduct = action.payload.product;
+
+      if (decrementProduct.quantity < 2) {
+        return null;
+      }
+
+      const updatedBasket = state.basket.map((product) => {
+        if (
+          product.name === decrementProduct.name &&
+          product.size.name === decrementProduct.size.name &&
+          product.color.name === decrementProduct.color.name
+        ) {
+          console.log('product.quantity: ', product.quantity);
+          const updatedQuantity = product.quantity - 1;
+          return { ...product, quantity: updatedQuantity };
+        }
+        return product;
+      });
+
+      return {
+        ...state,
+        basket: updatedBasket,
+      };
+    }
+
+    case actionTypes.REMOVE_FROM_BASKET: {
+      if (!state) {
+        return null;
+      }
+      const removeProduct = action.payload.product;
+
+      const updatedBasket = state.basket.filter((product) => {
+        return !(
+          product.name === removeProduct.name &&
+          product.size.name === removeProduct.size.name &&
+          product.color.name === removeProduct.color.name
+        );
+      });
+
+      return {
+        ...state,
+        basket: updatedBasket,
+      };
+    }
+
     default:
       return state;
   }

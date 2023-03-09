@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'helpers/classNames';
 import { TrashIcon } from '@heroicons/react/outline';
-import handleBasket from '../../utils/handleBasket';
-import useBasketState from '../../hooks/useBasketState';
+import handleBasket from 'utils/handleBasket';
+import useBasketState from 'hooks/useBasketState';
 
 export default function ProductBasket({ product }) {
   const { dispatch, setBasketItemsAmount } = useBasketState();
@@ -26,7 +26,7 @@ export default function ProductBasket({ product }) {
 
     console.log('basketProduct: ', basketProduct);
 
-    setProductQuantity(basketProduct.quantity);
+    setProductQuantity(basketProduct?.quantity);
 
     const basketAllProductsQuantity = localBasket.basket?.reduce((prevItem, currItem) => {
       return prevItem + currItem.quantity;
@@ -34,7 +34,6 @@ export default function ProductBasket({ product }) {
 
     setBasketItemsAmount(basketAllProductsQuantity);
   }, [product.quantity, productQuantity, setProductQuantity]);
-  console.log('productQuantity: ', productQuantity, product.id);
 
   const isQuantityDecrementDisabled = productQuantity < 2;
 
@@ -51,7 +50,7 @@ export default function ProductBasket({ product }) {
             </Link>
             <button
               type="button"
-              onClick={() => handleBasket.deleteProduct()}
+              onClick={() => handleBasket.removeProduct(product, dispatch)}
               className="cursor-pointer hover:scale-110 hover:bg-neutral-100 hover:rounded-full p-1"
             >
               <TrashIcon width={24} height={24} />
