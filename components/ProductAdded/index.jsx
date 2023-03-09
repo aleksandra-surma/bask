@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import classNames from '../../helpers/classNames';
+import classNames from 'helpers/classNames';
+import Link from 'next/link';
 // import Link from 'next/link';
 
 export default function ProductAdded({ addedProduct, setAddedProduct, selectedColor, selectedSize }) {
@@ -42,9 +43,16 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
               <p className="text-xl mr-4">Cena:</p>
               <p className="text-xl font-semibold">{addedProduct.price} zł</p>
             </div>
-            <button type="button" className="underline underline-offset-4 text-neutral-400" onClick={() => setAddedProduct(null)}>
-              Kontynuj zakupy
-            </button>
+            <div className="flex justify-between">
+              <button type="button" className="underline underline-offset-4" onClick={() => setAddedProduct(null)}>
+                Kontynuj zakupy
+              </button>
+              <Link href="/card-summary" as="/koszyk">
+                <a className="cursor-pointer underline underline-offset-4 hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition ">
+                  Przejdź do koszyka
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -21,19 +21,23 @@ const handleBasket = {
     setBasketItemsAmount((state) => state + 1); // <- todo: check if necessary
   },
   incrementQuantity: (product, dispatch) => {
-    console.log('incrementQuantity()');
-
     dispatch({
       type: actionTypes.INCREMENT_PRODUCT_QUANTITY,
       payload: { product },
     });
   },
-  decrementQuantity: () => {
-    console.log('decrementQuantity()');
+  decrementQuantity: (product, dispatch) => {
+    dispatch({
+      type: actionTypes.DECREMENT_PRODUCT_QUANTITY,
+      payload: { product },
+    });
   },
 
-  deleteProduct: () => {
-    console.log('handleBasket.deleteProduct()');
+  removeProduct: (product, dispatch) => {
+    dispatch({
+      type: actionTypes.REMOVE_FROM_BASKET,
+      payload: { product },
+    });
   },
 
   getAllProducts: () => {

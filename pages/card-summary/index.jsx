@@ -3,9 +3,9 @@ import Link from 'next/link';
 import BaseLayout from 'components/BaseLayout';
 import { v4 as uuid } from 'uuid';
 // import Image from 'next/image';
-// import classNames from '../../helpers/classNames';
-import useBasketState from '../../hooks/useBasketState';
-import ProductBasket from '../../components/ProductBasket';
+// import classNames from 'helpers/classNames';
+import useBasketState from 'hooks/useBasketState';
+import ProductBasket from 'components/ProductBasket';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -13,7 +13,7 @@ const canonical = '';
 const ogData = {};
 
 export default function CardSummary() {
-  const { basketItemsAmount, setBasketItemsAmount } = useBasketState();
+  const { state, basketItemsAmount, setBasketItemsAmount } = useBasketState();
   const [basket, setBasket] = useState([]);
   const [finalPrice, setFinalPrice] = useState(0);
 
@@ -24,7 +24,7 @@ export default function CardSummary() {
 
     const storedBasket = JSON.parse(localStorage.getItem('bask-basket'));
 
-    if (!storedBasket.basket) {
+    if (!storedBasket?.basket) {
       return;
     }
 
@@ -34,7 +34,7 @@ export default function CardSummary() {
 
     setFinalPrice(summaryPrice);
     setBasket(storedBasket.basket);
-  }, [basketItemsAmount, setBasketItemsAmount]);
+  }, [state.basket, basketItemsAmount, setBasketItemsAmount]);
 
   return (
     <BaseLayout seoData={seoData}>

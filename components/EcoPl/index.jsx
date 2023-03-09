@@ -18,7 +18,7 @@ export default function EcoPl({ shortDescription = false }) {
         )}
 
         <div className="relative block w-full h-[500px] laptop:w-[40%] desktop:w-2/5 laptop:h-[80%] desktop:h-[100%] laptop:absolute desktop:mt-0 laptop:top-[10%] desktop:top-0 laptop:right-[-40px]">
-          <Image src={ecoPl} layout="fill" objectFit="cover" quality={80} priority alt="" />
+          <Image src={ecoPl} layout="fill" objectFit="cover" quality={80} alt="" />
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ export default function HighlightedOffers() {
     <section className="w-full max-w-screen-xl laptop:py-20 px-4 tablet:px-8">
       <h2 className="mt-20 laptop:mt-0 mb-8 text-center font-semibold laptop:mb-0">WYRÓŻNIONE</h2>
       <div className="m-auto justify-between items-center min-h-[60vh] flex flex-wrap">
-        {products.map((product) => {
+        {products.slice(0, 4).map((product) => {
           return (
             <Link key={uuid()} href={`/store-bask/${product.slug}`} as={`/sklep/${product.slug}`}>
               <div className="flex flex-col justify-between w-[48%] tablet:w-[42%] laptop:w-[20%] h-[450px] mb-24 laptop:mb-0 cursor-pointer">

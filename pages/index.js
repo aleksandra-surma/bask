@@ -16,20 +16,18 @@ export default function Home() {
   const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
 
   return (
-    <div>
-      <BaseLayout seoData={seoData} indexPage={indexingCondition}>
-        <HeroPhotos />
+    <BaseLayout seoData={seoData} indexPage={indexingCondition}>
+      <HeroPhotos />
 
-        <HighlightedOffers />
+      <HighlightedOffers />
 
-        <AboutCompany shortDescription />
+      <AboutCompany shortDescription />
 
-        <EcoPl shortDescription />
+      <EcoPl shortDescription />
 
-        <UvHealth shortDescription />
+      <UvHealth shortDescription />
 
-        {/* <BestsellersOffers /> */}
-      </BaseLayout>
-    </div>
+      {/* <BestsellersOffers /> */}
+    </BaseLayout>
   );
 }

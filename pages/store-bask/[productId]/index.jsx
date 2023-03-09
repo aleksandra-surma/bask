@@ -1,13 +1,13 @@
 import BaseLayout from 'components/BaseLayout';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { products } from 'data/mock/products';
 import Link from 'next/link';
 import useBasketState from 'hooks/useBasketState';
 import handleBasket from 'utils/handleBasket';
-import ProductAdded from '../../../components/ProductAdded';
-import classNames from '../../../helpers/classNames';
+import ProductAdded from 'components/ProductAdded';
+import classNames from 'helpers/classNames';
 
 export async function getStaticPaths() {
   const paths = products.map((product) => {
@@ -38,8 +38,19 @@ const ogData = {};
 export default function Product({ productData: product }) {
   const startColor = product.startColor === 'white' ? product.colors[0] : product.colors[1];
   const [selectedColor, setSelectedColor] = useState(startColor);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [selectedSize, setSelectedSize] = useState(null);
   const [addedProduct, setAddedProduct] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (selectedSize && error) {
+      setError(null);
+    }
+
+    return () => {
+      setError(null);
+    };
+  }, [selectedSize]);
 
   const { dispatch, setBasketItemsAmount } = useBasketState();
 
@@ -164,7 +175,8 @@ export default function Product({ productData: product }) {
                           className={({ active, checked }) =>
                             classNames(
                               color.selectedClass,
-                              active && checked ? 'ring ring-offset-1' : '',
+                              'ring-green-500',
+                              active && checked ? 'ring ring-offset-2' : '',
                               !active && checked ? 'ring-2' : '',
                               'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
                             )
@@ -192,7 +204,7 @@ export default function Product({ productData: product }) {
                     </Link>
                   </div>
 
-                  <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
+                  <RadioGroup onChange={setSelectedSize} className="mt-4">
                     <RadioGroup.Label className="sr-only"> Choose a size </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
                       {product.sizes.map((size) => (
@@ -221,7 +233,7 @@ export default function Product({ productData: product }) {
                                   aria-hidden="true"
                                 />
                               ) : (
-                                <span aria-hidden="true" className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                                <span aria-hidden="true" className="pointer-events-none absolute -inset-px rounded-md border-2 border-green-600">
                                   <svg
                                     className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
                                     viewBox="0 0 100 100"
@@ -239,10 +251,20 @@ export default function Product({ productData: product }) {
                     </div>
                   </RadioGroup>
                 </div>
+                {error ? (
+                  <div className="mt-4 text-red-700">
+                    <p>{error}</p>
+                  </div>
+                ) : null}
 
                 <button
                   type="button"
                   onClick={() => {
+                    if (!selectedSize) {
+                      setError('Wybierz odpowiedni rozmiar');
+                      return;
+                    }
+                    setError(null);
                     setAddedProduct(product);
                     handleBasket.addProduct(product, selectedColor, selectedSize, dispatch, setBasketItemsAmount);
                   }}

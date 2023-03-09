@@ -1,19 +1,39 @@
+import { useLayoutEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'helpers/classNames';
 import { TrashIcon } from '@heroicons/react/outline';
-import handleBasket from '../../utils/handleBasket';
-import useBasketState from '../../hooks/useBasketState';
+import handleBasket from 'utils/handleBasket';
+import useBasketState from 'hooks/useBasketState';
 
 export default function ProductBasket({ product }) {
-  const { dispatch } = useBasketState();
+  const { dispatch, setBasketItemsAmount } = useBasketState();
+  const [productQuantity, setProductQuantity] = useState(0);
 
-  // useEffect(() => {
-  //
-  // }, []);
-  console.log('ProductBasket - product: ', product);
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined') return;
 
-  const isQuantityDecrementDisabled = product.quantity < 2;
+    const localBasket = JSON.parse(localStorage.getItem('bask-basket'));
+
+    if (!localBasket) {
+      return;
+    }
+
+    const basketProduct = localBasket.basket.find((localProduct) => {
+      // return product.id === localProduct.id;
+      return product.name === localProduct.name && product.size.name === localProduct.size.name && product.color.name === localProduct.color.name;
+    });
+
+    setProductQuantity(basketProduct?.quantity);
+
+    const basketAllProductsQuantity = localBasket.basket?.reduce((prevItem, currItem) => {
+      return prevItem + currItem.quantity;
+    }, 0);
+
+    setBasketItemsAmount(basketAllProductsQuantity);
+  }, [product.quantity, productQuantity, setProductQuantity]);
+
+  const isQuantityDecrementDisabled = productQuantity < 2;
 
   return (
     <div className="bg-white rounded-lg mb-16">
@@ -26,8 +46,12 @@ export default function ProductBasket({ product }) {
             <Link href={`/bask-store/${product.slug}`} as={`/sklep/${product.slug}`}>
               <h3 className="text-xl font-semibold cursor-pointer hover:underline underline-offset-4">{product.name}</h3>
             </Link>
-            <button type="button" onClick={() => handleBasket.deleteProduct()}>
-              <TrashIcon className="cursor-pointer" width={24} height={24} />
+            <button
+              type="button"
+              onClick={() => handleBasket.removeProduct(product, dispatch)}
+              className="cursor-pointer hover:scale-110 hover:bg-neutral-100 hover:rounded-full p-1"
+            >
+              <TrashIcon width={24} height={24} />
             </button>
           </div>
           <div className="flex my-6">
@@ -60,7 +84,7 @@ export default function ProductBasket({ product }) {
               >
                 -
               </button>{' '}
-              <p className="mx-4 text-2xl font-semibold">{product.quantity}</p>{' '}
+              <p className="mx-4 text-2xl font-semibold">{productQuantity}</p>
               <button
                 type="button"
                 onClick={() => handleBasket.incrementQuantity(product, dispatch)}
