@@ -33,7 +33,7 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
               <span
                 aria-hidden="true"
                 className={classNames(
-                  'h-12 w-12 rounded-full ring-2 ring-neutral-300 ring-offset-4',
+                  'h-12 w-12 rounded-full ring-2 ring-neutral-300 ring-offset-2',
                   selectedColor.name !== 'white' ? `bg-${selectedColor.name}` : null,
                   selectedColor.name === 'white' ? 'border-2 border-neutral-200' : null,
                 )}

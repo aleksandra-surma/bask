@@ -36,6 +36,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+
         <div className="mb-12">
           <h3 className="font-semibold mb-4">Płatność i dostawa</h3>
           <ul>
@@ -45,13 +46,24 @@ export default function Footer() {
             <li className="mb-2">Płatność kartą lub przelewem</li>
           </ul>
         </div>
+
         <div className="mb-12">
           <h3 className="font-semibold mb-4">Polityka sklepu</h3>
           <ul>
-            <li className="mb-2">Wysyłka</li>
-            <li className="mb-2">Polityka zwrotów</li>
-            <li className="mb-2">Polityka prywatności</li>
-            <li className="mb-2">Regulamin sklepu internetowego</li>
+            {/* <li className="mb-2">Wysyłka</li> */}
+            {/* <li className="mb-2">Polityka zwrotów</li> */}
+
+            <li className="mb-2 cursor-pointer hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
+              <Link href="/policy" as="/polityka-prywatnosci">
+                <p className="">Polityka prywatności</p>
+              </Link>
+            </li>
+            <li className="mb-2 cursor-pointer hover:text-gray-400 hover:underline hover:underline-offset-4 hover:decoration-gray-400">
+              <Link href="/regulations" as="/regulamin-sklepu-internetowego">
+                <p className="">Regulamin sklepu internetowego</p>
+              </Link>
+            </li>
+
             {/* <li className="mb-2">Zgłoś błąd</li> */}
           </ul>
         </div>

@@ -64,7 +64,7 @@ export default function ProductBasket({ product }) {
             <span
               aria-hidden="true"
               className={classNames(
-                'h-8 w-8 rounded-full ring-2 ring-neutral-300 ring-offset-4',
+                'h-8 w-8 rounded-full ring-2 ring-neutral-300 ring-offset-2',
                 product.color.name !== 'white' ? `bg-${product.color.name}` : null,
                 product.color.name === 'white' ? 'border-2 border-neutral-200' : null,
               )}

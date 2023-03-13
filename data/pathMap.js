@@ -14,5 +14,6 @@ module.exports = {
     { source: '/koszyk/podsumowanie', destination: '/card-summary/checkout' },
     { source: '/tabela-rozmiarow', destination: '/size-guide' },
     { source: '/polityka-prywatnosci', destination: '/policy' },
+    { source: '/regulamin-sklepu-internetowego', destination: '/regulations' },
   ],
 };
