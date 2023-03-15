@@ -63,7 +63,7 @@ module.exports = {
     'react/jsx-closing-bracket-location': 1,
     'jsx-a11y/label-has-associated-control': 'off',
     'comma-dangle': 'off',
-
+    'no-param-reassign': [2, { props: false }],
     // 'object-curly-newline': 'off',
   },
 };

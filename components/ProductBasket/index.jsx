@@ -20,10 +20,8 @@ export default function ProductBasket({ product }) {
     }
 
     const basketProduct = localBasket.basket.find((localProduct) => {
-      // return product.id === localProduct.id;
-      return product.name === localProduct.name && product.size.name === localProduct.size.name && product.color.name === localProduct.color.name;
+      return product.name === localProduct.name && product.size === localProduct.size && product.color === localProduct.color;
     });
-
     setProductQuantity(basketProduct?.quantity);
 
     const basketAllProductsQuantity = localBasket.basket?.reduce((prevItem, currItem) => {
@@ -56,17 +54,17 @@ export default function ProductBasket({ product }) {
           </div>
           <div className="flex my-6">
             <p className="text-lg mr-4">Rozmiar:</p>
-            <p className="text-lg font-semibold">{product.size.name}</p>
+            <p className="text-lg font-semibold">{product.size}</p>
           </div>
           <div className="flex my-6">
             <p className="text-lg mr-4">Kolor:</p>
-            {/* <p className="text-xl font-semibold">{selectedColor.name}</p> */}
+            {/* <p className="text-xl font-semibold">{selectedColor}</p> */}
             <span
               aria-hidden="true"
               className={classNames(
                 'h-8 w-8 rounded-full ring-2 ring-neutral-300 ring-offset-2',
-                product.color.name !== 'white' ? `bg-${product.color.name}` : null,
-                product.color.name === 'white' ? 'border-2 border-neutral-200' : null,
+                product.color !== 'white' ? `bg-${product.color}` : null,
+                product.color === 'white' ? 'border-2 border-neutral-200' : null,
               )}
             />
           </div>

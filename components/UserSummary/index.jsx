@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import useBasketState from 'hooks/useBasketState';
 
-export default function UserSummary() {
-  const { basketItemsAmount, setBasketItemsAmount } = useBasketState();
+export default function UserSummary({ itemsCount }) {
+  const { basketItemsAmount, setBasketItemsAmount } = useBasketState(itemsCount);
 
   useEffect(() => {
     if (!window) return;
@@ -32,7 +32,7 @@ export default function UserSummary() {
               {basketItemsAmount}
             </div>
           </div>
-          <div className="header-basket__items-counter absolute top-0.5 flex justify-center right-[-110%] w-[22px] h-[22px] bg-black text-white rounded-xl leading-[23px] hover:bg-green-500"></div>
+          {/* <div className="header-basket__items-counter absolute top-0.5 flex justify-center right-[-110%] w-[22px] h-[22px] bg-black text-white rounded-xl leading-[23px] hover:bg-green-500"></div> */}
           <p>Koszyk</p>
         </a>
       </Link>

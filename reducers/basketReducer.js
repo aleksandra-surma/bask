@@ -21,7 +21,7 @@ const basketReducer = (state, action) => {
 
       // check if there is already the same product in basket
       const productIndex = state?.basket?.findIndex((item) => {
-        return item.name === action.payload.name && item.color.name === action.payload.color.name && item.size.name === action.payload.size.name;
+        return item.name === action.payload.name && item.color === action.payload.color && item.size === action.payload.size;
       });
 
       if (productIndex === -1) {
@@ -52,11 +52,7 @@ const basketReducer = (state, action) => {
       const incrementProduct = action.payload.product;
 
       const updatedBasket = state.basket.map((product) => {
-        if (
-          product.name === incrementProduct.name &&
-          product.size.name === incrementProduct.size.name &&
-          product.color.name === incrementProduct.color.name
-        ) {
+        if (product.name === incrementProduct.name && product.size === incrementProduct.size && product.color === incrementProduct.color) {
           const updatedQuantity = product.quantity + 1;
           return { ...product, quantity: updatedQuantity };
         }
@@ -80,11 +76,7 @@ const basketReducer = (state, action) => {
       }
 
       const updatedBasket = state.basket.map((product) => {
-        if (
-          product.name === decrementProduct.name &&
-          product.size.name === decrementProduct.size.name &&
-          product.color.name === decrementProduct.color.name
-        ) {
+        if (product.name === decrementProduct.name && product.size === decrementProduct.size && product.color === decrementProduct.color) {
           const updatedQuantity = product.quantity - 1;
           return { ...product, quantity: updatedQuantity };
         }
@@ -104,11 +96,7 @@ const basketReducer = (state, action) => {
       const removeProduct = action.payload.product;
 
       const updatedBasket = state.basket.filter((product) => {
-        return !(
-          product.name === removeProduct.name &&
-          product.size.name === removeProduct.size.name &&
-          product.color.name === removeProduct.color.name
-        );
+        return !(product.name === removeProduct.name && product.size === removeProduct.size && product.color === removeProduct.color);
       });
 
       return {
