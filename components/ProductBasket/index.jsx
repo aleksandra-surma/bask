@@ -8,7 +8,7 @@ import useBasketState from 'hooks/useBasketState';
 
 export default function ProductBasket({ product }) {
   const { dispatch, setBasketItemsAmount } = useBasketState();
-  const [productQuantity, setProductQuantity] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(null);
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined') return;

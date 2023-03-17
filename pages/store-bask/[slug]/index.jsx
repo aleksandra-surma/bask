@@ -51,6 +51,11 @@ export default function Product({ productData: product }) {
   const [error, setError] = useState(null);
   const { dispatch, setBasketItemsAmount } = useBasketState();
 
+  // useEffect(() => {
+  //   setSelectedSize(null);
+  //   setError(null);
+  // }, [selectedColor]);
+
   useEffect(() => {
     if (selectedSize && error) {
       setError(null);
@@ -196,11 +201,12 @@ export default function Product({ productData: product }) {
                     <RadioGroup.Label className="sr-only"> Choose a size </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
                       {product.store[0].quantity.map((sizeObj, index) => {
+                        console.log('sizeObj: ', sizeObj);
                         return (
                           <RadioGroup.Option
                             key={uuid()}
                             value={sizeObj.name}
-                            disabled={!sizeObj.name}
+                            disabled={sizeObj.quantity < 1}
                             className={({ active }) =>
                               classNames(
                                 checkQuantity(storeItemsOnColor, index)

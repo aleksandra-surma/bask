@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import useBasketState from 'hooks/useBasketState';
 
-export default function UserSummary({ itemsCount }) {
-  const { basketItemsAmount, setBasketItemsAmount } = useBasketState(itemsCount);
+export default function UserSummary() {
+  const { basketItemsAmount, setBasketItemsAmount } = useBasketState(null);
 
   useEffect(() => {
     if (!window) return;
