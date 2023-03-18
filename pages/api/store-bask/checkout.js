@@ -1,12 +1,11 @@
-import createCheckout from 'services/checkout/create';
+import finalizeCheckout from 'services/checkout/finalize';
 
 const newUser = async (req, res) => {
   switch (req.method) {
     case 'POST': {
       try {
-        const orderItems = req.body;
-        console.log('orderItems: ', orderItems);
-        const checkout = await createCheckout(orderItems);
+        const stripeCheckoutId = req.body;
+        const { checkout } = await finalizeCheckout(stripeCheckoutId);
 
         res.status(200).json({ status: 'created', checkout });
       } catch (error) {

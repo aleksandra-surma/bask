@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import BaseLayout from 'components/BaseLayout';
 import { v4 as uuid } from 'uuid';
 // import Image from 'next/image';
@@ -63,18 +63,30 @@ export default function CardSummary() {
         </div>
 
         <div className="flex justify-end mt-8">
-          <Link href="/card-summary/checkout" as="/koszyk/podsumowanie">
-            <button
-              type="button"
-              disabled={isCheckoutDisabled}
-              className={classNames(
-                'bg-black rounded w-full laptop:w-[420px]',
-                isCheckoutDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
-              )}
-            >
-              <p className="font-semibold py-3">PRZEJDŹ DO PŁATNOŚCI</p>
-            </button>
-          </Link>
+          {/* <Link href="/card-summary/checkout" as="/koszyk/podsumowanie"> */}
+          <button
+            type="button"
+            onClick={async () => {
+              // onClick={async (formProcessing, setFormProcessing, watch) => {
+              const payload = basket;
+
+              await fetch('/api/checkout', {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+            }}
+            disabled={isCheckoutDisabled}
+            className={classNames(
+              'bg-black rounded w-full laptop:w-[420px]',
+              isCheckoutDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
+            )}
+          >
+            <p className="font-semibold py-3">PRZEJDŹ DO PŁATNOŚCI</p>
+          </button>
+          {/* </Link> */}
         </div>
       </div>
     </BaseLayout>
