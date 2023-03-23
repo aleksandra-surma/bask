@@ -10,10 +10,13 @@ import blouseWhite01 from 'public/images/products/bluzka-biala-01.jpg';
 import blouseWhite02 from 'public/images/products/bluzka-biala-02.jpg';
 import blouseWhite03 from 'public/images/products/bluzka-biala-03.jpg';
 import blouseWhite04 from 'public/images/products/bluzka-biala-04.jpg';
+import blouseWhite05 from 'public/images/products/bluzka-biala-05.jpg';
 import blouseBlack01 from 'public/images/products/bluzka-czarna-01.jpg';
 import blouseBlack02 from 'public/images/products/bluzka-czarna-02.jpg';
 import blouseBlack03 from 'public/images/products/bluzka-czarna-03.jpg';
 import blouseBlack04 from 'public/images/products/bluzka-czarna-04.jpg';
+import blouseBlack05 from 'public/images/products/bluzka-czarna-05.jpeg';
+import blouseBlack06 from 'public/images/products/bluzka-czarna-06.jpg';
 import shortsWhite01 from 'public/images/products/spodenki-biale-01.jpg';
 import shortsWhite02 from 'public/images/products/spodenki-biale-02.jpg';
 import shortsWhite03 from 'public/images/products/spodenki-biale-03.jpg';
@@ -97,11 +100,15 @@ export const products = [
     images: {
       white: [
         {
-          src: blouseWhite03,
+          src: blouseWhite05,
           alt: '',
         },
         {
           src: blouseWhite01,
+          alt: '',
+        },
+        {
+          src: blouseWhite03,
           alt: '',
         },
         {
@@ -212,67 +219,6 @@ export const products = [
       'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal gray" limited release.',
   },
   {
-    id: '06',
-    slug: 'bluzka-uv-02',
-    name: 'Bluzka UV',
-    price: 129,
-    images: {
-      white: [
-        {
-          src: blouseWhite01,
-          alt: '',
-        },
-        {
-          src: blouseWhite02,
-          alt: '',
-        },
-        {
-          src: blouseWhite03,
-          alt: '',
-        },
-        {
-          src: blouseWhite04,
-          alt: '',
-        },
-      ],
-      black: [
-        {
-          src: blouseBlack02,
-          alt: '',
-        },
-        {
-          src: blouseBlack01,
-          alt: '',
-        },
-        {
-          src: blouseBlack03,
-          alt: '',
-        },
-        {
-          src: blouseBlack04,
-          alt: '',
-        },
-      ],
-    },
-    startColor: 'black',
-    colors: [
-      { name: 'white', class: 'bg-white', selectedClass: 'ring-gray-400' },
-      // { name: 'gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-      { name: 'black', class: 'bg-neutral-800', selectedClass: 'ring-neutral-900' },
-    ],
-    sizes: [
-      { name: '86/92', inStock: true },
-      { name: '98/104', inStock: true },
-      { name: '110/116', inStock: true },
-      { name: '122/128', inStock: true },
-    ],
-    description:
-      'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
-    highlights: ['Hand cut and sewn locally', 'Dyed with our proprietary colors', 'Pre-washed & pre-shrunk', 'Ultra-soft 100% cotton'],
-    details:
-      'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal gray" limited release.',
-  },
-  {
     id: '03',
     slug: 'spodenki-uv-02',
     name: 'Spodenki UV',
@@ -352,7 +298,7 @@ export const products = [
     images: {
       white: [
         {
-          src: shortsWhite01,
+          src: shortsWhite03,
           alt: '',
         },
         {
@@ -360,7 +306,7 @@ export const products = [
           alt: '',
         },
         {
-          src: shortsWhite03,
+          src: shortsWhite01,
           alt: '',
         },
         {
@@ -388,6 +334,75 @@ export const products = [
       ],
     },
 
+    sizes: [
+      { name: '86/92', inStock: true },
+      { name: '98/104', inStock: true },
+      { name: '110/116', inStock: true },
+      { name: '122/128', inStock: true },
+    ],
+    description:
+      'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
+    highlights: ['Hand cut and sewn locally', 'Dyed with our proprietary colors', 'Pre-washed & pre-shrunk', 'Ultra-soft 100% cotton'],
+    details:
+      'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal gray" limited release.',
+  },
+  {
+    id: '06',
+    slug: 'bluzka-uv-02',
+    name: 'Bluzka UV',
+    price: 129,
+    images: {
+      white: [
+        {
+          src: blouseWhite01,
+          alt: '',
+        },
+        {
+          src: blouseWhite02,
+          alt: '',
+        },
+        {
+          src: blouseWhite03,
+          alt: '',
+        },
+        {
+          src: blouseWhite04,
+          alt: '',
+        },
+      ],
+      black: [
+        {
+          src: blouseBlack06,
+          alt: '',
+        },
+        {
+          src: blouseBlack05,
+          alt: '',
+        },
+        {
+          src: blouseBlack02,
+          alt: '',
+        },
+        {
+          src: blouseBlack01,
+          alt: '',
+        },
+        {
+          src: blouseBlack03,
+          alt: '',
+        },
+        {
+          src: blouseBlack04,
+          alt: '',
+        },
+      ],
+    },
+    startColor: 'black',
+    colors: [
+      { name: 'white', class: 'bg-white', selectedClass: 'ring-gray-400' },
+      // { name: 'gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+      { name: 'black', class: 'bg-neutral-800', selectedClass: 'ring-neutral-900' },
+    ],
     sizes: [
       { name: '86/92', inStock: true },
       { name: '98/104', inStock: true },

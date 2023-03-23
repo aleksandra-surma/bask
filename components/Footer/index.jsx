@@ -38,12 +38,13 @@ export default function Footer() {
         </div>
 
         <div className="mb-12">
-          <h3 className="font-semibold mb-4">Płatność i dostawa</h3>
+          <h3 className="font-semibold mb-4">Płatność</h3>
+          {/* <h3 className="font-semibold mb-4">Płatność i dostawa</h3> */}
           <ul>
             <li className="mb-2">BLIK</li>
-            <li className="mb-2">PayU</li>
+            {/* <li className="mb-2">PayU</li> */}
             <li className="mb-2">Przelewy24</li>
-            <li className="mb-2">Płatność kartą lub przelewem</li>
+            <li className="mb-2">Płatność kartą</li>
           </ul>
         </div>
 

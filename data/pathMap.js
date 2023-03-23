@@ -12,6 +12,7 @@ module.exports = {
     { source: '/moje-konto/odzyskanie-hasla', destination: '/userAccount/password-recovery' },
     { source: '/koszyk', destination: '/card-summary' },
     { source: '/koszyk/podsumowanie', destination: '/card-summary/checkout' },
+    { source: '/koszyk/podsumowanie-zakupow', destination: '/card-summary/shopping-summary' },
     { source: '/tabela-rozmiarow', destination: '/size-guide' },
     { source: '/polityka-prywatnosci', destination: '/policy' },
     { source: '/regulamin-sklepu-internetowego', destination: '/regulations' },
