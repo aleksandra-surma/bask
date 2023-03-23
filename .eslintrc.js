@@ -64,6 +64,8 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'comma-dangle': 'off',
     'no-param-reassign': [2, { props: false }],
+    'import/extensions': 'off',
+    'react/require-default-props': 'off',
     // 'object-curly-newline': 'off',
   },
 };

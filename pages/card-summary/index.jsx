@@ -39,7 +39,6 @@ export default function BasketSummary() {
 
   return (
     <BaseLayout seoData={seoData}>
-      {}
       <div className="flex flex-col my-8 laptop:mb-8 laptop:mt-8 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
         <div className="flex w-full items-center border-b border-b-2 pb-8 mb-8 border-neutral-200">
           <h2>Twój koszyk</h2>

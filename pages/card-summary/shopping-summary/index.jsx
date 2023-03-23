@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import BaseLayout from 'components/BaseLayout';
 import { v4 as uuid } from 'uuid';
-// import Image from 'next/image';
-// import classNames from 'helpers/classNames';
 import useBasketState from 'hooks/useBasketState';
 import classNames from 'helpers/classNames';
-import { loadStripe } from '@stripe/stripe-js';
 import ProductSummary from 'components/ProductSummary';
+import SummaryInfoSection from 'components/SummaryInfoSection';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -38,73 +35,16 @@ export default function ShoppingSummary() {
     setBasket(storedBasket.basket);
   }, [state.basket, basketItemsAmount, setBasketItemsAmount]);
 
-  const isCheckoutDisabled = finalPrice < 1;
-
-  const handleFinalizeCheckout = async () => {
-    // onClick={async (formProcessing, setFormProcessing, watch) => {
-    const payload = basket;
-
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
-
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    console.log('response', response);
-
-    if (response.ok) {
-      const { checkout } = await response.json();
-
-      await stripe.redirectToCheckout({ sessionId: checkout.id });
-    }
-  };
-
   const shippingCost = finalPrice > 200 ? 0 : 15;
 
   return (
     <BaseLayout seoData={seoData}>
-      <div className="flex my-8">
-        <div className="w-3/5">
-          <form>
-            {/* Address and other necessary data */}
-            <div>
-              <h2 className="text-3xl font-semibold uppercase">Dane kontaktowe</h2>
-              <p>Użyjemy tych danych, aby poinformować Cię o dostawie.</p>
-              <div>tel</div>
-            </div>
-            <div>
-              <h2 className="text-3xl font-semibold uppercase">Dane do wysyłki</h2>
-              <form>form</form>
-            </div>
-            <div>
-              <h2 className="text-3xl font-semibold uppercase">Dostarczenie zamówienia</h2>
-              <div>Info</div>
-              <div>Kurier</div>
-            </div>
-            <div className="flex mt-8">
-              <Link href="/card-summary/checkout" as="/koszyk/podsumowanie">
-                <button
-                  type="button"
-                  onClick={handleFinalizeCheckout}
-                  disabled={isCheckoutDisabled}
-                  className={classNames(
-                    'bg-black rounded w-full laptop:w-[420px]',
-                    isCheckoutDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
-                  )}
-                >
-                  <p className="font-semibold py-3">PRZEJDŹ DO PŁATNOŚCI</p>
-                </button>
-              </Link>
-            </div>
-          </form>
-        </div>
+      <div className="flex w-full px-8 my-8 max-w-screen-xl">
+        {/* Address and other necessary data */}
+        <SummaryInfoSection basket={basket} finalPrice={finalPrice} />
 
         {/* Right site of page - Summary */}
-        <div className="flex flex-col w-2/5 pl-4 m-auto max-w-screen-xl text-gray-800">
+        <div className="flex flex-col w-2/5 pl-4 text-gray-800">
           <div className="flex w-full items-center">
             <h2 className="text-xl uppercase font-semibold">Podsumowanie zamówienia</h2>
           </div>
