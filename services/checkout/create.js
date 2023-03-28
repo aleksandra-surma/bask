@@ -1,37 +1,44 @@
 import Stripe from 'stripe';
+import { schema } from 'data/form/schema';
 // import { Stripe } from 'stripe'; // check with Stripe
 
-// todo: add Joi schema
-
 export default async function createCheckout(payload) {
-  // todo: add Joi validation
+  const { userData, basket, shippingCost } = await schema.createCheckout.validateAsync(payload);
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  console.log('createCheckout payload: ', payload);
-
-  const basket = payload;
 
   const lineItems = basket.map((basketItem) => {
     return {
       price_data: {
         currency: 'PLN',
-        // currency: basketItem.priceCurrency,
         product_data: {
           name: basketItem.name,
-          // size: basketItem.size,
-          // color: basketItem.color,
+          description: `${basketItem.size} ${basketItem.color}`,
+          metadata: {
+            size: basketItem.size,
+            color: basketItem.color,
+          },
         },
         unit_amount: basketItem.price * 100,
       },
       quantity: basketItem.quantity,
+
       customer_details: {},
     };
   });
-  // images: basketItem.img,
 
   const paymentObject = {
     payment_method_types: ['blik', 'p24', 'card'],
     line_items: lineItems,
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: 'fixed_amount',
+          fixed_amount: { amount: shippingCost ? shippingCost * 100 : 0, currency: 'pln' },
+          display_name: shippingCost ? 'Koszt przesyłki' : 'Darmowa dostawa',
+        },
+      },
+    ],
     mode: 'payment',
     locale: 'pl',
     success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary/checkout`,
@@ -49,6 +56,8 @@ export default async function createCheckout(payload) {
   };
 
   const session = await stripe.checkout.sessions.create(paymentObject);
+
+  console.log('userData: ', userData);
 
   return session;
 }

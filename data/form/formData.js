@@ -1,13 +1,5 @@
 export const formData = {
   contact: {
-    heading: 'Logowanie do portalu inwestora',
-    primaryBtn: { baseLabel: 'Zaloguj się', loadingLabel: 'Logowanie...' },
-    backToLogIn: 'Nowe konto',
-    query: {
-      href: '/investor-portal/create-account',
-      as: '/portal-inwestora/nowe-konto',
-    },
-
     label: {
       fullName: 'Imię i nazwisko',
       mobile: 'Numer telefonu',

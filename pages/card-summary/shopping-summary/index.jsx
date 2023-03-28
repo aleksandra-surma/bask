@@ -41,7 +41,7 @@ export default function ShoppingSummary() {
     <BaseLayout seoData={seoData}>
       <div className="flex w-full px-8 my-8 max-w-screen-xl">
         {/* Address and other necessary data */}
-        <SummaryInfoSection basket={basket} finalPrice={finalPrice} />
+        <SummaryInfoSection basket={basket} finalPrice={finalPrice} shippingCost={shippingCost} />
 
         {/* Right site of page - Summary */}
         <div className="flex flex-col w-2/5 pl-4 text-gray-800">

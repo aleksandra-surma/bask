@@ -4,9 +4,8 @@ const newUser = async (req, res) => {
   switch (req.method) {
     case 'POST': {
       try {
-        const orderItems = req.body;
-        console.log('orderItems: ', orderItems);
-        const checkout = await createCheckout(orderItems);
+        const payload = req.body;
+        const checkout = await createCheckout(payload);
 
         res.status(200).json({ status: 'created', checkout });
       } catch (error) {

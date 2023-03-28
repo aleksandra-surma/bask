@@ -66,6 +66,7 @@ module.exports = {
     'no-param-reassign': [2, { props: false }],
     'import/extensions': 'off',
     'react/require-default-props': 'off',
+    'spaced-comment': 'off',
     // 'object-curly-newline': 'off',
   },
 };

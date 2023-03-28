@@ -2,6 +2,10 @@ import type { UseFormRegister } from 'react-hook-form';
 import classNames from 'helpers/classNames';
 import { string, z } from 'zod';
 
+/**
+ * todo: add documentation
+ */
+
 export const schema = z.object({
   // subject: string().min(10, { message: subjectError }),
   // firstname: string().min(2, { message: firstnameError.short }).max(15, { message: firstnameError.long }),
@@ -24,7 +28,8 @@ const FormInput = ({
   register,
   name,
   halfView = false,
-  isRequired = false,
+  notRequired = false,
+  // defaultCheck = 'off',
   error,
 }: {
   label: string;
@@ -32,18 +37,56 @@ const FormInput = ({
   register: UseFormRegister<Schema>;
   name: keyof Schema;
   halfView?: boolean;
-  isRequired?: boolean;
+  notRequired?: boolean;
+  // defaultCheck?: 'on' | 'off';
   error: string | null;
 }) => {
-  return (
-    <div className={classNames('flex flex-col', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
-      <label className="">
-        {label} {isRequired ? '*' : ''}
-      </label>
-      <input className="" type={type} {...register(name)} />
-      {error && <p className="">{error}</p>}
-    </div>
-  );
+  switch (type) {
+    case 'text': {
+      return (
+        <div className={classNames('flex flex-col mb-4', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
+          <label className="">
+            {label} {notRequired ? '' : '*'}
+          </label>
+          <input className="" type={type} {...register(name)} />
+          {error && <p className="text-sm mt-2 text-red-600">{error}</p>}
+        </div>
+      );
+    }
+    case 'checkbox': {
+      // console.log('defaultCheck: ', checkboxValue);
+      return (
+        <div className={classNames('flex items-center my-4 w-full')}>
+          <input
+            className="mr-4 text-black border-black border-2 focus:ring-black p-3"
+            type="checkbox"
+            // defaultValue={defaultCheck}
+            {...register(name)}
+            // onChange={(e) => {
+            //   setCheckboxValue(!checkboxValue);
+            // }}
+            // checked={checkboxValue}
+          />
+          <label className="">
+            {label} {notRequired ? '' : '*'}
+          </label>
+          {error && <p className="">{error}</p>}
+        </div>
+      );
+    }
+
+    default: {
+      return (
+        <div className={classNames('flex flex-col mb-4', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
+          <label className="">
+            {label} {notRequired ? '' : '*'}
+          </label>
+          <input className="" type={type} {...register(name)} />
+          {error && <p className="">{error}</p>}
+        </div>
+      );
+    }
+  }
 };
 
 export default FormInput;
