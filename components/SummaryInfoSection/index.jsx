@@ -25,11 +25,9 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
 
   const handleFinalizeCheckout = async () => {
     // onClick={async (formProcessing, setFormProcessing, watch) => {
-    console.log('submit');
     console.log('basket: ', basket);
 
     const userData = watch();
-    console.log('userData: ', userData);
 
     const payload = { userData, basket, shippingCost };
 
@@ -49,6 +47,9 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
       const { checkout } = await response.json();
 
       await stripe.redirectToCheckout({ sessionId: checkout?.id });
+    } else {
+      console.log('error');
+      // todo: handle error
     }
   };
 
@@ -126,15 +127,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
           />
         </div>
 
-        <FormInput
-          label="Nip"
-          type="text"
-          notRequired
-          register={register}
-          name="nip"
-          halfView
-          error={errors.postalCode ? errors.postalCode.message : null}
-        />
+        <FormInput label="Nip" type="text" notRequired register={register} name="nip" halfView error={errors.nip ? errors.nip.message : null} />
 
         <div className="my-8">
           <h2 className="text-3xl font-semibold uppercase">Dostarczenie zamówienia</h2>

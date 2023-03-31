@@ -1,9 +1,44 @@
 import Stripe from 'stripe';
 import { schema } from 'data/form/schema';
-// import { Stripe } from 'stripe'; // check with Stripe
+import { randomUUID } from 'crypto';
+import airtableClient from 'services/airtable/airtableClient';
 
 export default async function createCheckout(payload) {
   const { userData, basket, shippingCost } = await schema.createCheckout.validateAsync(payload);
+
+  const addressData = {
+    email: userData.email,
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    address: userData.address,
+    additionalAddress: userData.additionalAddress,
+    city: userData.city,
+    nip: userData.nip,
+    phone: userData.phone,
+    postalCode: userData.postalCode,
+  };
+
+  const invoiceAddressData = userData.addressTheSame
+    ? ''
+    : {
+        invoiceAddress: userData.invoiceAddress,
+        invoiceAdditionalAddress: userData.invoiceAdditionalAddress,
+        invoiceCity: userData.invoiceCity,
+        invoiceName: userData.invoiceName,
+        invoicePostalCode: userData.invoicePostalCode,
+      };
+
+  const {
+    id: airtableId,
+    fields: { dealId },
+  } = await airtableClient('temporaryCustomers').create({
+    dealId: randomUUID(),
+    basketData: JSON.stringify(basket),
+    addressData: JSON.stringify(addressData),
+    invoiceAddressData: JSON.stringify(invoiceAddressData),
+    stripeCheckoutId: '',
+    stripeCheckoutStatus: '',
+  });
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -29,6 +64,11 @@ export default async function createCheckout(payload) {
 
   const paymentObject = {
     payment_method_types: ['blik', 'p24', 'card'],
+    payment_intent_data: {
+      metadata: {
+        dealId,
+      },
+    },
     line_items: lineItems,
     shipping_options: [
       {
@@ -41,8 +81,8 @@ export default async function createCheckout(payload) {
     ],
     mode: 'payment',
     locale: 'pl',
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary/checkout`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary`,
+    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary/${dealId}/success`,
+    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary/${dealId}/cancel`,
 
     // billing_details: {
     //   address: {
@@ -57,7 +97,17 @@ export default async function createCheckout(payload) {
 
   const session = await stripe.checkout.sessions.create(paymentObject);
 
-  console.log('userData: ', userData);
+  await airtableClient('temporaryCustomers').update([
+    {
+      id: airtableId,
+      fields: {
+        stripeCheckoutId: session.id,
+        stripeCheckoutStatus: session.payment_status,
+      },
+    },
+  ]);
+  // console.log('dealId: ', dealId);
+  // console.log('userData: ', userData);
 
-  return session;
+  return { checkout: session };
 }

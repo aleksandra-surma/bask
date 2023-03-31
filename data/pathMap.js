@@ -16,5 +16,7 @@ module.exports = {
     { source: '/tabela-rozmiarow', destination: '/size-guide' },
     { source: '/polityka-prywatnosci', destination: '/policy' },
     { source: '/regulamin-sklepu-internetowego', destination: '/regulations' },
+    { source: '/regulamin-sklepu-internetowego', destination: '/regulations' },
   ],
 };
+// 'card-summary/:dealId/paymentStatus',

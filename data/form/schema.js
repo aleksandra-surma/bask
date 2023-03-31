@@ -158,7 +158,7 @@ const dealFinalizationObject = {
   postalCode: Joi.string()
     .pattern(/^\d{2}-?\d{3}$/)
     .required()
-    .replace(/-/g, '')
+    // .replace(/-/g, '')
     .messages({
       'string.empty': 'Podaj kod pocztowy',
       'string.pattern.base': 'Podaj poprawny kod pocztowy, np. 00-000',
@@ -173,7 +173,7 @@ const dealFinalizationObject = {
   invoicePostalCode: Joi.string()
     .pattern(/^\d{2}-?\d{3}$/)
     .required()
-    .replace(/-/g, '')
+    // .replace(/-/g, '')
     .allow('')
     .messages({
       'string.pattern.base': 'Podaj poprawny kod pocztowy, np. 00-000',
@@ -185,12 +185,10 @@ const getDealSchema = (isInvoiceNecessary) => {
     return Joi.object({
       ...dealFinalizationObject,
 
-      invoiceAdditionalAddress: Joi.string().required().messages({
-        'string.empty': 'Podaj adres',
-      }),
       invoiceAddress: Joi.string().required().messages({
         'string.empty': 'Podaj adres',
       }),
+      invoiceAdditionalAddress: Joi.string().allow(''),
       invoiceCity: Joi.string().required().messages({
         'string.empty': 'Podaj miasto',
       }),
@@ -280,14 +278,14 @@ export const schema = {
 
 export const defaultValues = {
   dealFinalization: {
-    email: 'sasa@wp.pl',
+    email: '',
     firstName: '',
     lastName: '',
     address: '',
     additionalAddress: '',
     city: '',
     nip: '',
-    phoneNumber: null,
+    phoneNumber: '',
     postalCode: '',
 
     addressTheSame: true,

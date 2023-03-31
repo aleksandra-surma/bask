@@ -1,11 +1,11 @@
 import createCheckout from 'services/checkout/create';
 
-const newUser = async (req, res) => {
+const newCheckout = async (req, res) => {
   switch (req.method) {
     case 'POST': {
       try {
         const payload = req.body;
-        const checkout = await createCheckout(payload);
+        const { checkout } = await createCheckout(payload);
 
         res.status(200).json({ status: 'created', checkout });
       } catch (error) {
@@ -19,4 +19,4 @@ const newUser = async (req, res) => {
   }
 };
 
-export default newUser;
+export default newCheckout;
