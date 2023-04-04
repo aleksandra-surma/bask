@@ -14,7 +14,7 @@ export default async function createCheckout(payload) {
     additionalAddress: userData.additionalAddress,
     city: userData.city,
     nip: userData.nip,
-    phone: userData.phone,
+    phone: userData.phoneNumber,
     postalCode: userData.postalCode,
   };
 
@@ -67,6 +67,8 @@ export default async function createCheckout(payload) {
     payment_intent_data: {
       metadata: {
         dealId,
+        addressData: JSON.stringify(addressData),
+        invoiceAddressData: JSON.stringify(invoiceAddressData),
       },
     },
     line_items: lineItems,
@@ -106,8 +108,6 @@ export default async function createCheckout(payload) {
       },
     },
   ]);
-  // console.log('dealId: ', dealId);
-  // console.log('userData: ', userData);
 
   return { checkout: session };
 }
