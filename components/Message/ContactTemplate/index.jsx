@@ -8,15 +8,14 @@
  * exact link to logo: https://i.postimg.cc/T1Mzv5fR/bask-logo.png
  */
 
-const EmailContactTemplate = () => {
+const EmailContactTemplate = ({ payload }) => {
+  const { fullName, email, mobile, message } = payload;
+
   return (
     <html lang="pl">
-      {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin /> */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet" />
         <title>Bask - wiadomość z formularza kontaktowego</title>
       </head>
@@ -33,19 +32,12 @@ const EmailContactTemplate = () => {
               lineHeight: '22px',
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://i.postimg.cc/T1Mzv5fR/bask-logo.png" style={{ width: '120px', height: '60px' }} alt="Bask logo" />
 
-            {/*<p style={{}}>Imię i nazwisko: {fullName}</p>*/}
-            {/*<p style={{}}>Telefon: {mobile}</p>*/}
-            {/*<p style={{}}>Email: {email}</p>*/}
-            {/*<p style={{}}>Wiadomość: {message}</p>*/}
-
-            {/* <div style={{ fontSize: '14px', margin: '30px 0 40px 0' }}> */}
-            {/*  {message.map((textItem) => ( */}
-            {/*    <p key={uuid()}>{textItem}</p> */}
-            {/*  ))} */}
-            {/* </div> */}
+            <p style={{}}>Imię i nazwisko: {fullName}</p>
+            <p style={{}}>Telefon: {mobile}</p>
+            <p style={{}}>Email: {email}</p>
+            <p style={{}}>Wiadomość: {message}</p>
           </div>
         </main>
       </body>
