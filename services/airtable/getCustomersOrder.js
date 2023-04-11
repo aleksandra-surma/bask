@@ -7,8 +7,6 @@ export const getCustomersOrder = async (dealId) => {
     })
     .firstPage();
 
-  console.log('getCustomersOrder customerOrder: ', customerOrder);
-
   // const customerOrder = await airtableClient('temporaryCustomers')
   //     .select({
   //       filterByFormula: `stripeCheckoutId = '${stripeCheckoutId}'`,

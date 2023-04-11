@@ -1,14 +1,13 @@
 import Stripe from 'stripe';
-import { getCustomersOrder } from '../airtable/getCustomersOrder';
-import airtableClient from '../airtable/airtableClient';
-// import { Stripe } from 'stripe'; // check with Stripe
-
-// export default async function finalize(offerId) {
+import { getCustomersOrder } from 'services/airtable/getCustomersOrder';
+import airtableClient from 'services/airtable/airtableClient';
 
 export default async function finalize(dealId) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
   const [customerOrder] = await getCustomersOrder(dealId);
+
+  // console.log('customerOrder: ', customerOrder);
 
   const checkout = await stripe.checkout.sessions.retrieve(customerOrder.fields.stripeCheckoutId);
 
@@ -19,7 +18,7 @@ export default async function finalize(dealId) {
   const paymentIntent = await stripe.paymentIntents.retrieve(checkout.payment_intent);
 
   if (paymentIntent.status === 'succeeded') {
-    await airtableClient('temporaryCustomers').update([
+    const [temporaryCustomer] = await airtableClient('temporaryCustomers').update([
       {
         id: customerOrder.id,
         fields: {
@@ -27,10 +26,12 @@ export default async function finalize(dealId) {
         },
       },
     ]);
-    return { customerOrder, checkout };
+    return { customerOrder, checkout, temporaryCustomer };
   }
 
-  return { customerOrder, checkout };
+  return { customerOrder, checkout, temporaryCustomer: null };
 }
 
 // todo: if payment successful decrease product quantity in db
+
+// "Webhook Error: No signatures found matching the expected signature for payload. Are you passing the raw request body you received from Stripe? \nLearn more about webhook signing and explore webhook integration examples for various frameworks at https://github.com/stripe/stripe-node#webhook-signing"

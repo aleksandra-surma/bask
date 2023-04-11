@@ -5,7 +5,6 @@ export default async function successPayment(req, res) {
     case 'PUT': {
       try {
         const { id } = req.query;
-        console.log('PUT id: ', id);
 
         const { customerOrder, checkout } = await finalize(id);
 

@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { v4 as uuid } from 'uuid';
-// import Link from 'next/link';
 import useBasketState from 'hooks/useBasketState';
 import handleBasket from 'utils/handleBasket';
 import ProductAdded from 'components/ProductAdded';
@@ -50,11 +49,6 @@ export default function Product({ productData: product }) {
   const [addedProduct, setAddedProduct] = useState(null);
   const [error, setError] = useState(null);
   const { dispatch, setBasketItemsAmount } = useBasketState();
-
-  // useEffect(() => {
-  //   setSelectedSize(null);
-  //   setError(null);
-  // }, [selectedColor]);
 
   useEffect(() => {
     if (selectedSize && error) {

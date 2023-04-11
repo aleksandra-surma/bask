@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Image from 'next/image';
 import useBasketState from 'hooks/useBasketState';
 
@@ -36,9 +36,7 @@ export default function ProductSummary({ product }) {
         </div>
         <div className="justify-center px-6 w-full">
           <div className="flex justify-between items-center">
-            <Link href={`/bask-store/${product.slug}`} as={`/sklep/${product.slug}`}>
-              <h3 className="text-md cursor-pointer hover:underline underline-offset-4">{product.name}</h3>
-            </Link>
+            <h3 className="text-md">{product.name}</h3>
           </div>
           <div className="flex my-2">
             <p className="text-sm mr-4">Rozmiar:</p>

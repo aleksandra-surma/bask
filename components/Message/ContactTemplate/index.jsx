@@ -8,7 +8,7 @@
  * exact link to logo: https://i.postimg.cc/T1Mzv5fR/bask-logo.png
  */
 
-const EmailContactTemplate = ({ payload: { fullName, mobile, email, message } }) => {
+const EmailContactTemplate = () => {
   return (
     <html lang="pl">
       {/* eslint-disable-next-line @next/next/no-head-element */}
@@ -36,10 +36,10 @@ const EmailContactTemplate = ({ payload: { fullName, mobile, email, message } })
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://i.postimg.cc/T1Mzv5fR/bask-logo.png" style={{ width: '120px', height: '60px' }} alt="Bask logo" />
 
-            <p style={{}}>Imię i nazwisko: {fullName}</p>
-            <p style={{}}>Telefon: {mobile}</p>
-            <p style={{}}>Email: {email}</p>
-            <p style={{}}>Wiadomość: {message}</p>
+            {/*<p style={{}}>Imię i nazwisko: {fullName}</p>*/}
+            {/*<p style={{}}>Telefon: {mobile}</p>*/}
+            {/*<p style={{}}>Email: {email}</p>*/}
+            {/*<p style={{}}>Wiadomość: {message}</p>*/}
 
             {/* <div style={{ fontSize: '14px', margin: '30px 0 40px 0' }}> */}
             {/*  {message.map((textItem) => ( */}

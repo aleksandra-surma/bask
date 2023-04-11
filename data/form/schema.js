@@ -214,6 +214,7 @@ export const schema = {
 
     basket: Joi.array().items(basketItemSchema).required(),
 
+    finalPrice: Joi.number().required(),
     shippingCost: Joi.number().required(),
   }),
 

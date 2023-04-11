@@ -1,6 +1,7 @@
 /** @type {(options?: {strategy?: "base" | "class"}) => Function} */
 const forms = require('@tailwindcss/forms');
 const aspectRatio = require('@tailwindcss/aspect-ratio');
+const daisyui = require('daisyui');
 
 // const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -95,6 +96,5 @@ module.exports = {
   },
   // eslint-disable-next-line global-require
 
-  plugins: [forms, aspectRatio],
-  // plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
+  plugins: [forms, aspectRatio, daisyui],
 };

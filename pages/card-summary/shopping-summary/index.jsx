@@ -35,7 +35,7 @@ export default function ShoppingSummary() {
     setBasket(storedBasket.basket);
   }, [state.basket, basketItemsAmount, setBasketItemsAmount]);
 
-  const shippingCost = finalPrice > 200 ? 0 : 15;
+  const shippingCost = finalPrice > 500 ? 0 : 20;
 
   return (
     <BaseLayout seoData={seoData}>
@@ -66,7 +66,7 @@ export default function ShoppingSummary() {
               <p className={classNames(shippingCost === 0 ? '' : 'font-semibold')}>{shippingCost === 0 ? 'Za darmo' : `${shippingCost}zł`}</p>
               {shippingCost > 0 ? (
                 <div className="text-xs">
-                  Brakuje <span className="font-semibold">{200 - finalPrice} zł</span> do darmowej dostawy
+                  Brakuje <span className="font-semibold">{500 - finalPrice} zł</span> do darmowej dostawy
                 </div>
               ) : null}
             </div>

@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 import airtableClient from 'services/airtable/airtableClient';
 
 export default async function createCheckout(payload) {
-  const { userData, basket, shippingCost } = await schema.createCheckout.validateAsync(payload);
+  const { userData, basket, finalPrice, shippingCost } = await schema.createCheckout.validateAsync(payload);
 
   const addressData = {
     email: userData.email,
@@ -16,6 +16,8 @@ export default async function createCheckout(payload) {
     nip: userData.nip,
     phone: userData.phoneNumber,
     postalCode: userData.postalCode,
+    addressTheSame: userData.addressTheSame,
+    finalPrice,
   };
 
   const invoiceAddressData = userData.addressTheSame
