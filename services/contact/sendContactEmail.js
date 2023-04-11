@@ -1,7 +1,8 @@
-import sgMail from '@sendgrid/mail';
+// import sgMail from '@sendgrid/mail';
 import nodemailer from 'nodemailer';
-import { render } from '@react-email/render';
-import EmailContactTemplate from 'components/Email/ContactTemplate';
+import { renderToString } from 'react-dom/server';
+
+import EmailContactTemplate from 'components/Message/ContactTemplate';
 
 /**
  * PROD
@@ -13,24 +14,42 @@ import EmailContactTemplate from 'components/Email/ContactTemplate';
  * email and pass may expire, renew if don't work
  */
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendEmailWithLink = async (payload) => {
   console.log('payload sendEmailWithLink: ', payload);
-  const html = render(<EmailContactTemplate payload={payload} />, {
-    pretty: true,
-  });
+  // const html = render(<EmailContactTemplate payload={payload} />, {
+  //   pretty: true,
+  // });
+  // const html = render(getHtml(payload));
 
   try {
-    if (process.env.IS_PROD === 'PROD') {
-      const messageOptions = {
-        to: `bask.lublin@gmail.com`,
-        from: 'bask.lublin@gmail.com', // Change to your verified sender
-        subject: 'Wiadomość z formularza kontaktowego - Bask ✔',
-        html,
-      };
+    if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
+      console.log('Mail test PROD');
+      const transporterProd = nodemailer.createTransport({
+        host: 'ssl0.ovh.net',
+        port: 465,
+        auth: {
+          user: process.env.EMAIL_CONTACT_PROD,
+          pass: process.env.EMAIL_PASS_PROD,
+        },
+      });
 
-      await sgMail.send(messageOptions);
+      await transporterProd.sendMail({
+        from: `kontakt@bask.com.pl`,
+        to: 'kontakt@bask.com.pl',
+        subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+        html: renderToString(<EmailContactTemplate payload={payload} />),
+      });
+
+      // const messageOptions = {
+      //   to: `bask.lublin@gmail.com`,
+      //   from: 'bask.lublin@gmail.com', // Change to your verified sender
+      //   subject: 'Wiadomość z formularza kontaktowego - Bask ✔',
+      //   html,
+      // };
+      //
+      // await sgMail.send(messageOptions);
     } else {
       // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
       const transporter = nodemailer.createTransport({
@@ -45,8 +64,8 @@ const sendEmailWithLink = async (payload) => {
       const response = await transporter.sendMail({
         from: 'Sender Name <sender@example.com>',
         to: 'Recipient <recipient@example.com>',
-        subject: 'Link aktywacyjny do konta SayInvest ✔',
-        html,
+        subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+        html: renderToString(<EmailContactTemplate payload={payload} />),
       });
 
       console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);

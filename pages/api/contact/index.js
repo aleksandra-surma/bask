@@ -1,7 +1,7 @@
 import sendContactEmail from 'services/contact/sendContactEmail';
 import { schema } from 'data/form/schema';
 
-const newUser = async (req, res) => {
+const contactForm = async (req, res) => {
   switch (req.method) {
     case 'POST': {
       try {
@@ -45,4 +45,4 @@ const newUser = async (req, res) => {
   }
 };
 
-export default newUser;
+export default contactForm;

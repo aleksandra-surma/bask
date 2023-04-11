@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 // import classNames from 'helpers/classNames';
 import useBasketState from 'hooks/useBasketState';
 import ProductBasket from 'components/ProductBasket';
-import classNames from '../../helpers/classNames';
+import classNames from 'helpers/classNames';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';

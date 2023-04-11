@@ -22,7 +22,12 @@ const nextConfig = (phase) => {
       };
     });
 
+  const images = {
+    domains: ['v5.airtableusercontent.com'],
+  };
+
   return {
+    images,
     reactStrictMode,
     swcMinify,
     rewrites,

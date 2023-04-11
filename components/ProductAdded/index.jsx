@@ -4,8 +4,7 @@ import Link from 'next/link';
 // import Link from 'next/link';
 
 export default function ProductAdded({ addedProduct, setAddedProduct, selectedColor, selectedSize }) {
-  // First product image's src
-  const imgSrc = addedProduct.images[selectedColor.name][0].src.src;
+  const imgSrc = addedProduct[`attachments-${selectedColor}`][0].thumbnails.large.url;
 
   return (
     <div className="fixed top-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] w-screen h-screen z-10">
@@ -22,20 +21,19 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
             <Image src={imgSrc} className="rounded-xl" layout="fill" objectFit="cover" />
           </div>
           <div className="mx-auto justify-center px-6">
-            <h3 className="text-2xl font-semibold">{addedProduct.name}</h3>
+            <h3 className="text-2xl font-semibold">{addedProduct.title}</h3>
             <div className="flex my-6">
               <p className="text-xl mr-4">Rozmiar:</p>
-              <p className="text-xl font-semibold">{selectedSize.name}</p>
+              <p className="text-xl font-semibold">{selectedSize}</p>
             </div>
             <div className="flex my-6">
               <p className="text-xl mr-4">Kolor:</p>
-              {/* <p className="text-xl font-semibold">{selectedColor.name}</p> */}
+              {/* <p className="text-xl font-semibold">{selectedColor}</p> */}
               <span
                 aria-hidden="true"
                 className={classNames(
                   'h-12 w-12 rounded-full ring-2 ring-neutral-300 ring-offset-2',
-                  selectedColor.name !== 'white' ? `bg-${selectedColor.name}` : null,
-                  selectedColor.name === 'white' ? 'border-2 border-neutral-200' : null,
+                  selectedColor === 'white' ? 'border-2 border-neutral-200' : `bg-${selectedColor}`,
                 )}
               />
             </div>

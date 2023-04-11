@@ -1,13 +1,16 @@
 import { actionTypes } from 'reducers/basketReducer';
 
 const handleBasket = {
-  addProduct: ({ id, name, price, images, slug }, selectedColor, selectedSize, dispatch, setBasketItemsAmount) => {
+  addProduct: (product, selectedColor, selectedSize, dispatch, setBasketItemsAmount) => {
+    console.log('HERE product: ', product);
+    const { id, name, price, slug } = product;
+
     const basketProduct = {
       id,
       name,
       price,
       slug,
-      img: images[selectedColor.name][0].src.src,
+      img: product[`attachments-${selectedColor}`][0].thumbnails.large.url,
       color: selectedColor,
       size: selectedSize,
       quantity: 1,
