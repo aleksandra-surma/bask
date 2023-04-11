@@ -57,7 +57,7 @@ export default function ContactForm() {
                   <input
                     type="text"
                     {...register('fullName')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
                   />
                   {errors.fullName ? <p className="text-red-600 text-sm mt-2">{errors.fullName.message}</p> : null}
                 </div>
@@ -69,7 +69,7 @@ export default function ContactForm() {
                   <input
                     type="text"
                     {...register('mobile')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
                   />
                   {errors.mobile ? <p className="text-red-600 text-sm mt-2">{errors.mobile.message}</p> : null}
                 </div>
@@ -81,7 +81,7 @@ export default function ContactForm() {
                   <input
                     type="email"
                     {...register('email')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
                   />
                   {errors.email ? <p className="text-red-600 text-sm mt-2">{errors.email.message}</p> : null}
                 </div>
@@ -94,7 +94,7 @@ export default function ContactForm() {
                   <textarea
                     rows="6"
                     {...register('message')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
                   />
                   {errors.message ? <p className="text-red-600 text-sm mt-2">{errors.message.message}</p> : null}
                 </div>
