@@ -178,6 +178,12 @@ const dealFinalizationObject = {
     .messages({
       'string.pattern.base': 'Podaj poprawny kod pocztowy, np. 00-000',
     }),
+  privacyPolicy: Joi.boolean().valid(true).required().messages({
+    'any.invalid': 'Potwierdzenie akceptacji polityki prywatności jest wymagane w celu finalizacji zamówienia i obsługi zakupów.',
+    'any.only': 'Potwierdzenie akceptacji polityki prywatności jest wymagane w celu finalizacji zamówienia i obsługi zakupów.',
+  }),
+  shippingMethodCourier: Joi.boolean(),
+  shippingMethodInpost: Joi.boolean(),
 };
 
 const getDealSchema = (isInvoiceNecessary) => {
@@ -296,6 +302,10 @@ export const defaultValues = {
     invoiceCity: '',
     invoiceName: '',
     invoicePostalCode: '',
+
+    shippingMethodCourier: true,
+    shippingMethodInpost: false,
+    privacyPolicy: false,
   },
 
   // login: {

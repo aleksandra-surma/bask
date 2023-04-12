@@ -54,6 +54,8 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
     setProcessing(false);
   };
 
+  console.log('errors', errors);
+
   return (
     <div className="w-3/5 mr-8">
       {basket?.length > 0 ? (
@@ -235,6 +237,23 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
               />
             </div>
           </div>
+
+          <div className={classNames('flex items-center my-4 w-full')}>
+            <input className="mr-4 text-black border-black border-2 focus:ring-black p-3" type="checkbox" {...register('privacyPolicy')} />
+            <label className="">
+              <Link href="/policy" as="/polityka-prywatnosci">
+                <p className="underline underline-offset-2 decoration-2 hover:text-neutral-500 cursor-pointer">Polityka prywatności *</p>
+              </Link>
+
+              <p className="text-sm text-neutral-600">
+                Zgodnie z naszą polityką prywatności Twoje dane nie zostaną przekazane do żadnych podmiotów. Będą przetwarzane tylko w ramach naszej
+                oferty.
+              </p>
+            </label>
+          </div>
+
+          {errors.privacyPolicy ? <p className="text-sm mt-2 text-red-600">{errors.privacyPolicy.message}</p> : null}
+
           <div className="flex mt-8">
             <button
               type="submit"
