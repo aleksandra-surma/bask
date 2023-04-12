@@ -73,7 +73,7 @@ export default function Product({ productData: product }) {
     return storeItemsColor[0].quantity[index].quantity !== 0 && storeItemsColor[1].quantity[index].quantity !== 0;
   };
 
-  console.log('product: ', product);
+  // console.log('product: ', product);
 
   const highlightsArray = product.highlights.split('\n');
 
@@ -190,9 +190,80 @@ export default function Product({ productData: product }) {
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Rozmiary</h3>
-                    {/* <Link href="/size-guide" as="/tabela-rozmiarow" className="text-sm font-medium text-green-600 hover:text-green-500"> */}
-                    {/*  Tabela rozmiarów */}
-                    {/* </Link> */}
+
+                    <label
+                      htmlFor="sizes-table-modal"
+                      className="text-xs underline underline-offset-2 text-green-600 hover:text-green-500 cursor-pointer"
+                    >
+                      Tabela rozmiarów
+                    </label>
+                  </div>
+
+                  <input type="checkbox" id="sizes-table-modal" className="modal-toggle" />
+                  <div className="modal">
+                    <div className="modal-box">
+                      <h3 className="font-bold text-lg mb-4">Tabela rozmiarów</h3>
+                      <div className="overflow-x-auto">
+                        <table className="table w-full">
+                          {/* head */}
+                          <thead>
+                            <tr>
+                              <th>Rozmiar</th>
+                              <th>Wymiary</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {/*     row 1 */}
+                            <tr>
+                              <td>86/92</td>
+                              <td>
+                                <p>bluzka: dł. 35 cm, szer. 25 cm</p>
+                                <p>spodenki: dł. 22 cm, szer. 23 cm</p>
+                              </td>
+                            </tr>
+
+                            {/* row 1 */}
+                            <tr>
+                              <td>98/104</td>
+                              <td>
+                                <p>bluzka: dł. 38 cm, szer. 28 cm</p>
+                                <p>spodenki: dł. 25 cm, szer. 25 cm</p>
+                              </td>
+                            </tr>
+
+                            {/* row 1 */}
+                            <tr>
+                              <td>110/116</td>
+                              <td>
+                                <p>bluzka: dł. 42 cm, szer. 30 cm</p>
+                                <p>spodenki: dł. 26 cm, szer. 27 cm</p>
+                              </td>
+                            </tr>
+
+                            {/* row 1 */}
+                            <tr>
+                              <td>122/128</td>
+                              <td>
+                                <p>bluzka: dł. 46 cm, szer. 32 cm</p>
+                                <p>spodenki: dł. 29 cm, szer. 29 cm</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="py-4">Masz wątpliwości związane z rozmiarem jaki wybrać? </p>
+                      <div className="flex">
+                        <p className="mr-4">Napisz do nas!</p>
+                        <a className="contact-media__mail" href="mailto:kontakt@bask.com.pl">
+                          <p className="">kontakt@bask.com.pl</p>
+                        </a>
+                      </div>
+                      <div className="modal-action">
+                        <label htmlFor="sizes-table-modal" className="btn normal-case">
+                          Wróć do produktu
+                        </label>
+                      </div>
+                    </div>
                   </div>
 
                   <RadioGroup onChange={setSelectedSize} className="mt-4">

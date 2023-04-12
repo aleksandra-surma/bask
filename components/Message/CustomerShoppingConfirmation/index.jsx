@@ -57,15 +57,16 @@ const CustomerShoppingConfirmation = ({ addressData, basketObj }) => {
                 <h1>Produkty zamówione i opłacone:</h1>
                 {basketObj.map((item) => {
                   return (
-                    <div key={randomUUID()} style={{ marginBottom: '10px', borderBottom: '1px solid gray' }}>
+                    <div key={randomUUID()} style={{ marginBottom: '6px', borderBottom: '1px solid gray' }}>
                       <p>Nazwa produktu: {item.name}</p>
                       <p>Kolor: {item.color}</p>
                       <p>Rozmiar: {item.size}</p>
                       <p>Ilość: {item.quantity}</p>
+                      <p>Cena produktu: {item.price}</p>
                     </div>
                   );
                 })}
-                <p>Suma zamówienia: {finalPrice}</p>
+                <p>Suma zamówienia wraz z kosztem dostawy: {finalPrice}zł</p>
 
                 <h2>Zamówienie zostanie dostarczone na adres:</h2>
                 <p>Imię: {firstName}</p>

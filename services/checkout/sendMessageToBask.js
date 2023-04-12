@@ -34,6 +34,7 @@ const sendMessageToBask = async (addressData, basketObj) => {
       await transporterProd.sendMail({
         from: `zakupy@bask.com.pl`,
         to: 'kontakt@bask.com.pl',
+        replyTo: `${addressData.email}`,
         subject: '✔ Bask - klient opłacił zamówienie 🛒',
         html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketObj={basketObj} />),
       });
