@@ -70,7 +70,7 @@ export default function BasketSummary() {
                 isShoppingSummaryDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
               )}
             >
-              <p className="font-semibold py-3">PRZEJDŹ DO PODSUMOWANIA</p>
+              <p className="font-semibold py-3 text-white">PRZEJDŹ DO PODSUMOWANIA</p>
             </button>
           </Link>
         </div>

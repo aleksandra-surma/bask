@@ -193,7 +193,7 @@ export default function Product({ productData: product }) {
 
                   <RadioGroup onChange={setSelectedSize} className="mt-4">
                     <RadioGroup.Label className="sr-only"> Choose a size </RadioGroup.Label>
-                    <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                    <div className="grid grid-cols-4 gap-4 sm:grid-cols-5 lg:grid-cols-4">
                       {product.store[0].quantity.map((sizeObj, index) => {
                         console.log('sizeObj: ', sizeObj);
                         return (

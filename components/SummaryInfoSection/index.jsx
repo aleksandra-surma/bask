@@ -1,12 +1,12 @@
 import classNames from 'helpers/classNames';
 import { loadStripe } from '@stripe/stripe-js';
 import { useForm } from 'react-hook-form';
-import FormInput from 'components/FormInput';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { defaultValues, schema } from 'data/form/schema';
 import Link from 'next/link';
+import FormInput from '../FormInput';
 
 export default function SummaryInfoSection({ basket, finalPrice, shippingCost }) {
   const [isSameAddress, setIsSameAddress] = useState(true);
@@ -132,14 +132,43 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
           <div className="my-8">
             <h2 className="text-3xl font-semibold uppercase">Dostarczenie zamówienia</h2>
 
-            <div className="bg-green-200 my-8 p-8 flex justify-between">
-              <div className="flex flex-col">
-                <h3 className="text-lg uppercase font-semibold">Dostawa kurierem</h3>
-                <p className="text-sm mt-2">Dostawa kurierem w ciągu 1-2 dni roboczych</p>
-                <p className="text-sm">Za darmo od 500zł</p>
+            <div className="bg-green-200 my-8 p-8 flex justify-between items-center">
+              <input
+                className="mr-4 text-black border-black border-2 focus:ring-black p-3"
+                type="checkbox"
+                {...register('shippingMethodCourier')}
+                disabled
+                checked
+              />
+              <div className="w-[85%] flex justify-between">
+                <div className="flex flex-col">
+                  <h3 className="text-lg uppercase font-semibold">Dostawa kurierem</h3>
+                  <p className="text-sm mt-2">Dostawa kurierem w ciągu 1-2 dni roboczych</p>
+                  <p className="text-sm">Za darmo od 500zł</p>
+                </div>
+                <div className="flex items-center">
+                  <Icon icon="iconoir:delivery-truck" width={36} className="text-neutral-900" />
+                </div>
               </div>
-              <div className="flex items-center">
-                <Icon icon="iconoir:delivery-truck" width={30} />
+            </div>
+
+            <div className="bg-neutral-100 my-8 p-8 flex justify-between items-center cursor-not-allowed">
+              <input
+                className="mr-4 text-black border-neutral-300 border-2 focus:ring-black p-3 cursor-not-allowed"
+                type="checkbox"
+                {...register('shippingMethodInpost')}
+                disabled
+                checked={false}
+              />
+              <div className="w-[85%] flex justify-between">
+                <div className="flex flex-col">
+                  <h3 className="text-md uppercase font-semibold text-neutral-400">Dostawa do paczkomatu - już niedługo</h3>
+                  <p className="text-xs mt-2 text-neutral-400">Dostawa do paczkomatu jeszcze nie jest dostępna</p>
+                  {/*<p className="text-sm text-neutral-400">Za darmo od 500zł</p>*/}
+                </div>
+                <div className="flex items-center">
+                  <Icon icon="lucide:package-open" width={30} className="text-neutral-400" />
+                </div>
               </div>
             </div>
 
@@ -212,11 +241,11 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
               disabled={isCheckoutDisabled}
               className={classNames(
                 'bg-black rounded w-full laptop:w-[420px]',
-                isCheckoutDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
-                processing ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed hover:bg-neutral-400' : '',
+                isCheckoutDisabled ? 'bg-neutral-400 cursor-not-allowed' : 'hover:bg-green-600',
+                processing ? 'bg-neutral-400 cursor-not-allowed hover:bg-neutral-400' : '',
               )}
             >
-              <p className="font-semibold py-6">{processing ? 'PROSZĘ ZACZEKAĆ...' : 'PRZEJDŹ DO PŁATNOŚCI'}</p>
+              <p className="font-semibold py-6 text-white">{processing ? 'PROSZĘ ZACZEKAĆ...' : 'PRZEJDŹ DO PŁATNOŚCI'}</p>
             </button>
           </div>
         </form>

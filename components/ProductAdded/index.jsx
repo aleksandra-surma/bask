@@ -21,7 +21,7 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
             <Image src={imgSrc} className="rounded-xl" layout="fill" objectFit="cover" />
           </div>
           <div className="mx-auto justify-center px-6">
-            <h3 className="text-2xl font-semibold">{addedProduct.title}</h3>
+            <h3 className="text-2xl font-semibold">{addedProduct.name}</h3>
             <div className="flex my-6">
               <p className="text-xl mr-4">Rozmiar:</p>
               <p className="text-xl font-semibold">{selectedSize}</p>

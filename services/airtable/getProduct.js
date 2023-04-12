@@ -43,12 +43,17 @@ const getProduct = async (slug) => {
         name: '122/128',
         quantity: storeItem['size_122/128'],
       },
+      {
+        name: '134/140',
+        quantity: storeItem['size_134/140'],
+      },
     ];
 
     delete storeItem['size_86/92'];
     delete storeItem['size_98/104'];
     delete storeItem['size_110/116'];
     delete storeItem['size_122/128'];
+    delete storeItem['size_134/140'];
 
     return { ...storeItem, quantity: storeQuantityObj };
   });
