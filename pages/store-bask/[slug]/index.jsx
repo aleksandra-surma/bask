@@ -73,6 +73,10 @@ export default function Product({ productData: product }) {
     return storeItemsColor[0].quantity[index].quantity !== 0 && storeItemsColor[1].quantity[index].quantity !== 0;
   };
 
+  console.log('product: ', product);
+
+  const highlightsArray = product.highlights.split('\n');
+
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
       {addedProduct ? (
@@ -292,7 +296,19 @@ export default function Product({ productData: product }) {
               {/* </div> */}
 
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                <h2 className="mb-4 text-sm font-medium text-black">Cechy produktu:</h2>
+
+                <div className="space-y-2">
+                  {highlightsArray.map((highlight) => (
+                    <p key={uuid()} className="text-sm text-gray-600">
+                      - {highlight}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <h2 className="text-sm font-medium text-black">Skład:</h2>
 
                 <div className="mt-4 space-y-6">
                   <p className="text-sm text-gray-600">{product.details}</p>

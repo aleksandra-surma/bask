@@ -29,7 +29,6 @@ const BaskShoppingConfirmation = ({ addressData, basketObj }) => {
     invoiceName,
     invoicePostalCode,
   } = addressData;
-  // <h1>Produkty przez Ciebie zamówione i opłacone:</h1>
 
   return (
     <html lang="pl">

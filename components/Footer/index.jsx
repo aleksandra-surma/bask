@@ -72,10 +72,16 @@ export default function Footer() {
           <h3 className="font-semibold mb-4">Kontakt</h3>
           <p className="mb-2">Obsługa Klienta</p>
           <p className="mb-2">Pn. - Pt. 9:00 - 16:00</p>
-          <p className="mb-2">Tel. 535 412 571</p>
-          <p className="mb-2">kontakt@bask.com.pl</p>
+          <a href="tel:+48535412571">
+            <p className="mb-2">Nr tel.: 535 412 571</p>
+          </a>
+          <a className="contact-media__mail" href="mailto:kontakt@bask.com.pl">
+            <p className="mb-2">kontakt@bask.com.pl</p>
+          </a>
           <p className="mb-2">Współpraca</p>
-          <p className="mb-2">wspolpraca@bask.com.pl</p>
+          <a className="contact-media__mail" href="mailto:wspolpraca@bask.com.pl">
+            <p className="mb-2">wspolpraca@bask.com.pl</p>
+          </a>
         </div>
       </div>
       <div className="flex justify-between mt-8 laptop:mt-20">
