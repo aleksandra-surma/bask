@@ -7,34 +7,9 @@ import useBasketState from 'hooks/useBasketState';
 import handleBasket from 'utils/handleBasket';
 import ProductAdded from 'components/ProductAdded';
 import classNames from 'helpers/classNames';
-import getAllRecords from 'services/airtable/getAllRecords';
+import { getAllRecords } from 'services/airtable/getAllRecords';
 import getProduct from 'services/airtable/getProduct';
 import { db } from 'data/dbData';
-
-export async function getStaticPaths() {
-  const products = await getAllRecords(db.products);
-
-  const paths = products.map((product) => {
-    return { params: { slug: product.slug } };
-  });
-
-  return {
-    paths,
-    fallback: false, // 404 page instead fallback page
-  };
-}
-
-export async function getStaticProps({ params: { slug } }) {
-  const productData = await getProduct(slug);
-
-  return {
-    props: {
-      productData: JSON.parse(JSON.stringify(productData)),
-      // strange solution but works https://github.com/vercel/next.js/issues/11993#issuecomment-879857441 //todo: handle it in a better way
-      // productData: productData,
-    },
-  };
-}
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -391,4 +366,29 @@ export default function Product({ productData: product }) {
       </div>
     </BaseLayout>
   );
+}
+
+export async function getStaticProps({ params: { slug } }) {
+  const productData = await getProduct(slug);
+
+  return {
+    props: {
+      productData: JSON.parse(JSON.stringify(productData)),
+      // strange solution but works https://github.com/vercel/next.js/issues/11993#issuecomment-879857441 //todo: handle it in a better way
+      // productData: productData,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const products = await getAllRecords(db.products);
+
+  const paths = products.map((product) => {
+    return { params: { slug: product.slug } };
+  });
+
+  return {
+    paths,
+    fallback: false, // 404 page instead fallback page
+  };
 }

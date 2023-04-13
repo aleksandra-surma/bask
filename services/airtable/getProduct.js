@@ -1,6 +1,6 @@
 import { db } from 'data/dbData';
 import airtableClient from './airtableClient';
-import getAllRecords from './getAllRecords';
+import { getAllRecords } from './getAllRecords';
 
 const getProduct = async (slug) => {
   const [product] = await airtableClient(db.products)

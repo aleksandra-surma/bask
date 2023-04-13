@@ -3,30 +3,6 @@ import { useEffect } from 'react';
 import BaseLayout from 'components/BaseLayout';
 import Link from 'next/link';
 
-export const getServerSideProps = async ({ query }) => {
-  const { dealId } = query;
-
-  const [dealData] = await airtableClient('temporaryCustomers')
-    .select({
-      filterByFormula: `dealId="${dealId}"`,
-    })
-    .firstPage();
-
-  // const response =
-  await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/checkout/${dealData.fields.dealId}/successPayment`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  return {
-    props: {
-      dealId: dealData.fields.dealId,
-    },
-  };
-};
-
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
 const canonical = '';
@@ -69,4 +45,28 @@ export default function Success({ dealId }) {
       </div>
     </BaseLayout>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  const { dealId } = query;
+
+  const [dealData] = await airtableClient('temporaryCustomers')
+    .select({
+      filterByFormula: `dealId="${dealId}"`,
+    })
+    .firstPage();
+
+  // const response =
+  await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/checkout/${dealData.fields.dealId}/successPayment`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return {
+    props: {
+      dealId: dealData.fields.dealId,
+    },
+  };
 }

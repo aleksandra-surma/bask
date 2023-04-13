@@ -1,11 +1,12 @@
+import { getAllRecords } from 'services/airtable/getAllRecords';
+
 const getProducts = async (req, res) => {
   switch (req.method) {
     case 'GET': {
       try {
-        // const products = await getAllProducts();
+        const products = await getAllRecords();
 
-        // res.status(200).json({ products });
-        res.status(200).json({});
+        res.status(200).json({ products });
       } catch (error) {
         res.status(422).json({ products: [] });
       }
