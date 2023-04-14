@@ -2,6 +2,7 @@ import airtableClient from 'services/airtable/airtableClient';
 import { useEffect } from 'react';
 import BaseLayout from 'components/BaseLayout';
 import Link from 'next/link';
+import { db } from '../../../data/dbData';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -22,20 +23,20 @@ export default function Success({ dealId }) {
   console.log('dealId: ', dealId);
   return (
     <BaseLayout seoData={seoData}>
-      <div className="bg-white rounded-lg mb-16">
-        <div className="flex justify-center w-full">
-          <div className="flex flex-col p-10 my-20 mx-4 bg-neutral-100">
-            <h1 className="text-xl font-semibold mb-6">Transakcja przebiegła prawidłowo.</h1>
+      <div className="mb-16 rounded-lg bg-white">
+        <div className="flex w-full justify-center">
+          <div className="my-20 mx-4 flex flex-col bg-neutral-100 p-10">
+            <h1 className="mb-6 text-xl font-semibold">Transakcja przebiegła prawidłowo.</h1>
             <p>Jak tylko środki zostaną zaksięgowane, przesyłkę przekażemy do wysyłki.</p>
             <p></p>
-            <div className="flex flex-col items-start justify-center mt-4 text-neutral-400">
+            <div className="mt-4 flex flex-col items-start justify-center text-neutral-400">
               <Link href="/store-bask" as="/sklep">
-                <a className="text-center rounded underline underline-offset-4  decoration-2 decoration-green-400  font-semibold mt-4">
+                <a className="mt-4 rounded text-center font-semibold  underline decoration-green-400  decoration-2 underline-offset-4">
                   Wróć do sklepu
                 </a>
               </Link>
               <Link href="/" as="/">
-                <a className="text-center rounded underline underline-offset-4 decoration-2  decoration-green-400  font-semibold mt-4">
+                <a className="mt-4 rounded text-center font-semibold underline  decoration-green-400  decoration-2 underline-offset-4">
                   Wróć do strony głównej
                 </a>
               </Link>
@@ -50,7 +51,10 @@ export default function Success({ dealId }) {
 export async function getServerSideProps({ query }) {
   const { dealId } = query;
 
-  const [dealData] = await airtableClient('temporaryCustomers')
+  const dbId = process.env.AIRTABLE_PAYMENTS_BASE;
+  const subDb = db.payments.temporaryCustomers;
+
+  const [dealData] = await airtableClient(dbId)(subDb)
     .select({
       filterByFormula: `dealId="${dealId}"`,
     })

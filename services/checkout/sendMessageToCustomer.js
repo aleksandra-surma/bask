@@ -16,8 +16,6 @@ import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingCon
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendMessageToCustomer = async (addressData, basketObj) => {
-  console.log('payload sendMessageToCustomer: ', addressData, basketObj);
-
   try {
     if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
       console.log('Mail test PROD');

@@ -2,6 +2,7 @@ import Stripe from 'stripe';
 import { schema } from 'data/form/schema';
 import { randomUUID } from 'crypto';
 import airtableClient from 'services/airtable/airtableClient';
+import { db } from 'data/dbData';
 
 export default async function createCheckout(payload) {
   const { userData, basket, finalPrice, shippingCost } = await schema.createCheckout.validateAsync(payload);
@@ -30,10 +31,13 @@ export default async function createCheckout(payload) {
         invoicePostalCode: userData.invoicePostalCode,
       };
 
+  const dbId = process.env.AIRTABLE_PAYMENTS_BASE;
+  const subDb = db.payments.temporaryCustomers;
+
   const {
     id: airtableId,
     fields: { dealId },
-  } = await airtableClient('temporaryCustomers').create({
+  } = await airtableClient(dbId)(subDb).create({
     dealId: randomUUID(),
     basketData: JSON.stringify(basket),
     addressData: JSON.stringify(addressData),
@@ -101,7 +105,7 @@ export default async function createCheckout(payload) {
 
   const session = await stripe.checkout.sessions.create(paymentObject);
 
-  await airtableClient('temporaryCustomers').update([
+  await airtableClient(process.env.AIRTABLE_PAYMENTS_BASE)(db.payments.temporaryCustomers).update([
     {
       id: airtableId,
       fields: {

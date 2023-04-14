@@ -15,8 +15,6 @@ export default async function stripeWebhooks(req, res) {
   const buf = await buffer(req);
   const sig = req.headers['stripe-signature'];
 
-  console.log('buf: ', buf);
-
   try {
     // buf is the raw request body from Stripe, add .toString() to convert to string and pass to stripe.webhooks.constructEvent
     const event = stripe.webhooks.constructEvent(buf.toString(), sig, process.env.STRIPE_WEBHOOK_SECRET);

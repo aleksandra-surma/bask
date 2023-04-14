@@ -2,6 +2,7 @@
 const forms = require('@tailwindcss/forms');
 const aspectRatio = require('@tailwindcss/aspect-ratio');
 const daisyui = require('daisyui');
+const prettierTailwind = require('prettier-plugin-tailwindcss');
 
 // const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -99,5 +100,6 @@ module.exports = {
   },
   // eslint-disable-next-line global-require
 
-  plugins: [forms, aspectRatio, daisyui],
+  plugins: [forms, aspectRatio, daisyui, prettierTailwind],
+  // prettierTailwind MUST come last
 };

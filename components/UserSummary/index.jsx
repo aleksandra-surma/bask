@@ -23,12 +23,12 @@ export default function UserSummary() {
   }, [basketItemsAmount, setBasketItemsAmount]);
 
   return (
-    <div className="flex col-start-3 ml-auto justify-between w-[120px] h-12 text-xs">
+    <div className="col-start-3 ml-auto flex h-12 w-[120px] justify-between text-xs">
       <Link href="/card-summary" as="/koszyk">
-        <a className="header-basket__wrapper flex flex-col justify-between items-center cursor-pointer text-gray-800 hover:text-green-500">
-          <div className="flex relative">
+        <a className="header-basket__wrapper flex cursor-pointer flex-col items-center justify-between text-gray-800 hover:text-green-500">
+          <div className="relative flex">
             <ShoppingBagIcon width={24} height={24} />
-            <div className="header-basket__items-counter absolute top-0.5 flex justify-center right-[-110%] w-[22px] h-[22px] bg-black text-white rounded-xl leading-[23px] hover:bg-green-500">
+            <div className="header-basket__items-counter absolute top-0.5 right-[-110%] flex h-[22px] w-[22px] justify-center rounded-xl bg-black leading-[23px] text-white hover:bg-green-500">
               {basketItemsAmount}
             </div>
           </div>

@@ -5,6 +5,7 @@ import AboutCompany from 'components/AboutCompany';
 import EcoPl from 'components/EcoPl';
 import UvHealth from 'components/UvHealth';
 import { getFilteredRecords } from 'services/airtable/getAllRecords';
+import { db } from '../data/dbData';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -14,8 +15,6 @@ const ogData = {};
 export default function Home({ products }) {
   const seoData = { title, description, canonical, ogData };
   const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
-
-  console.log('products: ', products);
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
@@ -35,7 +34,7 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const allProducts = await getFilteredRecords('products', "isHighlighted = '1'");
+  const allProducts = await getFilteredRecords(process.env.AIRTABLE_PRODUCTS_BASE, db.products.products, "isHighlighted = '1'");
 
   return {
     props: {

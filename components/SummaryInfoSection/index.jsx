@@ -57,11 +57,11 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
   console.log('errors', errors);
 
   return (
-    <div className="w-3/5 mr-8">
+    <div className="mr-8 w-3/5">
       {basket?.length > 0 ? (
         <form onSubmit={handleSubmit(() => handleFinalizeCheckout())}>
           <div className="mb-10">
-            <h2 className="text-3xl mb-2 font-semibold uppercase">Dane kontaktowe</h2>
+            <h2 className="mb-2 text-3xl font-semibold uppercase">Dane kontaktowe</h2>
 
             <p className="mb-4">Użyjemy tych danych, aby poinformować Cię o dostawie.</p>
 
@@ -69,7 +69,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
           </div>
 
           <div className="flex flex-wrap justify-between">
-            <h2 className="mb-4 text-3xl font-semibold uppercase w-full">Dane do wysyłki</h2>
+            <h2 className="mb-4 w-full text-3xl font-semibold uppercase">Dane do wysyłki</h2>
 
             <FormInput
               label="Imię"
@@ -134,18 +134,18 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
           <div className="my-8">
             <h2 className="text-3xl font-semibold uppercase">Dostarczenie zamówienia</h2>
 
-            <div className="bg-green-200 my-8 p-8 flex justify-between items-center">
+            <div className="my-8 flex items-center justify-between bg-green-200 p-8">
               <input
-                className="mr-4 text-black border-black border-2 focus:ring-black p-3"
+                className="mr-4 border-2 border-black p-3 text-black focus:ring-black"
                 type="checkbox"
                 {...register('shippingMethodCourier')}
                 disabled
                 checked
               />
-              <div className="w-[85%] flex justify-between">
+              <div className="flex w-[85%] justify-between">
                 <div className="flex flex-col">
-                  <h3 className="text-lg uppercase font-semibold">Dostawa kurierem</h3>
-                  <p className="text-sm mt-2">Dostawa kurierem w ciągu 1-2 dni roboczych</p>
+                  <h3 className="text-lg font-semibold uppercase">Dostawa kurierem</h3>
+                  <p className="mt-2 text-sm">Dostawa kurierem w ciągu 1-2 dni roboczych</p>
                   <p className="text-sm">Za darmo od 500zł</p>
                 </div>
                 <div className="flex items-center">
@@ -154,18 +154,18 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
               </div>
             </div>
 
-            <div className="bg-neutral-100 my-8 p-8 flex justify-between items-center cursor-not-allowed">
+            <div className="my-8 flex cursor-not-allowed items-center justify-between bg-neutral-100 p-8">
               <input
-                className="mr-4 text-black border-neutral-300 border-2 focus:ring-black p-3 cursor-not-allowed"
+                className="mr-4 cursor-not-allowed border-2 border-neutral-300 p-3 text-black focus:ring-black"
                 type="checkbox"
                 {...register('shippingMethodInpost')}
                 disabled
                 checked={false}
               />
-              <div className="w-[85%] flex justify-between">
+              <div className="flex w-[85%] justify-between">
                 <div className="flex flex-col">
-                  <h3 className="text-md uppercase font-semibold text-neutral-400">Dostawa do paczkomatu - już niedługo</h3>
-                  <p className="text-xs mt-2 text-neutral-400">Dostawa do paczkomatu jeszcze nie jest dostępna</p>
+                  <h3 className="text-md font-semibold uppercase text-neutral-400">Dostawa do paczkomatu - już niedługo</h3>
+                  <p className="mt-2 text-xs text-neutral-400">Dostawa do paczkomatu jeszcze nie jest dostępna</p>
                   {/*<p className="text-sm text-neutral-400">Za darmo od 500zł</p>*/}
                 </div>
                 <div className="flex items-center">
@@ -174,9 +174,9 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
               </div>
             </div>
 
-            <div className={classNames('flex items-center my-4 w-full')}>
+            <div className={classNames('my-4 flex w-full items-center')}>
               <input
-                className="mr-4 text-black border-black border-2 focus:ring-black p-3"
+                className="mr-4 border-2 border-black p-3 text-black focus:ring-black"
                 type="checkbox"
                 {...register('addressTheSame')}
                 onChange={() => {
@@ -189,7 +189,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
             </div>
 
             <div className={classNames(isSameAddress ? 'hidden' : '', 'flex flex-wrap justify-between')}>
-              <h2 className="mb-4 text-3xl font-semibold uppercase w-full">Szczegóły do faktury</h2>
+              <h2 className="mb-4 w-full text-3xl font-semibold uppercase">Szczegóły do faktury</h2>
 
               <FormInput
                 label="Dane osobowe lub nazwa firmy"
@@ -238,11 +238,11 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
             </div>
           </div>
 
-          <div className={classNames('flex items-center my-4 w-full')}>
-            <input className="mr-4 text-black border-black border-2 focus:ring-black p-3" type="checkbox" {...register('privacyPolicy')} />
+          <div className={classNames('my-4 flex w-full items-center')}>
+            <input className="mr-4 border-2 border-black p-3 text-black focus:ring-black" type="checkbox" {...register('privacyPolicy')} />
             <label className="">
               <Link href="/policy" as="/polityka-prywatnosci">
-                <p className="underline underline-offset-2 decoration-2 hover:text-neutral-500 cursor-pointer">Polityka prywatności *</p>
+                <p className="cursor-pointer underline decoration-2 underline-offset-2 hover:text-neutral-500">Polityka prywatności *</p>
               </Link>
 
               <p className="text-sm text-neutral-600">
@@ -252,19 +252,19 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
             </label>
           </div>
 
-          {errors.privacyPolicy ? <p className="text-sm mt-2 text-red-600">{errors.privacyPolicy.message}</p> : null}
+          {errors.privacyPolicy ? <p className="mt-2 text-sm text-red-600">{errors.privacyPolicy.message}</p> : null}
 
-          <div className="flex mt-8">
+          <div className="mt-8 flex">
             <button
               type="submit"
               disabled={isCheckoutDisabled}
               className={classNames(
-                'bg-black rounded w-full laptop:w-[420px]',
-                isCheckoutDisabled ? 'bg-neutral-400 cursor-not-allowed' : 'hover:bg-green-600',
-                processing ? 'bg-neutral-400 cursor-not-allowed hover:bg-neutral-400' : '',
+                'w-full rounded bg-black laptop:w-[420px]',
+                isCheckoutDisabled ? 'cursor-not-allowed bg-neutral-400' : 'hover:bg-green-600',
+                processing ? 'cursor-not-allowed bg-neutral-400 hover:bg-neutral-400' : '',
               )}
             >
-              <p className="font-semibold py-6 text-white">{processing ? 'PROSZĘ ZACZEKAĆ...' : 'PRZEJDŹ DO PŁATNOŚCI'}</p>
+              <p className="py-6 font-semibold text-white">{processing ? 'PROSZĘ ZACZEKAĆ...' : 'PRZEJDŹ DO PŁATNOŚCI'}</p>
             </button>
           </div>
         </form>
@@ -272,7 +272,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
         <div className="flex flex-col items-center justify-center">
           <p className="text-xl font-semibold">Twój koszyk jest pusty</p>
           <Link href="/store-bask" as="/sklep">
-            <a className="text-center rounded underline font-semibold mt-4">Wróć do sklepu</a>
+            <a className="mt-4 rounded text-center font-semibold underline">Wróć do sklepu</a>
           </Link>
         </div>
       )}

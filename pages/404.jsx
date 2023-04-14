@@ -11,20 +11,20 @@ export default function FourOneFour() {
 
   return (
     <BaseLayout seoData={seoData}>
-      <div className="bg-white rounded-lg mb-16">
-        <div className="flex justify-center w-full">
-          <div className="flex flex-col p-10 my-20 mx-4 bg-neutral-100">
-            <h1 className="text-4xl font-semibold text-green-500 mb-2">Strona 404</h1>
+      <div className="mb-16 rounded-lg bg-white">
+        <div className="flex w-full justify-center">
+          <div className="my-20 mx-4 flex flex-col bg-neutral-100 p-10">
+            <h1 className="mb-2 text-4xl font-semibold text-green-500">Strona 404</h1>
             {/* <p>Jak tylko środki zostaną zaksięgowane, przesyłkę przekażemy do wysyłki.</p> */}
-            <div className="flex flex-col items-start justify-center mt-4 text-neutral-400">
+            <div className="mt-4 flex flex-col items-start justify-center text-neutral-400">
               <Link href="/store-bask" as="/sklep">
-                <a className="text-center rounded underline underline-offset-4  decoration-2 decoration-green-400  font-semibold mt-4">
+                <a className="mt-4 rounded text-center font-semibold  underline decoration-green-400  decoration-2 underline-offset-4">
                   Wróć do sklepu
                 </a>
               </Link>
 
               <Link href="/" as="/">
-                <a className="text-center rounded underline underline-offset-4 decoration-2  decoration-green-400 font-semibold mt-4">
+                <a className="mt-4 rounded text-center font-semibold underline  decoration-green-400 decoration-2 underline-offset-4">
                   Wróć do strony głównej
                 </a>
               </Link>

@@ -48,8 +48,6 @@ export default function Product({ productData: product }) {
     return storeItemsColor[0].quantity[index].quantity !== 0 && storeItemsColor[1].quantity[index].quantity !== 0;
   };
 
-  // console.log('product: ', product);
-
   const highlightsArray = product.highlights.split('\n');
 
   return (
@@ -92,7 +90,7 @@ export default function Product({ productData: product }) {
                 quality={80}
                 layout="fill"
                 objectFit="cover"
-                className="h-full w-full object-cover object-center rounded-lg"
+                className="h-full w-full rounded-lg object-cover object-center"
               />
             </div>
             <div className="relative h-[500px]">
@@ -102,7 +100,7 @@ export default function Product({ productData: product }) {
                 quality={80}
                 layout="fill"
                 objectFit="cover"
-                className="h-full w-full object-cover object-center rounded-lg"
+                className="h-full w-full rounded-lg object-cover object-center"
               />
             </div>
             <div className="relative h-[500px]">
@@ -112,7 +110,7 @@ export default function Product({ productData: product }) {
                 quality={80}
                 layout="fill"
                 objectFit="cover"
-                className="h-full w-full object-cover object-center rounded-lg"
+                className="h-full w-full rounded-lg object-cover object-center"
               />
             </div>
           </div>
@@ -127,7 +125,7 @@ export default function Product({ productData: product }) {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               {/* Price */}
-              <p className="text-4xl tracking-tight text-gray-900 font-semibold">{product.price} zł</p>
+              <p className="text-4xl font-semibold tracking-tight text-gray-900">{product.price} zł</p>
 
               <form className="mt-10">
                 {/* Colors */}
@@ -168,7 +166,7 @@ export default function Product({ productData: product }) {
 
                     <label
                       htmlFor="sizes-table-modal"
-                      className="text-xs underline underline-offset-2 text-green-600 hover:text-green-500 cursor-pointer"
+                      className="cursor-pointer text-xs text-green-600 underline underline-offset-2 hover:text-green-500"
                     >
                       Tabela rozmiarów
                     </label>
@@ -177,7 +175,7 @@ export default function Product({ productData: product }) {
                   <input type="checkbox" id="sizes-table-modal" className="modal-toggle" />
                   <div className="modal">
                     <div className="modal-box">
-                      <h3 className="font-bold text-lg mb-4">Tabela rozmiarów</h3>
+                      <h3 className="mb-4 text-lg font-bold">Tabela rozmiarów</h3>
                       <div className="overflow-x-auto">
                         <table className="table w-full">
                           {/* head */}
@@ -197,7 +195,7 @@ export default function Product({ productData: product }) {
                               </td>
                             </tr>
 
-                            {/* row 1 */}
+                            {/* row 2 */}
                             <tr>
                               <td>98/104</td>
                               <td>
@@ -206,7 +204,7 @@ export default function Product({ productData: product }) {
                               </td>
                             </tr>
 
-                            {/* row 1 */}
+                            {/* row 3 */}
                             <tr>
                               <td>110/116</td>
                               <td>
@@ -215,12 +213,21 @@ export default function Product({ productData: product }) {
                               </td>
                             </tr>
 
-                            {/* row 1 */}
+                            {/* row 4 */}
                             <tr>
                               <td>122/128</td>
                               <td>
                                 <p>bluzka: dł. 46 cm, szer. 32 cm</p>
                                 <p>spodenki: dł. 29 cm, szer. 29 cm</p>
+                              </td>
+                            </tr>
+
+                            {/* row 5 */}
+                            <tr>
+                              <td>134/140</td>
+                              <td>
+                                <p>bluzka: dł. 50 cm, szer. 34 cm</p>
+                                <p>spodenki: dł. 30 cm, szer. 30 cm</p>
                               </td>
                             </tr>
                           </tbody>
@@ -245,7 +252,6 @@ export default function Product({ productData: product }) {
                     <RadioGroup.Label className="sr-only"> Choose a size </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-4 sm:grid-cols-5 lg:grid-cols-4">
                       {product.store[0].quantity.map((sizeObj, index) => {
-                        console.log('sizeObj: ', sizeObj);
                         return (
                           <RadioGroup.Option
                             key={uuid()}
@@ -381,7 +387,10 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export async function getStaticPaths() {
-  const products = await getAllRecords(db.products);
+  const dbId = process.env.AIRTABLE_PRODUCTS_BASE;
+  const subDb = db.products.products;
+
+  const products = await getAllRecords(dbId, subDb);
 
   const paths = products.map((product) => {
     return { params: { slug: product.slug } };

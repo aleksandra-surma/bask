@@ -29,27 +29,27 @@ export default function ProductSummary({ product }) {
   }, [product.quantity, productQuantity, setProductQuantity]);
 
   return (
-    <div className="bg-white rounded-lg mb-8">
+    <div className="mb-8 rounded-lg bg-white">
       <div className="flex w-full">
-        <div className="relative w-[120px] h-[120px]">
+        <div className="relative h-[120px] w-[120px]">
           <Image src={product.img} className="rounded-lg" layout="fill" objectFit="cover" />
         </div>
-        <div className="justify-center px-6 w-full">
-          <div className="flex justify-between items-center">
+        <div className="w-full justify-center px-6">
+          <div className="flex items-center justify-between">
             <h3 className="text-md">{product.name}</h3>
           </div>
-          <div className="flex my-2">
-            <p className="text-sm mr-4">Rozmiar:</p>
+          <div className="my-2 flex">
+            <p className="mr-4 text-sm">Rozmiar:</p>
             <p className="text-sm">{product.size}</p>
           </div>
-          <div className="flex text-sm my-2">
+          <div className="my-2 flex text-sm">
             <p className="mr-4">Kolor:</p>
             <p>{product.color}</p>
           </div>
           {/* Quantity */}
           <div className="flex">
             <div className="flex">
-              <p className="text-sm mr-2">Cena:</p>
+              <p className="mr-2 text-sm">Cena:</p>
               <p className="text-sm">{product.price * product.quantity} zł /</p>
             </div>
             <div className="flex">

@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import { getCustomersOrder } from 'services/airtable/getCustomersOrder';
 import airtableClient from 'services/airtable/airtableClient';
+import { db } from '../../data/dbData';
 
 export default async function finalize(dealId) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -18,7 +19,10 @@ export default async function finalize(dealId) {
   const paymentIntent = await stripe.paymentIntents.retrieve(checkout.payment_intent);
 
   if (paymentIntent.status === 'succeeded') {
-    const [temporaryCustomer] = await airtableClient('temporaryCustomers').update([
+    const dbId = process.env.AIRTABLE_PAYMENTS_BASE;
+    const subDb = db.payments.temporaryCustomers;
+
+    const [temporaryCustomer] = await airtableClient(dbId)(subDb).update([
       {
         id: customerOrder.id,
         fields: {

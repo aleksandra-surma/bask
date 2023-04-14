@@ -2,6 +2,7 @@ import BaseLayout from 'components/BaseLayout';
 import EnterParagraph from 'components/StoreBask/EnterParagraph';
 import Products from 'components/StoreBask/Products';
 import { getAllRecords } from 'services/airtable/getAllRecords';
+import { db } from 'data/dbData';
 
 const title = '';
 const description = '';
@@ -14,7 +15,7 @@ export default function StoreBask({ products }) {
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
-      <div className="flex flex-col my-8 laptop:my-20 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
+      <div className="m-auto my-8 flex w-full max-w-screen-xl flex-col px-4 text-gray-700 tablet:px-8 laptop:my-20">
         <EnterParagraph />
         {/* <Filters /> */}
         <Products products={products} />
@@ -24,7 +25,10 @@ export default function StoreBask({ products }) {
 }
 
 export async function getServerSideProps() {
-  const allProducts = await getAllRecords('products');
+  const dbId = process.env.AIRTABLE_PRODUCTS_BASE;
+  const subDb = db.products.products;
+
+  const allProducts = await getAllRecords(dbId, subDb);
 
   return {
     props: {

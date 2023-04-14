@@ -7,27 +7,27 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
   const imgSrc = addedProduct[`attachments-${selectedColor}`][0].thumbnails.large.url;
 
   return (
-    <div className="fixed top-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)] w-screen h-screen z-10">
-      <div className="bg-white rounded-lg p-8 mx-4">
-        <div className="flex relative pb-6 mb-8 border-b-2">
-          <h2 className="text-3xl tablet:6xl">Produkt został dodany do koszyka</h2>
+    <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.3)]">
+      <div className="mx-4 rounded-lg bg-white p-8">
+        <div className="relative mb-8 flex border-b-2 pb-6">
+          <h2 className="tablet:6xl text-3xl">Produkt został dodany do koszyka</h2>
 
-          <button type="button" onClick={() => setAddedProduct(null)} className="absolute top-[-20px] right-[-20px] font-bold text-lg">
+          <button type="button" onClick={() => setAddedProduct(null)} className="absolute top-[-20px] right-[-20px] text-lg font-bold">
             X
           </button>
         </div>
         <div className="flex">
-          <div className="relative w-[160px] h-[280px]">
+          <div className="relative h-[280px] w-[160px]">
             <Image src={imgSrc} className="rounded-xl" layout="fill" objectFit="cover" />
           </div>
           <div className="mx-auto justify-center px-6">
             <h3 className="text-2xl font-semibold">{addedProduct.name}</h3>
-            <div className="flex my-6">
-              <p className="text-xl mr-4">Rozmiar:</p>
+            <div className="my-6 flex">
+              <p className="mr-4 text-xl">Rozmiar:</p>
               <p className="text-xl font-semibold">{selectedSize}</p>
             </div>
-            <div className="flex my-6">
-              <p className="text-xl mr-4">Kolor:</p>
+            <div className="my-6 flex">
+              <p className="mr-4 text-xl">Kolor:</p>
               {/* <p className="text-xl font-semibold">{selectedColor}</p> */}
               <span
                 aria-hidden="true"
@@ -37,8 +37,8 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
                 )}
               />
             </div>
-            <div className="flex my-6">
-              <p className="text-xl mr-4">Cena:</p>
+            <div className="my-6 flex">
+              <p className="mr-4 text-xl">Cena:</p>
               <p className="text-xl font-semibold">{addedProduct.price} zł</p>
             </div>
             <div className="flex justify-between">
@@ -46,7 +46,7 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
                 Kontynuj zakupy
               </button>
               <Link href="/card-summary" as="/koszyk">
-                <a className="cursor-pointer underline underline-offset-4 hover:text-black p-4 mr-6 tablet:mr-8 tablet:ml-8 tablet:p-0 hover:underline underline-offset-4 transition ">
+                <a className="mr-6 cursor-pointer p-4 underline underline-offset-4 underline-offset-4 transition hover:text-black hover:underline tablet:mr-8 tablet:ml-8 tablet:p-0 ">
                   Przejdź do koszyka
                 </a>
               </Link>

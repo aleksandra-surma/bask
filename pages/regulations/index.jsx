@@ -14,18 +14,18 @@ export default function Regulations() {
 
   return (
     <BaseLayout seoData={seoData}>
-      <div className="mx-auto max-w-screen-xl mx-6 mb-12 mt-10">
+      <div className="mx-auto mx-6 mb-12 mt-10 max-w-screen-xl">
         <div className="flex flex-col">
-          <div className="px-4 sm:px-0 tablet:px-6 w-full ">
+          <div className="w-full px-4 sm:px-0 tablet:px-6 ">
             <h2 className="text-4xl font-bold leading-10 text-gray-900">{headline}</h2>
-            <p className="text-2xl mt-2 leading-10 text-gray-900">{subtitle}</p>
+            <p className="mt-2 text-2xl leading-10 text-gray-900">{subtitle}</p>
             <p className="text-2xl leading-10 text-gray-900">{page}</p>
             <ul className="mt-4">
               {sections.map(({ title: sectionTitle, subtitle: sectionSubtitle, pointsRegulations }, index) => {
                 return (
                   <li key={uuid()} className="mb-8">
-                    <p className="text-center font-semibold text-xl">{`§ ${index + 1}`}</p>
-                    <h3 className="text-center text-xl mb-4">{sectionTitle}</h3>
+                    <p className="text-center text-xl font-semibold">{`§ ${index + 1}`}</p>
+                    <h3 className="mb-4 text-center text-xl">{sectionTitle}</h3>
                     {sectionSubtitle ? <p>{sectionSubtitle}</p> : null}
                     {pointsRegulations.map((point, regIndex) => {
                       if (typeof point === 'object' && !Array.isArray(point)) {

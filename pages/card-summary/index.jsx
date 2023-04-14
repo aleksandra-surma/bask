@@ -39,38 +39,38 @@ export default function BasketSummary() {
 
   return (
     <BaseLayout seoData={seoData}>
-      <div className="flex flex-col my-8 laptop:mb-8 laptop:mt-8 w-full m-auto max-w-screen-xl text-gray-700 px-4 tablet:px-8">
-        <div className="flex w-full items-center border-b border-b-2 pb-8 mb-8 border-neutral-200">
+      <div className="m-auto my-8 flex w-full max-w-screen-xl flex-col px-4 text-gray-700 tablet:px-8 laptop:mb-8 laptop:mt-8">
+        <div className="mb-8 flex w-full items-center border-b border-b-2 border-neutral-200 pb-8">
           <h2>Twój koszyk</h2>
-          <div className="flex text-2xl bg-neutral-200 p-4 ml-4">
+          <div className="ml-4 flex bg-neutral-200 p-4 text-2xl">
             <p className="m">
               {basketItemsAmount} <span>prod.</span>
             </p>
           </div>
         </div>
-        <div className="border-b border-b-2 pb-8 border-neutral-200">
+        <div className="border-b border-b-2 border-neutral-200 pb-8">
           {basket.map((product) => (
             <ProductBasket key={uuid()} product={product} />
           ))}
         </div>
-        <div className="flex justify-end m-6">
+        <div className="m-6 flex justify-end">
           <div className="flex">
-            <p className="text-2xl mr-4">Łączna kwota:</p>
+            <p className="mr-4 text-2xl">Łączna kwota:</p>
             <p className="text-2xl font-semibold">{finalPrice} zł</p>
           </div>
         </div>
 
-        <div className="flex justify-end mt-8">
+        <div className="mt-8 flex justify-end">
           <Link href="/card-summary/shopping-summary" as="/koszyk/podsumowanie-zakupow">
             <button
               type="button"
               disabled={isShoppingSummaryDisabled}
               className={classNames(
-                'bg-black rounded w-full laptop:w-[420px]',
-                isShoppingSummaryDisabled ? 'bg-neutral-400 text-neutral-100 cursor-not-allowed' : 'hover:bg-green-600 text-white',
+                'w-full rounded bg-black laptop:w-[420px]',
+                isShoppingSummaryDisabled ? 'cursor-not-allowed bg-neutral-400 text-neutral-100' : 'text-white hover:bg-green-600',
               )}
             >
-              <p className="font-semibold py-3 text-white">PRZEJDŹ DO PODSUMOWANIA</p>
+              <p className="py-3 font-semibold text-white">PRZEJDŹ DO PODSUMOWANIA</p>
             </button>
           </Link>
         </div>

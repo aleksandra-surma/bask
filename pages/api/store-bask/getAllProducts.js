@@ -4,6 +4,7 @@ const getProducts = async (req, res) => {
   switch (req.method) {
     case 'GET': {
       try {
+        console.log('TEST getProducts');
         const products = await getAllRecords();
 
         res.status(200).json({ products });

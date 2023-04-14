@@ -17,18 +17,18 @@ export default function UvEducation() {
 
   return (
     <BaseLayout seoData={seoData} indexPage={indexingCondition}>
-      <section className="w-full px-4 tablet:px-8 pb-20">
-        <div className="flex flex-col-reverse m-auto relative items-center laptop:items-end min-h-[60vh] max-w-screen-xl">
-          <div className="relative block h-[500px] tablet:h-[720px] w-[100%] laptop:w-[40%] laptop:h-[80%] laptop:absolute laptop:top-[0] laptop:left-0 desktop:h-[60%] mt-12">
+      <section className="w-full px-4 pb-20 tablet:px-8">
+        <div className="relative m-auto flex min-h-[60vh] max-w-screen-xl flex-col-reverse items-center laptop:items-end">
+          <div className="relative mt-12 block h-[500px] w-[100%] tablet:h-[720px] laptop:absolute laptop:top-[0] laptop:left-0 laptop:h-[80%] laptop:w-[40%] desktop:h-[60%]">
             <Image src={uvHealth} layout="fill" objectFit="cover" quality={80} priority alt="" />
           </div>
           <Description title={healthTextContent.firstSection.title} description={healthTextContent.firstSection.description} />
         </div>
       </section>
 
-      <section className="w-full bg-gray-50 mt-10 px-4 tablet:px-8 pb-20 mb-[100px]">
-        <div className="flex flex-col-reverse laptop:flex-col m-auto justify-center relative items-center laptop:items-end min-h-[60vh] max-w-screen-xl">
-          <div className="relative block h-[500px] tablet:h-[720px] w-[100%] laptop:w-[40%] laptop:h-full laptop:absolute laptop:bottom-[-100px] laptop:right-0 desktop:top-[-60px] desktop:h-3/4">
+      <section className="mt-10 mb-[100px] w-full bg-gray-50 px-4 pb-20 tablet:px-8">
+        <div className="relative m-auto flex min-h-[60vh] max-w-screen-xl flex-col-reverse items-center justify-center laptop:flex-col laptop:items-end">
+          <div className="relative block h-[500px] w-[100%] tablet:h-[720px] laptop:absolute laptop:bottom-[-100px] laptop:right-0 laptop:h-full laptop:w-[40%] desktop:top-[-60px] desktop:h-3/4">
             <Image src={uvRadiation} layout="fill" objectFit="cover" quality={80} alt="" />
           </div>
           <div>
@@ -37,9 +37,9 @@ export default function UvEducation() {
         </div>
       </section>
 
-      <section className="w-full px-4 tablet:px-8 pb-20">
-        <div className="flex flex-col-reverse m-auto relative items-center laptop:items-end min-h-[60vh] max-w-screen-xl">
-          <div className="relative block h-[500px] tablet:h-[720px] w-[100%] laptop:w-[40%] laptop:h-[80%] laptop:absolute laptop:top-[0] laptop:left-0 desktop:h-[80%] mt-12">
+      <section className="w-full px-4 pb-20 tablet:px-8">
+        <div className="relative m-auto flex min-h-[60vh] max-w-screen-xl flex-col-reverse items-center laptop:items-end">
+          <div className="relative mt-12 block h-[500px] w-[100%] tablet:h-[720px] laptop:absolute laptop:top-[0] laptop:left-0 laptop:h-[80%] laptop:w-[40%] desktop:h-[80%]">
             <Image src={uvProtection} layout="fill" objectFit="cover" quality={80} alt="" />
           </div>
           <Description title={fabricTextContent.secondSection.title} description={fabricTextContent.secondSection.description} />

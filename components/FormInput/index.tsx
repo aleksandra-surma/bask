@@ -44,21 +44,21 @@ const FormInput = ({
   switch (type) {
     case 'text': {
       return (
-        <div className={classNames('flex flex-col mb-4', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
+        <div className={classNames('mb-4 flex flex-col', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
           <label className="">
             {label} {notRequired ? '' : '*'}
           </label>
           <input className="" type={type} {...register(name)} />
-          {error && <p className="text-sm mt-2 text-red-600">{error}</p>}
+          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
         </div>
       );
     }
     case 'checkbox': {
       // console.log('defaultCheck: ', checkboxValue);
       return (
-        <div className={classNames('flex items-center my-4 w-full')}>
+        <div className={classNames('my-4 flex w-full items-center')}>
           <input
-            className="mr-4 text-black border-black border-2 focus:ring-black p-3"
+            className="mr-4 border-2 border-black p-3 text-black focus:ring-black"
             type="checkbox"
             // defaultValue={defaultCheck}
             {...register(name)}
@@ -77,7 +77,7 @@ const FormInput = ({
 
     default: {
       return (
-        <div className={classNames('flex flex-col mb-4', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
+        <div className={classNames('mb-4 flex flex-col', halfView ? 'w-[calc(50%-10px)]' : 'w-full')}>
           <label className="">
             {label} {notRequired ? '' : '*'}
           </label>

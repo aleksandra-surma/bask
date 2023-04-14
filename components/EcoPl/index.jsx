@@ -9,15 +9,15 @@ const moreAs = '/o-firmie';
 
 export default function EcoPl({ shortDescription = false }) {
   return (
-    <section className="w-full px-4 tablet:px-8 desktop:my-20 overflow-hidden">
-      <div className="flex flex-col m-auto justify-center relative items-center laptop:items-start min-h-[60vh] max-w-screen-xl">
+    <section className="w-full overflow-hidden px-4 tablet:px-8 desktop:my-20">
+      <div className="relative m-auto flex min-h-[60vh] max-w-screen-xl flex-col items-center justify-center laptop:items-start">
         {shortDescription ? (
           <ShortDescription title={ecoTextContent.title} description={ecoTextContent.shortDescription} moreHref={moreHref} moreAs={moreAs} />
         ) : (
           <Description title={ecoTextContent.title} description={ecoTextContent.description} />
         )}
 
-        <div className="relative block w-full h-[500px] laptop:w-[40%] desktop:w-2/5 laptop:h-[80%] desktop:h-[100%] laptop:absolute desktop:mt-0 laptop:top-[10%] desktop:top-0 laptop:right-[-40px]">
+        <div className="relative block h-[500px] w-full laptop:absolute laptop:top-[10%] laptop:right-[-40px] laptop:h-[80%] laptop:w-[40%] desktop:top-0 desktop:mt-0 desktop:h-[100%] desktop:w-2/5">
           <Image src={ecoPl} layout="fill" objectFit="cover" quality={80} alt="" />
         </div>
       </div>

@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 export default function LogInForm() {
   return (
-    <form className="w-full max-w-screen-sm px-4 laptop:px-10 mt-4 mb-12" onSubmit={() => {}}>
-      <div className="min-h-full items-center justify-center pt-8 border border-gray-200 rounded-lg">
+    <form className="mt-4 mb-12 w-full max-w-screen-sm px-4 laptop:px-10" onSubmit={() => {}}>
+      <div className="min-h-full items-center justify-center rounded-lg border border-gray-200 pt-8">
         <div className="px-10">
           <div>
             <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">Zaloguj się</h2>
-            <p className="text-xs text-gray-500 text-center mt-2">...i rób zakupy w łatwiejszy sposób</p>
+            <p className="mt-2 text-center text-xs text-gray-500">...i rób zakupy w łatwiejszy sposób</p>
             {/* <p className="text-xs text-gray-500 text-center mt-2">Błyskawicznie i niezobowiązująco.</p> */}
           </div>
           <input type="hidden" name="remember" defaultValue="true" />
@@ -42,7 +42,7 @@ export default function LogInForm() {
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="text-sm my-8">
+            <div className="my-8 text-sm">
               <Link href="/userAccount/password-recovery" as="/moje-konto/odzyskanie-hasla">
                 <a>
                   <p className="font-medium text-green-700 hover:text-green-600">Zapomniałaś(eś) hasło?</p>
@@ -51,7 +51,7 @@ export default function LogInForm() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-50 pt-6 pb-2 px-10 w-full">
+        <div className="w-full bg-gray-50 px-10 pt-6 pb-2">
           <button
             type="submit"
             className="group relative flex w-full justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
@@ -62,7 +62,7 @@ export default function LogInForm() {
             Zaloguj się
           </button>
           <Link href="/userAccount/create-account" as="/moje-konto/nowe-konto">
-            <a className="group mt-2 relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-gray-800 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+            <a className="group relative mt-2 flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium text-gray-800 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
               Utwórz konto
             </a>
           </Link>

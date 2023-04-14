@@ -11,12 +11,12 @@ export default function CreateAccount() {
   const seoData = { title, description, canonical, ogData };
   return (
     <BaseLayout seoData={seoData}>
-      <form className="w-full max-w-screen-sm px-4 laptop:px-10 mt-4 mb-12" onSubmit={() => {}}>
-        <div className="min-h-full items-center justify-center pt-8 border border-gray-200 rounded-lg">
-          <div className="px-10 space-y-8">
+      <form className="mt-4 mb-12 w-full max-w-screen-sm px-4 laptop:px-10" onSubmit={() => {}}>
+        <div className="min-h-full items-center justify-center rounded-lg border border-gray-200 pt-8">
+          <div className="space-y-8 px-10">
             <div>
               <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">Utwórz konto</h2>
-              <p className="text-xs text-gray-500 text-center mt-2">Błyskawicznie i niezobowiązująco</p>
+              <p className="mt-2 text-center text-xs text-gray-500">Błyskawicznie i niezobowiązująco</p>
             </div>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className=" rounded-md shadow-sm">
@@ -74,7 +74,7 @@ export default function CreateAccount() {
               </div>
             </div>
             <div className="flex items-center">
-              <div className="text-sm mb-8 mr-10">
+              <div className="mb-8 mr-10 text-sm">
                 <Link href="/user-account/password-recovery" as="/moje-konto/odzyskanie-hasla">
                   <a>
                     <p className="font-medium text-green-700 hover:text-green-600">Mam konto chcę się zalogować...</p>
@@ -83,7 +83,7 @@ export default function CreateAccount() {
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 py-6 px-10 w-full">
+          <div className="w-full bg-gray-50 py-6 px-10">
             <button
               type="submit"
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"

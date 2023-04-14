@@ -39,16 +39,16 @@ export default function ShoppingSummary() {
 
   return (
     <BaseLayout seoData={seoData}>
-      <div className="flex w-full px-8 my-8 max-w-screen-xl">
+      <div className="my-8 flex w-full max-w-screen-xl px-8">
         {/* Address and other necessary data */}
         <SummaryInfoSection basket={basket} finalPrice={finalPrice} shippingCost={shippingCost} />
 
         {/* Right site of page - Summary */}
-        <div className="flex flex-col w-2/5 pl-4 text-gray-800">
+        <div className="flex w-2/5 flex-col pl-4 text-gray-800">
           <div className="flex w-full items-center">
-            <h2 className="text-xl uppercase font-semibold">Podsumowanie zamówienia</h2>
+            <h2 className="text-xl font-semibold uppercase">Podsumowanie zamówienia</h2>
           </div>
-          <div className="flex justify-between my-4 text-lg">
+          <div className="my-4 flex justify-between text-lg">
             <p className="">
               {basketItemsAmount} <span>prod.</span>
             </p>
@@ -57,12 +57,12 @@ export default function ShoppingSummary() {
             </div>
           </div>
 
-          <div className="flex justify-between mb-4 text-lg border-b border-b-2 pb-4 border-neutral-200">
+          <div className="mb-4 flex justify-between border-b border-b-2 border-neutral-200 pb-4 text-lg">
             <div>
               <p>Dostawa:</p>
               <p className="text-xs text-neutral-500">NA TERENIE POLSKI</p>
             </div>
-            <div className="flex flex-col items-end relative">
+            <div className="relative flex flex-col items-end">
               <p className={classNames(shippingCost === 0 ? '' : 'font-semibold')}>{shippingCost === 0 ? 'Za darmo' : `${shippingCost}zł`}</p>
               {shippingCost > 0 ? (
                 <div className="text-xs">
@@ -72,18 +72,18 @@ export default function ShoppingSummary() {
             </div>
           </div>
 
-          <div className="flex justify-between text-lg border-b border-b-2 pb-4 border-neutral-200">
-            <p className="mr-4 uppercase font-semibold">Razem:</p>
+          <div className="flex justify-between border-b border-b-2 border-neutral-200 pb-4 text-lg">
+            <p className="mr-4 font-semibold uppercase">Razem:</p>
             <p className="font-semibold">{finalPrice + shippingCost} zł</p>
           </div>
-          <div className="border-b border-b-2 pt-8 border-neutral-200">
+          <div className="border-b border-b-2 border-neutral-200 pt-8">
             {basket.map((product) => (
               <ProductSummary key={uuid()} product={product} />
             ))}
           </div>
-          <div className="flex justify-end my-6">
+          <div className="my-6 flex justify-end">
             <div className="flex">
-              <p className="text-2xl mr-4">Łączna kwota:</p>
+              <p className="mr-4 text-2xl">Łączna kwota:</p>
               <p className="text-2xl font-semibold">{finalPrice + shippingCost} zł</p>
             </div>
           </div>
