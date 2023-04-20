@@ -2,7 +2,9 @@ import airtableClient from 'services/airtable/airtableClient';
 import { useEffect } from 'react';
 import BaseLayout from 'components/BaseLayout';
 import Link from 'next/link';
-import { db } from '../../../data/dbData';
+import { db } from 'data/dbData';
+import { initialBasketState } from 'contexts/BasketContext';
+import useBasketState from 'hooks/useBasketState';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
@@ -13,10 +15,12 @@ const ogData = {};
 
 export default function Success({ dealId }) {
   const seoData = { title, description, canonical, ogData };
+  const { setBasketItemsAmount } = useBasketState(null);
 
   useEffect(() => {
     setTimeout(() => {
-      localStorage.removeItem('bask-basket');
+      localStorage.setItem('bask-basket', JSON.stringify(initialBasketState));
+      setBasketItemsAmount(0);
     }, 100);
   }, []);
 

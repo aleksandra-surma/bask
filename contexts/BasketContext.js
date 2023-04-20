@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 import { basketReducer } from '../reducers/basketReducer';
 import usePersistedContext from '../hooks/usePersistedContext';
 
-const initialBasketState = { basket: [] };
+export const initialBasketState = { basket: [] };
 // create a new context object
 export const BasketContext = createContext(initialBasketState);
 
