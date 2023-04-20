@@ -9,10 +9,7 @@ export default function Footer() {
       <div className="flex flex-col justify-between laptop:flex-row">
         <div className="laptop:w-1/5">
           <h3 className="mb-4 font-semibold">Bask</h3>
-          {/*<p>*/}
-          {/*  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium architecto deserunt, doloremque facere maiores perferendis placeat*/}
-          {/*  quos.*/}
-          {/*</p>*/}
+          <p>BASK - zdrowa skóra na co dzień! Sklep internetowy ze strojami uv dla dzieci.</p>
           <ul className="mt-8">
             <li className="mb-2 hover:text-gray-400 hover:underline hover:decoration-gray-400 hover:underline-offset-4">
               <Link href="/store-bask" as="/sklep">
