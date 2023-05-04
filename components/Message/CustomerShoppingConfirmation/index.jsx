@@ -9,7 +9,7 @@
  */
 import { randomUUID } from 'crypto';
 
-const CustomerShoppingConfirmation = ({ addressData, basketObj }) => {
+const CustomerShoppingConfirmation = ({ addressData, basketData }) => {
   const {
     email,
     firstName,
@@ -20,7 +20,6 @@ const CustomerShoppingConfirmation = ({ addressData, basketObj }) => {
     city,
     phoneNumber,
     nip,
-    finalPrice,
     addressTheSame,
     invoiceAddress,
     invoiceAdditionalAddress,
@@ -29,6 +28,7 @@ const CustomerShoppingConfirmation = ({ addressData, basketObj }) => {
     invoicePostalCode,
   } = addressData;
   // <h1>Produkty przez Ciebie zamówione i opłacone:</h1>
+  const { basketArray: basket, finalPrice, shippingCost } = basketData;
 
   return (
     <html lang="pl">
@@ -55,7 +55,7 @@ const CustomerShoppingConfirmation = ({ addressData, basketObj }) => {
               <div style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#fff', padding: '20px' }}>
                 <img src="https://i.postimg.cc/T1Mzv5fR/bask-logo.png" style={{ width: '120px', height: '60px' }} alt="Bask logo" />
                 <h1>Produkty zamówione i opłacone:</h1>
-                {basketObj.map((item) => {
+                {basket.map((item) => {
                   return (
                     <div key={randomUUID()} style={{ marginBottom: '6px', borderBottom: '1px solid gray' }}>
                       <p>Nazwa produktu: {item.name}</p>
@@ -66,7 +66,7 @@ const CustomerShoppingConfirmation = ({ addressData, basketObj }) => {
                     </div>
                   );
                 })}
-                <p>Suma zamówienia wraz z kosztem dostawy: {finalPrice}zł</p>
+                <p>Suma zamówienia wraz z kosztem dostawy: {finalPrice + shippingCost}zł</p>
 
                 <h2>Zamówienie zostanie dostarczone na adres:</h2>
                 <p>Imię: {firstName}</p>

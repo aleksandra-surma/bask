@@ -23,7 +23,9 @@ export default function HighlightedOffers({ products }) {
                     alt=""
                   />
                 </div>
+
                 <p className="ml-1 text-gray-600">{product.name}</p>
+
                 <p className="ml-1 font-semibold">{product.price} zł</p>
               </div>
             </Link>

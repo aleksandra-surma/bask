@@ -16,8 +16,8 @@ import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmatio
 
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendMessageToBask = async (addressData, basketObj) => {
-  console.log('payload sendMessageToBask: ', addressData, basketObj);
+const sendMessageToBask = async (addressData, basketData) => {
+  console.log('payload sendMessageToBask: ', addressData, basketData);
 
   try {
     if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
@@ -36,7 +36,7 @@ const sendMessageToBask = async (addressData, basketObj) => {
         to: 'kontakt@bask.com.pl',
         replyTo: `${addressData.email}`,
         subject: '✔ Bask - klient opłacił zamówienie 🛒',
-        html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketObj={basketObj} />),
+        html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
       });
     } else {
       // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
@@ -53,7 +53,7 @@ const sendMessageToBask = async (addressData, basketObj) => {
         from: 'Sender Name <sender@example.com>',
         to: 'Recipient <recipient@example.com>',
         subject: '✔ Bask - klient opłacił zamówienie 🛒',
-        html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketObj={basketObj} />),
+        html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
       });
 
       console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
@@ -85,7 +85,7 @@ export default sendMessageToBask;
 //   pretty: true,
 // });
 
-// const sendMessageToBask = async (addressData, basketObj, mailTextObj) => {
+// const sendMessageToBask = async (addressData, basketData, mailTextObj) => {
 
 // try {
 //   // if (true) {

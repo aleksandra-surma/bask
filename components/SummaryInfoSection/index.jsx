@@ -28,7 +28,9 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
     setProcessing(true);
     const userData = watch();
 
-    const payload = { userData, basket, finalPrice, shippingCost };
+    const basketData = { basketArray: basket, finalPrice, shippingCost };
+
+    const payload = { userData, basketData, finalPrice, shippingCost };
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 

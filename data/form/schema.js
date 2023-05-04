@@ -138,6 +138,12 @@ const basketItemSchema = Joi.object({
   quantity: Joi.number().greater(0).required(),
 });
 
+const basketObjectSchema = Joi.object({
+  basketArray: Joi.array().items(basketItemSchema).required(),
+  finalPrice: Joi.number().greater(0).required(),
+  shippingCost: Joi.number().required(),
+});
+
 const dealFinalizationObject = {
   email: emailJoi,
   firstName: Joi.string().required().messages({
@@ -218,7 +224,7 @@ export const schema = {
   createCheckout: Joi.object({
     userData: Joi.object(dealFinalizationObject).required(),
 
-    basket: Joi.array().items(basketItemSchema).required(),
+    basketData: basketObjectSchema,
 
     finalPrice: Joi.number().required(),
     shippingCost: Joi.number().required(),

@@ -5,7 +5,8 @@ import airtableClient from 'services/airtable/airtableClient';
 import { db } from 'data/dbData';
 
 export default async function createCheckout(payload) {
-  const { userData, basket, finalPrice, shippingCost } = await schema.createCheckout.validateAsync(payload);
+  console.log('payload: ', payload);
+  const { userData, basketData, shippingCost } = await schema.createCheckout.validateAsync(payload);
 
   const addressData = {
     email: userData.email,
@@ -18,7 +19,6 @@ export default async function createCheckout(payload) {
     phone: userData.phoneNumber,
     postalCode: userData.postalCode,
     addressTheSame: userData.addressTheSame,
-    finalPrice,
   };
 
   const invoiceAddressData = userData.addressTheSame
@@ -39,7 +39,7 @@ export default async function createCheckout(payload) {
     fields: { dealId },
   } = await airtableClient(dbId)(subDb).create({
     dealId: randomUUID(),
-    basketData: JSON.stringify(basket),
+    basketData: JSON.stringify(basketData),
     addressData: JSON.stringify(addressData),
     invoiceAddressData: JSON.stringify(invoiceAddressData),
     stripeCheckoutId: '',
@@ -48,7 +48,7 @@ export default async function createCheckout(payload) {
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-  const lineItems = basket.map((basketItem) => {
+  const lineItems = basketData.basketArray.map((basketItem) => {
     return {
       price_data: {
         currency: 'PLN',
@@ -91,16 +91,6 @@ export default async function createCheckout(payload) {
     locale: 'pl',
     success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary/${dealId}/success`,
     cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/card-summary/${dealId}/cancel`,
-
-    // billing_details: {
-    //   address: {
-    //     name: 'Test Tester',
-    //     phone: '601234567',
-    //     city: 'Lublin',
-    //     line1: 'Zimowa 10/25',
-    //     postal_code: '20-337',
-    //   },
-    // },
   };
 
   const session = await stripe.checkout.sessions.create(paymentObject);

@@ -136,7 +136,6 @@ export default function Product({ productData: product }) {
                     <RadioGroup.Label className="sr-only"> Choose a color </RadioGroup.Label>
                     <div className="flex items-center space-x-3">
                       {product.avaliableColors.map((color) => {
-                        console.log('color: ', color);
                         return (
                           <RadioGroup.Option
                             key={uuid()}

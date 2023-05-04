@@ -15,7 +15,7 @@ import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingCon
 
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendMessageToCustomer = async (addressData, basketObj) => {
+const sendMessageToCustomer = async (addressData, basketData) => {
   try {
     if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
       console.log('Mail test PROD');
@@ -32,7 +32,7 @@ const sendMessageToCustomer = async (addressData, basketObj) => {
         from: `zakupy@bask.com.pl`,
         to: `${addressData.email}`,
         subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-        html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketObj={basketObj} />),
+        html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketData={basketData} />),
       });
     } else {
       // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
@@ -49,7 +49,7 @@ const sendMessageToCustomer = async (addressData, basketObj) => {
         from: 'Sender Name <sender@example.com>',
         to: 'Recipient <recipient@example.com>',
         subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-        html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketObj={basketObj} />),
+        html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketData={basketData} />),
       });
 
       console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
