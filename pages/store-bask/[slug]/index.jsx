@@ -17,7 +17,7 @@ const canonical = '';
 const ogData = {};
 
 export default function Product({ productData: product }) {
-  const startColor = product.startColor === 'white' ? 'white' : 'black';
+  const startColor = product.startColor;
 
   const [selectedColor, setSelectedColor] = useState(startColor);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -135,26 +135,29 @@ export default function Product({ productData: product }) {
                   <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
                     <RadioGroup.Label className="sr-only"> Choose a color </RadioGroup.Label>
                     <div className="flex items-center space-x-3">
-                      {product.avaliableColors.map((color) => (
-                        <RadioGroup.Option
-                          key={uuid()}
-                          value={color}
-                          className={({ active, checked }) =>
-                            classNames(
-                              'ring-green-500',
-                              active && checked ? 'ring ring-offset-2' : '',
-                              !active && checked ? 'ring-2' : '',
-                              'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
-                              `bg-${color}`,
-                            )
-                          }
-                        >
-                          <RadioGroup.Label as="span" className="sr-only">
-                            {color}{' '}
-                          </RadioGroup.Label>
-                          <span aria-hidden="true" className={classNames('h-8 w-8 rounded-full border border-black border-opacity-10')} />
-                        </RadioGroup.Option>
-                      ))}
+                      {product.avaliableColors.map((color) => {
+                        console.log('color: ', color);
+                        return (
+                          <RadioGroup.Option
+                            key={uuid()}
+                            value={color}
+                            className={({ active, checked }) =>
+                              classNames(
+                                'ring-green-500',
+                                active && checked ? 'ring ring-offset-2' : '',
+                                !active && checked ? 'ring-2' : '',
+                                'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
+                                color === 'chocolate' ? 'bg-chocolate' : `bg-${color}`,
+                              )
+                            }
+                          >
+                            <RadioGroup.Label as="span" className="sr-only">
+                              {color}{' '}
+                            </RadioGroup.Label>
+                            <span aria-hidden="true" className={classNames('h-8 w-8 rounded-full border border-black border-opacity-10')} />
+                          </RadioGroup.Option>
+                        );
+                      })}
                     </div>
                   </RadioGroup>
                 </div>
@@ -237,7 +240,7 @@ export default function Product({ productData: product }) {
                       <div className="flex">
                         <p className="mr-4">Napisz do nas!</p>
                         <a className="contact-media__mail" href="mailto:kontakt@bask.com.pl">
-                          <p className="">kontakt@bask.com.pl</p>
+                          <p className="hover:text-neutral-500">kontakt@bask.com.pl</p>
                         </a>
                       </div>
                       <div className="modal-action">

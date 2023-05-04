@@ -72,5 +72,6 @@ module.exports = {
     '@next/next/no-head-element': 'off',
     '@next/next/no-img-element': 'off',
     '@next/next/no-page-custom-font': 'off',
+    'prefer-destructuring': 'off',
   },
 };

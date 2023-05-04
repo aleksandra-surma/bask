@@ -1,4 +1,4 @@
-import type { UseFormRegister } from 'react-hook-form';
+// import type { UseFormRegister } from 'react-hook-form';
 import classNames from 'helpers/classNames';
 import { string, z } from 'zod';
 
@@ -20,7 +20,7 @@ export const schema = z.object({
   // commercialInfoConsent: z.boolean().optional(),
 });
 
-export type Schema = z.infer<typeof schema>;
+// export type Schema = z.infer<typeof schema>;
 
 const FormInput = ({
   label,
@@ -31,15 +31,6 @@ const FormInput = ({
   notRequired = false,
   // defaultCheck = 'off',
   error,
-}: {
-  label: string;
-  type: string;
-  register: UseFormRegister<Schema>;
-  name: keyof Schema;
-  halfView?: boolean;
-  notRequired?: boolean;
-  // defaultCheck?: 'on' | 'off';
-  error: string | null;
 }) => {
   switch (type) {
     case 'text': {

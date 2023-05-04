@@ -39,10 +39,11 @@ module.exports = {
         logo: '0.5rem',
       },
       colors: {
-        black: 'hsl(0, 0%, 15%)',
         primary: 'rgb(34 197 94)',
-        infoBar: 'rgb(34 197 94)',
         white: 'hsl(0, 0%, 100%)',
+        black: 'hsl(0, 0%, 15%)',
+        chocolate: '#56433b',
+        infoBar: 'rgb(34 197 94)',
       },
       lineHeight: {
         full: '100%',
