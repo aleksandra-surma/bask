@@ -15,18 +15,17 @@ export default async function stripeWebhooks(req, res) {
   const buf = await buffer(req);
   const sig = req.headers['stripe-signature'];
 
+  console.log('stripeWebhooks');
+
   try {
     // buf is the raw request body from Stripe, add .toString() to convert to string and pass to stripe.webhooks.constructEvent
     const event = stripe.webhooks.constructEvent(buf.toString(), sig, process.env.STRIPE_WEBHOOK_SECRET);
     //   console.log('event: ', event);
     if (event.type === 'payment_intent.succeeded') {
-      console.log('payment succeeded, payment_intent.succeeded');
-      //     console.log('event.data.object: ', event.data.object);
+      console.log('stripeWebhooks payment_intent.succeeded');
+      // console.log('payment succeeded, payment_intent.succeeded');
       const { dealId } = event.data.object.metadata;
-      //     console.log('dealId here: ', dealId);
       await finalize(dealId);
-      //
-      // console.log('event: ', event);
 
       const {
         temporaryCustomer: {
@@ -42,6 +41,7 @@ export default async function stripeWebhooks(req, res) {
 
       // send email to Bask and Customer
       res.json({ received: true });
+      console.log('time to send confirmations to bask and customer');
       await sendMessageToBask(combinedAddress, basket);
       await sendMessageToCustomer(combinedAddress, basket);
     } else if (event.type === 'payment_intent.payment_failed') {
