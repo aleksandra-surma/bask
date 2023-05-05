@@ -4,7 +4,7 @@ import airtableClient from 'services/airtable/airtableClient';
 import { db } from '../../data/dbData';
 
 export default async function finalize(dealId) {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_DEV);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
   const [customerOrder] = await getCustomersOrder(dealId);
 

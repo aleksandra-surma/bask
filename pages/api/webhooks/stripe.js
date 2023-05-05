@@ -11,13 +11,13 @@ export const config = {
 };
 
 export default async function stripeWebhooks(req, res) {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_DEV);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const buf = await buffer(req);
   const sig = req.headers['stripe-signature'];
 
   try {
     // buf is the raw request body from Stripe, add .toString() to convert to string and pass to stripe.webhooks.constructEvent
-    const event = stripe.webhooks.constructEvent(buf.toString(), sig, process.env.STRIPE_WEBHOOK_SECRET_DEV);
+    const event = stripe.webhooks.constructEvent(buf.toString(), sig, process.env.STRIPE_WEBHOOK_SECRET);
     //   console.log('event: ', event);
     if (event.type === 'payment_intent.succeeded') {
       console.log('payment succeeded, payment_intent.succeeded');
