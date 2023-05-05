@@ -1,6 +1,5 @@
 // import sgMail from '@sendgrid/mail';
 import nodemailer from 'nodemailer';
-
 import { renderToString } from 'react-dom/server';
 import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
 
@@ -17,11 +16,8 @@ import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmatio
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendMessageToBask = async (addressData, basketData) => {
-  console.log('payload sendMessageToBask: ', addressData, basketData);
-
   try {
     if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
-      console.log('Mail test PROD');
       const transporterProd = nodemailer.createTransport({
         host: 'ssl0.ovh.net',
         port: 465,
