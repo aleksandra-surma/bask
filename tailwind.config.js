@@ -1,6 +1,8 @@
 /** @type {(options?: {strategy?: "base" | "class"}) => Function} */
 const forms = require('@tailwindcss/forms');
 const aspectRatio = require('@tailwindcss/aspect-ratio');
+const daisyui = require('daisyui');
+const prettierTailwind = require('prettier-plugin-tailwindcss');
 
 // const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -9,6 +11,9 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  daisyui: {
+    themes: false,
+  },
   theme: {
     extend: {
       gridTemplateRows: {
@@ -34,10 +39,11 @@ module.exports = {
         logo: '0.5rem',
       },
       colors: {
-        black: 'hsl(0, 0%, 15%)',
         primary: 'rgb(34 197 94)',
-        infoBar: 'rgb(34 197 94)',
         white: 'hsl(0, 0%, 100%)',
+        black: 'hsl(0, 0%, 15%)',
+        chocolate: '#56433b',
+        infoBar: 'rgb(34 197 94)',
       },
       lineHeight: {
         full: '100%',
@@ -95,6 +101,6 @@ module.exports = {
   },
   // eslint-disable-next-line global-require
 
-  plugins: [forms, aspectRatio],
-  // plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
+  plugins: [forms, aspectRatio, daisyui, prettierTailwind],
+  // prettierTailwind MUST come last
 };

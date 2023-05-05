@@ -41,7 +41,6 @@ module.exports = {
       },
       { usePrettierrc: true },
     ], // Use our .prettierrc file as source
-    // 'react/jsx-first-prop-new-line': 'off',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
@@ -64,6 +63,15 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'comma-dangle': 'off',
     'no-param-reassign': [2, { props: false }],
-    // 'object-curly-newline': 'off',
+    'import/extensions': 'off',
+    'react/require-default-props': 'off',
+    'spaced-comment': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+
+    // Messages send by email
+    '@next/next/no-head-element': 'off',
+    '@next/next/no-img-element': 'off',
+    '@next/next/no-page-custom-font': 'off',
+    'prefer-destructuring': 'off',
   },
 };

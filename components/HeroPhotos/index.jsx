@@ -7,8 +7,8 @@ import hero from 'public/images/bask-hero-kids-pinaples.jpg';
 
 export default function HeroPhotos() {
   return (
-    <section className="flex relative h-4/5 h-[90vh] left-0 laptop:left-[unset] w-full">
-      <div className="flex relative justify-center items-center w-full">
+    <section className="relative left-0 flex h-4/5 h-[90vh] w-full laptop:left-[unset]">
+      <div className="relative flex w-full items-center justify-center">
         <Image src={hero} layout="fill" objectFit="cover" quality={80} priority alt="" />
       </div>
       {/* <div className="flex relative justify-center items-center w-full tablet:w-1/2 laptop:w-1/4"> */}

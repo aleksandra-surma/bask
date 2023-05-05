@@ -5,9 +5,9 @@ import UserSummary from 'components/UserSummary';
 
 export default function Header() {
   return (
-    <header className="flex flex-col relative tablet:items-center w-full m-auto max-w-screen-xl">
-      <div className="grid grid-cols-3 items-center mx-8 w-[calc(100%-60px)]">
-        <div className="flex justify-start tablet:justify-center col-start-1 tablet:col-start-2">
+    <header className="relative m-auto flex w-full max-w-screen-xl flex-col tablet:items-center">
+      <div className="mx-8 grid w-[calc(100%-60px)] grid-cols-3 items-center">
+        <div className="col-start-1 flex justify-start tablet:col-start-2 tablet:justify-center">
           <Image src={baskLogo} alt="" width={120} />
         </div>
 

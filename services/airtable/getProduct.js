@@ -1,21 +1,24 @@
 import { db } from 'data/dbData';
 import airtableClient from './airtableClient';
-import getAllRecords from './getAllRecords';
+import { getAllRecords } from './getAllRecords';
 
 const getProduct = async (slug) => {
-  const [product] = await airtableClient(db.products)
+  const dbId = process.env.AIRTABLE_PRODUCTS_BASE;
+  const subDb = db.products.products;
+
+  const [product] = await airtableClient(dbId)(subDb)
     .select({
-      // sort: [{ field: 'id', direction: 'desc' }],
       filterByFormula: `slug="${slug}"`,
     })
     .firstPage();
-  console.log('product: ', product);
+  console.log('product getProduct: ', product);
 
   if (!product) {
     return product;
   }
+  const subDbStore = db.products.store;
 
-  const storeItems = await getAllRecords(db.store);
+  const storeItems = await getAllRecords(dbId, subDbStore);
 
   const selectedStoreItems = storeItems.filter((storeItem) => {
     return product.fields.store.some((item) => item === storeItem.airtableId);
@@ -43,12 +46,17 @@ const getProduct = async (slug) => {
         name: '122/128',
         quantity: storeItem['size_122/128'],
       },
+      {
+        name: '134/140',
+        quantity: storeItem['size_134/140'],
+      },
     ];
 
     delete storeItem['size_86/92'];
     delete storeItem['size_98/104'];
     delete storeItem['size_110/116'];
     delete storeItem['size_122/128'];
+    delete storeItem['size_134/140'];
 
     return { ...storeItem, quantity: storeQuantityObj };
   });

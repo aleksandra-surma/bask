@@ -26,12 +26,21 @@ const nextConfig = (phase) => {
     domains: ['v5.airtableusercontent.com'],
   };
 
+  const typescript = {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    // ignoreBuildErrors: true,
+  };
+
   return {
     images,
     reactStrictMode,
     swcMinify,
     rewrites,
     env,
+    typescript,
   };
 };
 

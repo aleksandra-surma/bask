@@ -30,12 +30,12 @@ export default function ContactForm() {
   return (
     <div className="mt-5 md:col-span-2 md:mt-0">
       {messageSent ? (
-        <div className="overflow-hidden h-full flex flex-col justify-between shadow rounded-md bg-white px-4 py-5 sm:p-6">
-          <h2 className="text-lg text-green-600 font-semibold text-gray-800 mb-4">Twoja wiadomość została wysłana.</h2>
+        <div className="flex h-full flex-col justify-between overflow-hidden rounded-md bg-white px-4 py-5 shadow sm:p-6">
+          <h2 className="mb-4 text-lg font-semibold text-green-600 text-gray-800">Twoja wiadomość została wysłana.</h2>
           <p className="text-sm text-gray-700">Zwykle odpowiadamy maksymalnie w ciągu kilku godzin roboczych.</p>
           <p className="text-sm text-gray-700">Jeśli zależy Ci na czasie zadzwoń do nas.</p>
           <Link href="/">
-            <a className="mt-4 text-md font-medium underline underline-offset-[5px] text-gray-700 hover:text-green-600 cursor-pointer">
+            <a className="text-md mt-4 cursor-pointer font-medium text-gray-700 underline underline-offset-[5px] hover:text-green-600">
               Wróć do strony głównej
             </a>
           </Link>
@@ -47,7 +47,7 @@ export default function ContactForm() {
             await submitFunc(reset, watch, error, setError, sendingProcess, setSendingProcess, setMessageSent, captchaRef);
           })}
         >
-          <div className="overflow-hidden shadow rounded-md">
+          <div className="overflow-hidden rounded-md shadow">
             <div className="bg-white px-4 py-5 sm:p-6">
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
@@ -57,9 +57,9 @@ export default function ContactForm() {
                   <input
                     type="text"
                     {...register('fullName')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
+                    className="mt-1 block w-full rounded-md border-gray-300 bg-white text-black shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-white dark:text-black sm:text-sm"
                   />
-                  {errors.fullName ? <p className="text-red-600 text-sm mt-2">{errors.fullName.message}</p> : null}
+                  {errors.fullName ? <p className="mt-2 text-sm text-red-600">{errors.fullName.message}</p> : null}
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
@@ -69,9 +69,9 @@ export default function ContactForm() {
                   <input
                     type="text"
                     {...register('mobile')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
+                    className="mt-1 block w-full rounded-md border-gray-300 bg-white text-black shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-white dark:text-black sm:text-sm"
                   />
-                  {errors.mobile ? <p className="text-red-600 text-sm mt-2">{errors.mobile.message}</p> : null}
+                  {errors.mobile ? <p className="mt-2 text-sm text-red-600">{errors.mobile.message}</p> : null}
                 </div>
 
                 <div className="col-span-6">
@@ -81,9 +81,9 @@ export default function ContactForm() {
                   <input
                     type="email"
                     {...register('email')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
+                    className="mt-1 block w-full rounded-md border-gray-300 bg-white text-black shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-white dark:text-black sm:text-sm"
                   />
-                  {errors.email ? <p className="text-red-600 text-sm mt-2">{errors.email.message}</p> : null}
+                  {errors.email ? <p className="mt-2 text-sm text-red-600">{errors.email.message}</p> : null}
                 </div>
 
                 <div className="col-span-6">
@@ -94,12 +94,12 @@ export default function ContactForm() {
                   <textarea
                     rows="6"
                     {...register('message')}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm bg-white dark:bg-white text-black dark:text-black"
+                    className="mt-1 block w-full rounded-md border-gray-300 bg-white text-black shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-white dark:text-black sm:text-sm"
                   />
-                  {errors.message ? <p className="text-red-600 text-sm mt-2">{errors.message.message}</p> : null}
+                  {errors.message ? <p className="mt-2 text-sm text-red-600">{errors.message.message}</p> : null}
                 </div>
               </div>
-              <p className="text-gray-500 text-xs mt-6">
+              <p className="mt-6 text-xs text-gray-500">
                 Zgodnie z naszą polityką prywatności Twoje dane <span className="font-semibold">nie zostaną</span> przekazane do żadnych podmiotów.
                 Będą przetwarzane tylko w ramach naszej oferty.
               </p>
@@ -108,7 +108,7 @@ export default function ContactForm() {
             <div className="flex justify-end bg-gray-50 px-6 py-3 text-left">
               <button
                 type="submit"
-                className={`inline-flex justify-center rounded-md border border-transparent bg-neutral-800 py-3 w-full laptop:w-[300px] text-md font-semibold text-white shadow-sm 
+                className={`text-md inline-flex w-full justify-center rounded-md border border-transparent bg-neutral-800 py-3 font-semibold text-white shadow-sm laptop:w-[300px] 
               ${sendingProcess ? 'bg-green-700' : null} focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2`}
               >
                 {sendingProcess ? 'Wysyłanie...' : 'Wyślij wiadomość'}
@@ -120,7 +120,7 @@ export default function ContactForm() {
         </form>
       )}
 
-      {error ? <p className="text-red-600 text-sm mt-2">{error}</p> : null}
+      {error ? <p className="mt-2 text-sm text-red-600">{error}</p> : null}
     </div>
   );
 }
