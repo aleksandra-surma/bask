@@ -46,7 +46,7 @@ export default async function createCheckout(payload) {
     stripeCheckoutStatus: '',
   });
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_DEV);
 
   const lineItems = basketData.basketArray.map((basketItem) => {
     return {

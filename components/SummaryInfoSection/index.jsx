@@ -32,7 +32,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
 
     const payload = { userData, basketData, finalPrice, shippingCost };
 
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY_DEV);
 
     const response = await fetch('/api/checkout', {
       method: 'POST',
