@@ -1,7 +1,7 @@
 import airtableClient from './airtableClient';
 
-const getAllRecords = async (db) => {
-  const products = await airtableClient(db).select().firstPage();
+export const getAllRecords = async (airtableDb, subDb) => {
+  const products = await airtableClient(airtableDb)(subDb).select().firstPage();
 
   if (products) {
     return products.map((product) => ({ airtableId: product.id, ...product.fields }));
@@ -10,4 +10,12 @@ const getAllRecords = async (db) => {
   return products;
 };
 
-export default getAllRecords;
+export const getFilteredRecords = async (airtableDb, subDb, condition) => {
+  const productsHighlighted = await airtableClient(airtableDb)(subDb)
+    .select({
+      filterByFormula: condition,
+    })
+    .firstPage();
+
+  return productsHighlighted;
+};

@@ -1,5 +1,12 @@
 export const db = {
-  products: 'products',
-  store: 'store',
-  users: 'users',
+  products: {
+    // name: 'products',
+    products: 'products',
+    store: 'store',
+  },
+  payments: {
+    // name: 'payments',
+    temporaryCustomers: 'temporaryCustomers',
+  },
+  users: {},
 };

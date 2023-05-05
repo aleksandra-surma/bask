@@ -20,6 +20,18 @@
     /*padding: 0;*/
   }
 
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  input:not([type='button']) {
+    color: #111111;
+  }
+
   html {
     /*font-family: 'Lato', sans-serif;*/
     font-family: 'Poppins', sans-serif;
