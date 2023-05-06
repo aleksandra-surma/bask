@@ -44,6 +44,7 @@ export default async function stripeWebhooks(req, res) {
       console.log('time to send confirmations to bask and customer');
       await sendMessageToBask(combinedAddress, basket);
       await sendMessageToCustomer(combinedAddress, basket);
+      console.log('confirmations sent, i hope');
     } else if (event.type === 'payment_intent.payment_failed') {
       console.log('payment failed');
       res.json({ received: true });
@@ -51,11 +52,10 @@ export default async function stripeWebhooks(req, res) {
       console.log(`Unhandled event type ${event.type}`);
       res.json({ received: true });
     }
-
-    //todo: add other events
-    // res.json({ received: true });
   } catch (error) {
     console.log('error.message: ', error.message);
     res.status(400).json(`Webhook Error: ${error.message}`);
   }
 }
+// todo: add other events
+// res.json({ received: true });

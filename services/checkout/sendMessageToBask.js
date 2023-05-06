@@ -16,6 +16,11 @@ import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmatio
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendMessageToBask = async (addressData, basketData) => {
+  console.log('before send sendMessageToBask');
+  console.log('addressData: ', addressData);
+  console.log('basketData: ', basketData);
+  console.log('process.env.EMAIL_SHOPPING_PROD: ', process.env.EMAIL_SHOPPING_PROD);
+
   try {
     // if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
     const transporterProd = nodemailer.createTransport({
