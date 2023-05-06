@@ -19,7 +19,7 @@ const sendMessageToBask = async (addressData, basketData) => {
   console.log('before send sendMessageToBask');
   console.log('addressData: ', addressData);
   console.log('basketData: ', basketData);
-  console.log('process.env.EMAIL_SHOPPING_PROD: ', process.env.EMAIL_SHOPPING_PROD);
+  console.log('process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD: ', process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD);
 
   try {
     // if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
@@ -27,15 +27,15 @@ const sendMessageToBask = async (addressData, basketData) => {
       host: 'ssl0.ovh.net',
       port: 465,
       auth: {
-        user: process.env.EMAIL_SHOPPING_PROD,
+        user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
         pass: process.env.EMAIL_PASS_PROD,
       },
     });
 
     await transporterProd.sendMail({
       // from: `kontakt@bask.com.pl`,
-      from: process.env.EMAIL_SHOPPING_PROD,
-      to: process.env.EMAIL_CONTACT_PROD,
+      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+      to: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
       // to: 'ouritsu.taynama@gmail.com',
 
       replyTo: `${addressData.email}`,
@@ -69,13 +69,13 @@ const sendMessageToBask = async (addressData, basketData) => {
       host: 'ssl0.ovh.net',
       port: 465,
       auth: {
-        user: process.env.EMAIL_SHOPPING_PROD,
+        user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
         pass: process.env.EMAIL_PASS_PROD,
       },
     });
 
     await transporterError.sendMail({
-      from: `zakupy@bask.com.pl`,
+      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
       to: 'sebastian.lucjan@gmail.com',
       // to: 'kontakt@bask.com.pl',
       replyTo: `${addressData.email}`,
