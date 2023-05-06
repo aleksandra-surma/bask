@@ -61,7 +61,7 @@ const CustomerShoppingConfirmation = ({ addressData, basketData }) => {
                       <p>Nazwa produktu: {item.name}</p>
                       <p>Kolor: {item.color}</p>
                       <p>Rozmiar: {item.size}</p>
-                      <p>Cena jednego egzemplarza produktu: {item.price}zł</p>
+                      <p>Cena jednego egzemplarza produktu: {item?.price}zł</p>
                       <p>Ilość: {item.quantity}</p>
                     </div>
                   );

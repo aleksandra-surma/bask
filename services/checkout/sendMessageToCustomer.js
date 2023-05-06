@@ -57,6 +57,24 @@ const sendMessageToCustomer = async (addressData, basketData) => {
   } catch (error) {
     console.error(error);
 
+    const transporterError = nodemailer.createTransport({
+      host: 'ssl0.ovh.net',
+      port: 465,
+      auth: {
+        user: process.env.EMAIL_SHOPPING_PROD,
+        pass: process.env.EMAIL_PASS_PROD,
+      },
+    });
+
+    await transporterError.sendMail({
+      from: `zakupy@bask.com.pl`,
+      to: 'sebastian.lucjan@gmail.com',
+      // to: 'kontakt@bask.com.pl',
+      replyTo: `${addressData.email}`,
+      subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
+      html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
+    });
+
     if (error.response) {
       console.error(error.response.body);
     }
