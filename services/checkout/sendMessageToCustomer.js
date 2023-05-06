@@ -23,13 +23,13 @@ const sendMessageToCustomer = async (addressData, basketData) => {
       host: 'ssl0.ovh.net',
       port: 465,
       auth: {
-        user: process.env.EMAIL_SHOPPING_PROD,
+        user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
         pass: process.env.EMAIL_PASS_PROD,
       },
     });
 
     await transporterProd.sendMail({
-      from: process.env.EMAIL_SHOPPING_PROD,
+      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
       to: `${addressData.email}`,
       subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
       html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketData={basketData} />),
@@ -61,13 +61,13 @@ const sendMessageToCustomer = async (addressData, basketData) => {
       host: 'ssl0.ovh.net',
       port: 465,
       auth: {
-        user: process.env.EMAIL_SHOPPING_PROD,
+        user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
         pass: process.env.EMAIL_PASS_PROD,
       },
     });
 
     await transporterError.sendMail({
-      from: `zakupy@bask.com.pl`,
+      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
       to: 'sebastian.lucjan@gmail.com',
       // to: 'kontakt@bask.com.pl',
       replyTo: `${addressData.email}`,
