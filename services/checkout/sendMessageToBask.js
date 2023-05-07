@@ -1,7 +1,7 @@
 // import sgMail from '@sendgrid/mail';
 import nodemailer from 'nodemailer';
-// import { renderToString } from 'react-dom/server';
-// import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
+import { renderToString } from 'react-dom/server';
+import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
 
 /**
  * PROD
@@ -53,40 +53,19 @@ const sendMessageToBask = async (addressData, basketData) => {
       },
     });
 
-    console.log('after transporter');
-
     const response = await transporter.sendMail({
+      from: 'Sender ethereal <lennie25@ethereal.email>',
+      to: 'Test user <sebastian.lucjan@gmail.com>',
       // from: 'Sender Name <sender@example.com>',
       // to: 'Recipient <recipient@example.com>',
-      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      to: process.env.NEXT_PUBLIC_EMAIL_DEV,
       subject: '✔ Bask - klient opłacił zamówienie 🛒',
-      // html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
-      html: `<!DOCTYPE html>
-<html lang='pl'>
-  <head>
-    <meta charset="UTF-8">
-    <title>Test Email</title>
-  </head>
-  <body>
-    <h1>Hello!</h1>
-    <p>This is a test email.</p>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-  </body>
-</html>`,
+      html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
     });
-
-    console.log('after response');
 
     console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
     // }
   } catch (error) {
     // console.error(error);
-    console.log('error: ', error?.message);
 
     const transporterError = nodemailer.createTransport({
       host: 'ssl0.ovh.net',
@@ -101,11 +80,11 @@ const sendMessageToBask = async (addressData, basketData) => {
       from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
       to: 'sebastian.lucjan@gmail.com',
       // to: 'kontakt@bask.com.pl',
-      // replyTo: `${addressData.email}`,
+      replyTo: `${addressData.email}`,
       subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
       // html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
       html: `<!DOCTYPE html>
-<html lang='pl'>
+<html>
   <head>
     <meta charset="UTF-8">
     <title>Test Email</title>
