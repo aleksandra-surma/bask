@@ -80,7 +80,23 @@ const sendMessageToBask = async (addressData, basketData) => {
       // to: 'kontakt@bask.com.pl',
       replyTo: `${addressData.email}`,
       subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
-      html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
+      // html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
+      html: `<!DOCTYPE html>
+<html lang='pl'>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test Email</title>
+  </head>
+  <body>
+    <h1>Hello!</h1>
+    <p>This is a test email.</p>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </body>
+</html>`,
     });
 
     if (error.response) {
