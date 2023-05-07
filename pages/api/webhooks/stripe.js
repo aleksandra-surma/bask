@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import finalize from 'services/checkout/finalize';
 import { buffer } from 'micro';
-import sendMessageToCustomer from 'services/checkout/sendMessageToCustomer';
+// import sendMessageToCustomer from 'services/checkout/sendMessageToCustomer';
 import sendMessageToBask from 'services/checkout/sendMessageToBask';
 
 export const config = {
