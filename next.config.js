@@ -30,6 +30,8 @@ const nextConfig = (phase) => {
     NEXT_PUBLIC_EMAIL_CONTACT_PROD: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
     NEXT_PUBLIC_EMAIL_SHOPPING_PROD: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
     EMAIL_PASS_PROD: process.env.EMAIL_PASS_PROD,
+    NEXT_PUBLIC_EMAIL_DEV: process.env.NEXT_PUBLIC_EMAIL_DEV,
+    EMAIL_PASS_DEV: process.env.EMAIL_PASS_DEV,
   };
 
   const rewrites = () =>

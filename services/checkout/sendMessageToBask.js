@@ -20,50 +20,50 @@ const sendMessageToBask = async (addressData, basketData) => {
   console.log('addressData: ', addressData);
   console.log('basketData: ', basketData);
   console.log('process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD: ', process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD);
-
+  console.log('process.env.IS_PROD: ', process.env.IS_PROD);
   try {
     // if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
-    const transporterProd = nodemailer.createTransport({
-      host: 'ssl0.ovh.net',
-      port: 465,
+    // const transporterProd = nodemailer.createTransport({
+    //   host: 'ssl0.ovh.net',
+    //   port: 465,
+    //   auth: {
+    //     user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+    //     pass: process.env.EMAIL_PASS_PROD,
+    //   },
+    // });
+    //
+    // await transporterProd.sendMail({
+    //   // from: `kontakt@bask.com.pl`,
+    //   from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+    //   to: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+    //   // to: 'ouritsu.taynama@gmail.com',
+    //
+    //   replyTo: `${addressData.email}`,
+    //   subject: '✔ Bask - klient opłacił zamówienie 🛒',
+    //   html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
+    // });
+    // } else {
+    // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-        pass: process.env.EMAIL_PASS_PROD,
+        user: process.env.NEXT_PUBLIC_EMAIL_DEV,
+        pass: process.env.EMAIL_PASS_DEV,
       },
     });
 
-    await transporterProd.sendMail({
-      // from: `kontakt@bask.com.pl`,
-      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      to: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
-      // to: 'ouritsu.taynama@gmail.com',
-
-      replyTo: `${addressData.email}`,
+    const response = await transporter.sendMail({
+      from: 'Sender Name <sender@example.com>',
+      to: 'Recipient <recipient@example.com>',
       subject: '✔ Bask - klient opłacił zamówienie 🛒',
       html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
     });
-    // } else {
-    // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
-    //   const transporter = nodemailer.createTransport({
-    //     host: 'smtp.ethereal.email',
-    //     port: 587,
-    //     auth: {
-    //       user: 'laurine72@ethereal.email',
-    //       pass: '1xjtcRjMaCYV3Gs51d',
-    //     },
-    //   });
-    //
-    //   const response = await transporter.sendMail({
-    //     from: 'Sender Name <sender@example.com>',
-    //     to: 'Recipient <recipient@example.com>',
-    //     subject: '✔ Bask - klient opłacił zamówienie 🛒',
-    //     html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
-    //   });
-    //
-    //   console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
+
+    console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
     // }
   } catch (error) {
-    console.error(error);
+    // console.error(error);
 
     const transporterError = nodemailer.createTransport({
       host: 'ssl0.ovh.net',

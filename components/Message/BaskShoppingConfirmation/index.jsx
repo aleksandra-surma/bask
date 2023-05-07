@@ -33,12 +33,12 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
 
   return (
     <html lang="pl">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet" />
-        <title>Bask - potwierdzenie zamówienia</title>
-      </head>
+      {/* <head> */}
+      {/*  <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
+      {/*  <link rel="preconnect" href="https://fonts.gstatic.com" /> */}
+      {/*  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet" /> */}
+      {/*  <title>Bask - potwierdzenie zamówienia</title> */}
+      {/* </head> */}
       <body>
         <main>
           <div

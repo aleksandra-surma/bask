@@ -43,7 +43,7 @@ export default async function stripeWebhooks(req, res) {
       res.json({ received: true });
       console.log('time to send confirmations to bask and customer');
       await sendMessageToBask(combinedAddress, basket);
-      await sendMessageToCustomer(combinedAddress, basket);
+      // await sendMessageToCustomer(combinedAddress, basket);
       console.log('confirmations sent, i hope');
     } else if (event.type === 'payment_intent.payment_failed') {
       console.log('payment failed');
