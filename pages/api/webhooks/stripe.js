@@ -1,13 +1,10 @@
 import Stripe from 'stripe';
 import finalize from 'services/checkout/finalize';
 import { buffer } from 'micro';
-// import sendMessageToCustomer from 'services/checkout/sendMessageToCustomer';
-// import sendMessageToBask from 'services/checkout/sendMessageToBask';
-// import sendMessageToCustomer from 'services/checkout/sendMessageToCustomer';
 import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
 import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
-import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
+// import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
 
 export const config = {
   api: {
@@ -66,10 +63,10 @@ export default async function stripeWebhooks(req, res) {
         transporterToBask.sendMail({
           // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
           // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
-          from: `<zakupy@bask.com.pl>`,
-          to: '<kontakt@bask.com.pl>',
+          from: 'zakupy@bask.com.pl',
+          to: 'kontakt@bask.com.pl',
 
-          replyTo: `${addressData.email}`,
+          // replyTo: `${addressData.email}`,
           subject: '✔ Bask - klient opłacił zamówienie 🛒',
           // text: 'Bask - klient opłacił zamówienie 🛒',
           html: renderToString(<BaskShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
@@ -78,25 +75,25 @@ export default async function stripeWebhooks(req, res) {
       });
 
       // await sendMessageToCustomer(combinedAddress, basket);
-      const transporterToCustomer = nodemailer.createTransport({
-        host: 'ssl0.ovh.net',
-        port: 465,
-        auth: {
-          user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-          pass: process.env.EMAIL_PASS_PROD,
-        },
-      });
-      console.log('addressData.email: ', addressData.email);
-
-      await new Promise(() => {
-        transporterToCustomer.sendMail({
-          // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
-          from: `<zakupy@bask.com.pl>`,
-          to: `${addressData.email}`,
-          subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-          html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-        });
-      });
+      // const transporterToCustomer = nodemailer.createTransport({
+      //   host: 'ssl0.ovh.net',
+      //   port: 465,
+      //   auth: {
+      //     user: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+      //     pass: process.env.EMAIL_PASS_PROD,
+      //   },
+      // });
+      // console.log('addressData.email: ', addressData.email);
+      //
+      // await new Promise(() => {
+      //   transporterToCustomer.sendMail({
+      //     // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+      //     from: 'zakupy@bask.com.pl',
+      //     to: addressData.email,
+      //     subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
+      //     html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+      //   });
+      // });
 
       //todo: here Promise
       console.log('confirmations sent, i hope');
