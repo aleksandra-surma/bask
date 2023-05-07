@@ -31,6 +31,9 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
 
   const { basketArray: basket, finalPrice, shippingCost } = basketData;
 
+  console.log('basketData', basketData);
+  console.log('addressData: ', addressData);
+
   return (
     <html lang="pl">
       {/* <head> */}
