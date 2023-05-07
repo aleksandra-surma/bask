@@ -93,6 +93,7 @@ export default async function stripeWebhooks(req, res) {
           // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
           from: 'zakupy@bask.com.pl',
           to: combinedAddress.email,
+          bcc: 'kontakt@bask.com.pl',
           subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
           html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         });
