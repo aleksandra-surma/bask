@@ -34,16 +34,34 @@ const sendMessageToBask = async (addressData, basketData) => {
 
     console.log('after createTransport');
 
-    await transporterProd.sendMail({
-      // from: `kontakt@bask.com.pl`,
-      from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
-      to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
-      // to: 'ouritsu.taynama@gmail.com',
+    await new Promise(() => {
+      // await new Promise((resolve, reject) => {
+      // send mail
 
-      // replyTo: `${addressData.email}`, // todo: uncomment
-      subject: '✔ Bask - klient opłacił zamówienie 🛒',
-      html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
+      transporterProd.sendMail({
+        // from: `kontakt@bask.com.pl`,
+        // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
+        from: `<zakupy@bask.com.pl>`,
+        to: '<ouritsu.taynama@gmail.com>',
+
+        // replyTo: `${addressData.email}`, // todo: uncomment
+        subject: '✔ Bask - klient opłacił zamówienie 🛒',
+        text: 'Bask - klient opłacił zamówienie 🛒',
+        html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
+        // html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
+        // });
+        // transporter.sendMail(mailData, (err, info) => {
+        //   if (err) {
+        //     console.error(err);
+        //     reject(err);
+        //   } else {
+        //     console.log(info);
+        //     resolve(info);
+        //   }
+        // });
+      });
     });
+
     // } else {
     // ***
     // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
@@ -192,3 +210,60 @@ export default sendMessageToBask;
 // export default sendMessageToBask;
 
 // import sgMail from '@sendgrid/mail';
+
+// const nodemailer = require("nodemailer");
+//
+// export default async (req, res) => {
+//
+//   const { firstName, lastName, email, message } = JSON.parse(req.body);
+//
+//   const transporter = nodemailer.createTransport({
+//     port: 465,
+//     host: "smtp.gmail.com",
+//     auth: {
+//       user: "myEmail@gmail.com",
+//       pass: "password",
+//     },
+//     secure: true,
+//   });
+//
+//   await new Promise((resolve, reject) => {
+//     // verify connection configuration
+//     transporter.verify(function (error, success) {
+//       if (error) {
+//         console.log(error);
+//         reject(error);
+//       } else {
+//         console.log("Server is ready to take our messages");
+//         resolve(success);
+//       }
+//     });
+//   });
+//
+//   const mailData = {
+//     from: {
+//       name: `${firstName} ${lastName}`,
+//       address: "myEmail@gmail.com",
+//     },
+//     replyTo: email,
+//     to: "recipient@gmail.com",
+//     subject: `form message`,
+//     text: message,
+//     html: `${message}`,
+//   };
+//
+//   await new Promise((resolve, reject) => {
+//     // send mail
+//     transporter.sendMail(mailData, (err, info) => {
+//       if (err) {
+//         console.error(err);
+//         reject(err);
+//       } else {
+//         console.log(info);
+//         resolve(info);
+//       }
+//     });
+//   });
+//
+//   res.status(200).json({ status: "OK" });
+// };
