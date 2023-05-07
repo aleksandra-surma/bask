@@ -94,7 +94,8 @@ export default async function stripeWebhooks(req, res) {
           from: 'zakupy@bask.com.pl',
           to: combinedAddress.email,
           bcc: 'kontakt@bask.com.pl',
-          subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
+          subject: '✔ Bask - zamówienie zostało opłacone 🛒',
+          // subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
           html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         });
       });
