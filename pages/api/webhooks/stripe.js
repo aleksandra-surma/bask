@@ -4,6 +4,7 @@ import { buffer } from 'micro';
 import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
 import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
+import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
 // import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
 
 export const config = {
@@ -45,7 +46,7 @@ export default async function stripeWebhooks(req, res) {
       res.json({ received: true });
       console.log('time to send confirmations to bask and customer');
       // await sendMessageToBask(combinedAddress, basket);
-      const transporterToBask = nodemailer.createTransport({
+      const transporter = nodemailer.createTransport({
         host: 'ssl0.ovh.net',
         port: 465,
         auth: {
@@ -60,7 +61,7 @@ export default async function stripeWebhooks(req, res) {
         // await new Promise((resolve, reject) => {
         // send mail
 
-        transporterToBask.sendMail({
+        transporter.sendMail({
           // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
           // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
           from: 'zakupy@bask.com.pl',
@@ -85,15 +86,15 @@ export default async function stripeWebhooks(req, res) {
       // });
       // console.log('addressData.email: ', addressData.email);
       //
-      // await new Promise(() => {
-      //   transporterToCustomer.sendMail({
-      //     // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
-      //     from: 'zakupy@bask.com.pl',
-      //     to: addressData.email,
-      //     subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-      //     html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-      //   });
-      // });
+      await new Promise(() => {
+        transporter.sendMail({
+          // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+          from: 'zakupy@bask.com.pl',
+          to: address.email,
+          subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
+          html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+        });
+      });
 
       //todo: here Promise
       console.log('confirmations sent, i hope');
