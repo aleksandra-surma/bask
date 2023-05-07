@@ -39,10 +39,10 @@ const sendMessageToBask = async (addressData, basketData) => {
       // send mail
 
       transporterProd.sendMail({
-        from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
-        to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
-        // from: `<zakupy@bask.com.pl>`,
-        // to: '<ouritsu.taynama@gmail.com>',
+        // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+        // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
+        from: `<zakupy@bask.com.pl>`,
+        to: '<kontakt@bask.com.pl>',
 
         replyTo: `${addressData.email}`,
         subject: '✔ Bask - klient opłacił zamówienie 🛒',
