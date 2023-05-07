@@ -86,11 +86,13 @@ export default async function stripeWebhooks(req, res) {
       // });
       // console.log('addressData.email: ', addressData.email);
       //
+      console.log('combinedAddress.email', combinedAddress.email);
+
       await new Promise(() => {
         transporter.sendMail({
           // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
           from: 'zakupy@bask.com.pl',
-          to: address.email,
+          to: combinedAddress.email,
           subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
           html: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         });
