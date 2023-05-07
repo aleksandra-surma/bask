@@ -39,26 +39,15 @@ const sendMessageToBask = async (addressData, basketData) => {
       // send mail
 
       transporterProd.sendMail({
-        // from: `kontakt@bask.com.pl`,
-        // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
-        from: `<zakupy@bask.com.pl>`,
-        to: '<ouritsu.taynama@gmail.com>',
+        from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+        to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
+        // from: `<zakupy@bask.com.pl>`,
+        // to: '<ouritsu.taynama@gmail.com>',
 
-        // replyTo: `${addressData.email}`, // todo: uncomment
+        replyTo: `${addressData.email}`,
         subject: '✔ Bask - klient opłacił zamówienie 🛒',
-        text: 'Bask - klient opłacił zamówienie 🛒',
+        // text: 'Bask - klient opłacił zamówienie 🛒',
         html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
-        // html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
-        // });
-        // transporter.sendMail(mailData, (err, info) => {
-        //   if (err) {
-        //     console.error(err);
-        //     reject(err);
-        //   } else {
-        //     console.log(info);
-        //     resolve(info);
-        //   }
-        // });
       });
     });
 
@@ -98,29 +87,31 @@ const sendMessageToBask = async (addressData, basketData) => {
       },
     });
 
-    await transporterError.sendMail({
-      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      to: 'sebastian.lucjan@gmail.com',
-      // to: 'kontakt@bask.com.pl',
-      replyTo: `${addressData.email}`,
-      subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
-      // html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
-      html: `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Test Email</title>
-  </head>
-  <body>
-    <h1>Hello!</h1>
-    <p>This is a test email.</p>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-  </body>
-</html>`,
+    await new Promise(() => {
+      transporterError.sendMail({
+        from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+        to: 'sebastian.lucjan@gmail.com',
+        // to: 'kontakt@bask.com.pl',
+        replyTo: `${addressData.email}`,
+        subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
+        html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
+        //       html: `<!DOCTYPE html>
+        // <html>
+        //   <head>
+        //     <meta charset="UTF-8">
+        //     <title>Test Email</title>
+        //   </head>
+        //   <body>
+        //     <h1>Hello!</h1>
+        //     <p>This is a test email.</p>
+        //     <ul>
+        //       <li>Item 1</li>
+        //       <li>Item 2</li>
+        //       <li>Item 3</li>
+        //     </ul>
+        //   </body>
+        // </html>`,
+      });
     });
 
     if (error.response) {

@@ -2,6 +2,7 @@
 import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
 import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
+// import BaskShoppingConfirmation from '../../components/Message/BaskShoppingConfirmation';
 
 /**
  * PROD
@@ -28,12 +29,15 @@ const sendMessageToCustomer = async (addressData, basketData) => {
       },
     });
 
-    await transporterProd.sendMail({
-      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      to: `${addressData.email}`,
-      subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-      html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketData={basketData} />),
+    await new Promise(() => {
+      transporterProd.sendMail({
+        from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+        to: `${addressData.email}`,
+        subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
+        html: renderToString(<CustomerShoppingConfirmation addressData={addressData} basketData={basketData} />),
+      });
     });
+
     // } else {
     // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
     //   const transporter = nodemailer.createTransport({
@@ -66,13 +70,15 @@ const sendMessageToCustomer = async (addressData, basketData) => {
       },
     });
 
-    await transporterError.sendMail({
-      from: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      to: 'sebastian.lucjan@gmail.com',
-      // to: 'kontakt@bask.com.pl',
-      replyTo: `${addressData.email}`,
-      subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
-      html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
+    await new Promise(() => {
+      transporterError.sendMail({
+        from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+        to: 'sebastian.lucjan@gmail.com',
+        // to: 'kontakt@bask.com.pl',
+        replyTo: `${addressData.email}`,
+        subject: `✔ Bask - błąd w wysyłce maila "klient opłacił zamówienie 🛒"`,
+        html: renderToString(<div>Error: {JSON.stringify(error)}</div>),
+      });
     });
 
     if (error.response) {
