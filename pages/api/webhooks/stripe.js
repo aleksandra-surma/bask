@@ -3,7 +3,7 @@ import finalize from 'services/checkout/finalize';
 import { buffer } from 'micro';
 import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
-import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
+// import BaskShoppingConfirmation from 'components/Message/BaskShoppingConfirmation';
 import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
 // import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
 
@@ -57,23 +57,23 @@ export default async function stripeWebhooks(req, res) {
 
       console.log('after createTransport');
 
-      await new Promise(() => {
-        // await new Promise((resolve, reject) => {
-        // send mail
-
-        transporter.sendMail({
-          // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
-          // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
-          from: 'zakupy@bask.com.pl',
-          to: 'kontakt@bask.com.pl',
-
-          // replyTo: `${addressData.email}`,
-          subject: '✔ Bask - klient opłacił zamówienie 🛒',
-          // text: 'Bask - klient opłacił zamówienie 🛒',
-          html: renderToString(<BaskShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-          // html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
-        });
-      });
+      // await new Promise(() => {
+      //   // await new Promise((resolve, reject) => {
+      //   // send mail
+      //
+      //   transporter.sendMail({
+      //     // from: `Bask - zakupy <${process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD}>`,
+      //     // to: `Bask - kontakt <${process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD}>`,
+      //     from: 'zakupy@bask.com.pl',
+      //     to: 'kontakt@bask.com.pl',
+      //
+      //     // replyTo: `${addressData.email}`,
+      //     subject: '✔ Bask - klient opłacił zamówienie 🛒',
+      //     // text: 'Bask - klient opłacił zamówienie 🛒',
+      //     html: renderToString(<BaskShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+      //     // html: renderToString(<BaskShoppingConfirmation addressData={addressData} basketData={basketData} />),
+      //   });
+      // });
 
       // await sendMessageToCustomer(combinedAddress, basket);
       // const transporterToCustomer = nodemailer.createTransport({
