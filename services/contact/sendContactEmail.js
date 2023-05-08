@@ -1,7 +1,8 @@
 // import sgMail from '@sendgrid/mail';
-import nodemailer from 'nodemailer';
+// import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
 import EmailContactTemplate from 'components/Message/ContactTemplate';
+import postmarkClient from '../email/postmarkClient';
 
 /**
  * PROD
@@ -25,23 +26,38 @@ const sendContactEmail = async (payload) => {
   try {
     // if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
     //   console.log('Mail test PROD');
-    const transporterProd = nodemailer.createTransport({
-      host: 'ssl0.ovh.net',
-      port: 465,
-      auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
-        pass: process.env.EMAIL_PASS_PROD,
-      },
+    // Send an email:
+    await postmarkClient.sendEmail({
+      // “From”: “sender@example.com”,
+      // “To”: “recipient@example.com”,
+      // “Subject”: “Test”,
+      // “TextBody”: “Hello from Postmark!”
+
+      // from: `kontakt@bask.com.pl`,
+      // to: 'kontakt@bask.com.pl',
+      From: `kontakt@bask.com.pl`,
+      To: 'kontakt@bask.com.pl',
+      Subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+      HtmlBody: renderToString(<EmailContactTemplate payload={payload} />),
     });
 
-    await new Promise(() => {
-      transporterProd.sendMail({
-        from: `kontakt@bask.com.pl`,
-        to: 'kontakt@bask.com.pl',
-        subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
-        html: renderToString(<EmailContactTemplate payload={payload} />),
-      });
-    });
+    // const transporterProd = nodemailer.createTransport({
+    //   host: 'ssl0.ovh.net',
+    //   port: 465,
+    //   auth: {
+    //     user: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+    //     pass: process.env.EMAIL_PASS_PROD,
+    //   },
+    // });
+    //
+    // await new Promise(() => {
+    //   transporterProd.sendMail({
+    //     from: `kontakt@bask.com.pl`,
+    //     to: 'kontakt@bask.com.pl',
+    //     subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+    //     html: renderToString(<EmailContactTemplate payload={payload} />),
+    //   });
+    // });
 
     // const messageOptions = {
     //   to: `bask.lublin@gmail.com`,
