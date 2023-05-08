@@ -24,52 +24,52 @@ const sendEmailWithLink = async (payload) => {
   // const html = render(getHtml(payload));
 
   try {
-    if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
-      console.log('Mail test PROD');
-      const transporterProd = nodemailer.createTransport({
-        host: 'ssl0.ovh.net',
-        port: 465,
-        auth: {
-          user: process.env.EMAIL_CONTACT_PROD,
-          pass: process.env.EMAIL_PASS_PROD,
-        },
-      });
+    // if (process.env.NEXT_PUBLIC_APP_STAGE === 'PROD') {
+    //   console.log('Mail test PROD');
+    const transporterProd = nodemailer.createTransport({
+      host: 'ssl0.ovh.net',
+      port: 465,
+      auth: {
+        user: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+        pass: process.env.EMAIL_PASS_PROD,
+      },
+    });
 
-      await transporterProd.sendMail({
-        from: `kontakt@bask.com.pl`,
-        to: 'kontakt@bask.com.pl',
-        subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
-        html: renderToString(<EmailContactTemplate payload={payload} />),
-      });
+    await transporterProd.sendMail({
+      from: `kontakt@bask.com.pl`,
+      to: 'kontakt@bask.com.pl',
+      subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+      html: renderToString(<EmailContactTemplate payload={payload} />),
+    });
 
-      // const messageOptions = {
-      //   to: `bask.lublin@gmail.com`,
-      //   from: 'bask.lublin@gmail.com', // Change to your verified sender
-      //   subject: 'Wiadomość z formularza kontaktowego - Bask ✔',
-      //   html,
-      // };
-      //
-      // await sgMail.send(messageOptions);
-    } else {
-      // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
-        auth: {
-          user: 'laurine72@ethereal.email',
-          pass: '1xjtcRjMaCYV3Gs51d',
-        },
-      });
-
-      const response = await transporter.sendMail({
-        from: 'Sender Name <sender@example.com>',
-        to: 'Recipient <recipient@example.com>',
-        subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
-        html: renderToString(<EmailContactTemplate payload={payload} />),
-      });
-
-      console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
-    }
+    // const messageOptions = {
+    //   to: `bask.lublin@gmail.com`,
+    //   from: 'bask.lublin@gmail.com', // Change to your verified sender
+    //   subject: 'Wiadomość z formularza kontaktowego - Bask ✔',
+    //   html,
+    // };
+    //
+    // await sgMail.send(messageOptions);
+    // } else {
+    //   // dev sender - credentials expire after some time - renew -> https://ethereal.email/create
+    //   const transporter = nodemailer.createTransport({
+    //     host: 'smtp.ethereal.email',
+    //     port: 587,
+    //     auth: {
+    //       user: process.env.NEXT_PUBLIC_EMAIL_DEV,
+    //       pass: process.env.EMAIL_PASS_DEV,
+    //     },
+    //   });
+    //
+    //   const response = await transporter.sendMail({
+    //     from: 'Sender Name <sender@example.com>',
+    //     to: 'Recipient <recipient@example.com>',
+    //     subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+    //     html: renderToString(<EmailContactTemplate payload={payload} />),
+    //   });
+    //
+    //   console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(response)}`);
+    // }
   } catch (error) {
     console.error(error);
 
