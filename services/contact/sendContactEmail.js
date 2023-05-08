@@ -1,7 +1,6 @@
 // import sgMail from '@sendgrid/mail';
 import nodemailer from 'nodemailer';
 import { renderToString } from 'react-dom/server';
-
 import EmailContactTemplate from 'components/Message/ContactTemplate';
 
 /**
@@ -16,8 +15,8 @@ import EmailContactTemplate from 'components/Message/ContactTemplate';
 
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendEmailWithLink = async (payload) => {
-  console.log('payload sendEmailWithLink: ', payload);
+const sendContactEmail = async (payload) => {
+  console.log('payload sendContactEmail: ', payload);
   // const html = render(<EmailContactTemplate payload={payload} />, {
   //   pretty: true,
   // });
@@ -35,11 +34,13 @@ const sendEmailWithLink = async (payload) => {
       },
     });
 
-    await transporterProd.sendMail({
-      from: `kontakt@bask.com.pl`,
-      to: 'kontakt@bask.com.pl',
-      subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
-      html: renderToString(<EmailContactTemplate payload={payload} />),
+    await new Promise(() => {
+      transporterProd.sendMail({
+        from: `kontakt@bask.com.pl`,
+        to: 'kontakt@bask.com.pl',
+        subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+        html: renderToString(<EmailContactTemplate payload={payload} />),
+      });
     });
 
     // const messageOptions = {
@@ -79,4 +80,4 @@ const sendEmailWithLink = async (payload) => {
   }
 };
 
-export default sendEmailWithLink;
+export default sendContactEmail;
