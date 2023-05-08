@@ -4,7 +4,7 @@ const { pathsMap } = require('./data/pathMap');
 
 const nextConfig = (phase) => {
   const reactStrictMode = true;
-  const swcMinify = true;
+  // const swcMinify = true;
   const isProd = phase === PHASE_PRODUCTION_BUILD;
 
   const env = {
@@ -46,21 +46,21 @@ const nextConfig = (phase) => {
     domains: ['v5.airtableusercontent.com'],
   };
 
-  const typescript = {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    // ignoreBuildErrors: true,
-  };
+  // const typescript = {
+  // !! WARN !!
+  // Dangerously allow production builds to successfully complete even if
+  // your project has type errors.
+  // !! WARN !!
+  // ignoreBuildErrors: true,
+  // };
 
   return {
     images,
     reactStrictMode,
-    swcMinify,
+    // swcMinify,
     rewrites,
     env,
-    typescript,
+    // typescript,
   };
 };
 

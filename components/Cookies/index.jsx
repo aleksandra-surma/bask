@@ -40,11 +40,11 @@ const Cookies = () => {
           <button
             type="button"
             onClick={handleAcceptCookies}
-            className="rounded bg-green-500 py-2 px-4 text-white transition duration-300 hover:bg-green-600"
+            className="rounded bg-green-500 px-4 py-2 text-white transition duration-300 hover:bg-green-600"
           >
             Akceptuj
           </button>
-          <button type="button" onClick={handleRejectCookies} className="rounded py-2 px-4 text-black transition duration-300 hover:text-gray-800">
+          <button type="button" onClick={handleRejectCookies} className="rounded px-4 py-2 text-black transition duration-300 hover:text-gray-800">
             Odrzuć
           </button>
         </div>

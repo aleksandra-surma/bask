@@ -1,11 +1,16 @@
 module.exports = {
   root: true, // Make sure eslint picks up the config at the root of the directory
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
+    // ecmaFeatures: {
+    //   jsx: true,
+    // },
+    // ecmaVersion: 'latest',
+    // sourceType: 'module',
+    ecmaVersion: 6,
     sourceType: 'module',
+    ecmaFeatures: {
+      modules: true,
+    },
   },
   settings: {
     react: {

@@ -28,7 +28,7 @@ export default function UserSummary() {
         <a className="header-basket__wrapper flex cursor-pointer flex-col items-center justify-between text-gray-800 hover:text-green-500">
           <div className="relative flex">
             <ShoppingBagIcon width={24} height={24} />
-            <div className="header-basket__items-counter absolute top-0.5 right-[-110%] flex h-[22px] w-[22px] justify-center rounded-xl bg-black leading-[23px] text-white hover:bg-green-500">
+            <div className="header-basket__items-counter absolute right-[-110%] top-0.5 flex h-[22px] w-[22px] justify-center rounded-xl bg-black leading-[23px] text-white hover:bg-green-500">
               {basketItemsAmount}
             </div>
           </div>

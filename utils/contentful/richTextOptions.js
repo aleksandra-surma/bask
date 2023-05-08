@@ -14,7 +14,7 @@ const richTextOptions = {
       return <h2 className="mb-4 mt-10 text-center text-3xl">{children}</h2>;
     },
     [BLOCKS.HEADING_3]: (node, children) => {
-      return <h3 className="mt-10 mb-4 text-center text-2xl">{children}</h3>;
+      return <h3 className="mb-4 mt-10 text-center text-2xl">{children}</h3>;
     },
     [BLOCKS.HEADING_4]: (node, children) => {
       return <h4 className="mb-4 text-center text-xl">{children}</h4>;

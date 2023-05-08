@@ -13,7 +13,7 @@ export default function FourOneFour() {
     <BaseLayout seoData={seoData}>
       <div className="mb-16 rounded-lg bg-white">
         <div className="flex w-full justify-center">
-          <div className="my-20 mx-4 flex flex-col bg-neutral-100 p-10">
+          <div className="mx-4 my-20 flex flex-col bg-neutral-100 p-10">
             <h1 className="mb-2 text-4xl font-semibold text-green-500">Strona 404</h1>
             {/* <p>Jak tylko środki zostaną zaksięgowane, przesyłkę przekażemy do wysyłki.</p> */}
             <div className="mt-4 flex flex-col items-start justify-center text-neutral-400">

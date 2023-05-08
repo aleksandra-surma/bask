@@ -29,7 +29,7 @@ export default function Success({ dealId }) {
     <BaseLayout seoData={seoData}>
       <div className="mb-16 rounded-lg bg-white">
         <div className="flex w-full justify-center">
-          <div className="my-20 mx-4 flex flex-col bg-neutral-100 p-10">
+          <div className="mx-4 my-20 flex flex-col bg-neutral-100 p-10">
             <h1 className="mb-6 text-xl font-semibold">Transakcja przebiegła prawidłowo.</h1>
             <p>Jak tylko środki zostaną zaksięgowane, przesyłkę przekażemy do wysyłki.</p>
             <p></p>

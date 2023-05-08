@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+// import NextAuth from 'next-auth';
 // import CredentialsProvider from 'next-auth/providers/credentials';
 // import authorizeUser from 'services/users/authorize';
 
@@ -57,4 +57,6 @@ const authSettings = {
   },
 };
 
-export default NextAuth(authSettings);
+console.log('authSettings', authSettings);
+
+// export default NextAuth(authSettings);
