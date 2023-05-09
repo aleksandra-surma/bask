@@ -4,8 +4,8 @@ import { ecoTextContent } from 'data/textData';
 import ShortDescription from 'components/ShortDescription';
 import Description from '../Descritpion';
 
-const moreHref = '/about-company';
-const moreAs = '/o-firmie';
+const moreHref = '/about-company#eco-pl';
+const moreAs = '/o-firmie#eco-pl';
 
 export default function EcoPl({ shortDescription = false }) {
   return (
@@ -14,7 +14,7 @@ export default function EcoPl({ shortDescription = false }) {
         {shortDescription ? (
           <ShortDescription title={ecoTextContent.title} description={ecoTextContent.shortDescription} moreHref={moreHref} moreAs={moreAs} />
         ) : (
-          <Description title={ecoTextContent.title} description={ecoTextContent.description} />
+          <Description title={ecoTextContent.title} description={ecoTextContent.description} idTarget="eco-pl" />
         )}
 
         <div className="relative block h-[500px] w-full laptop:absolute laptop:right-[-40px] laptop:top-[10%] laptop:h-[80%] laptop:w-[40%] desktop:top-0 desktop:mt-0 desktop:h-[100%] desktop:w-2/5">
