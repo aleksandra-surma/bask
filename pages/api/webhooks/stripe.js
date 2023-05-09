@@ -61,6 +61,8 @@ export default async function stripeWebhooks(req, res) {
           HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         });
       });
+
+      console.log('email to bask sent');
       return res.json({ received: true });
     }
     if (event.type === 'payment_intent.payment_failed') {
