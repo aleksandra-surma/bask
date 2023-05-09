@@ -73,6 +73,7 @@ export default async function stripeWebhooks(req, res) {
     console.log('error.message: ', error.message);
     return res.status(400).json(`Webhook Error: ${error.message}`);
   }
-  return res.status(200).json({ received: true });
+  return res.send({ received: true });
+  // return res.status(200).json({ received: true });
 }
 // todo: add other events
