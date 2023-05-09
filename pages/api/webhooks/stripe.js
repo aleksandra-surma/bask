@@ -60,7 +60,7 @@ export default async function stripeWebhooks(req, res) {
           return;
         }
         console.log('batchResults:', batchResults);
-        console.info('Messages sent to postmark');
+        console.info('Messages sent to postmark!');
       });
 
       // const messages = [
@@ -99,6 +99,4 @@ export default async function stripeWebhooks(req, res) {
   } catch (error) {
     return res.status(400).send(`Webhook Error: ${error.message}`);
   }
-  // return res.status(200).send({ received: true });
-  // return res.status(200).json({ received: true });
 }
