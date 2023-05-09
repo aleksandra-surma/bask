@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// nc(reset, watch, setError, setMessage, formType))}>
 export default async function submitFunc(reset, watch, error, setError, sendingProcess, setSendingProcess, setMessageSent, captchaRef) {
   console.log('sendingProcess TEST: ', watch());
-  // captchaRef.current.reset();
   if (sendingProcess) return;
   setMessageSent(false);
 
@@ -21,7 +19,6 @@ export default async function submitFunc(reset, watch, error, setError, sendingP
   const payload = watch();
 
   payload.captchaToken = captchaToken;
-  // console.log('sumbitFunc payload + formType --', { ...payload, formType });
 
   const { response } = await axios
     .post('/api/contact', payload)
@@ -34,12 +31,10 @@ export default async function submitFunc(reset, watch, error, setError, sendingP
     });
 
   if (!response?.data?.error) {
-    // reset();
     setMessageSent(true);
     setSendingProcess(false);
   }
   reset();
   setError('');
-  // setMessageSent(false);
   setSendingProcess(false);
 }

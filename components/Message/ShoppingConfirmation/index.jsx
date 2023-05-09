@@ -10,7 +10,7 @@ import { randomUUID } from 'crypto';
  * exact link to logo: https://i.postimg.cc/T1Mzv5fR/bask-logo.png
  */
 
-const BaskShoppingConfirmation = ({ addressData, basketData }) => {
+const ShoppingConfirmation = ({ addressData, basketData }) => {
   const {
     email,
     firstName,
@@ -31,17 +31,14 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
 
   const { basketArray: basket, finalPrice, shippingCost } = basketData;
 
-  console.log('basketData', basketData);
-  console.log('addressData: ', addressData);
-
   return (
     <html lang="pl">
-      {/* <head> */}
-      {/*  <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
-      {/*  <link rel="preconnect" href="https://fonts.gstatic.com" /> */}
-      {/*  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet" /> */}
-      {/*  <title>Bask - potwierdzenie zamówienia</title> */}
-      {/* </head> */}
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet" />
+        <title>Bask - potwierdzenie zamówienia</title>
+      </head>
       <body>
         <main>
           <div
@@ -65,7 +62,7 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
                       <p>Nazwa produktu: {item.name}</p>
                       <p>Kolor: {item.color}</p>
                       <p>Rozmiar: {item.size}</p>
-                      <p>Cena jednego egzemplarza produktu: {item.price}zł</p>
+                      <p>Cena jednego egzemplarza produktu: {item?.price}zł</p>
                       <p>Ilość: {item.quantity}</p>
                     </div>
                   );
@@ -105,4 +102,4 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
   );
 };
 
-export default BaskShoppingConfirmation;
+export default ShoppingConfirmation;

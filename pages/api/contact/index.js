@@ -27,13 +27,13 @@ const contactForm = async (req, res) => {
           res.status(422).json({ status: 'captcha_invalid', error: 'failed captcha' });
           return;
         }
+
         // Send contactForm message to Bask
         await sendContactEmail(payload);
 
         res.status(200).json({
           status: 'payload_sent',
         });
-        // console.log('payload.captchaToken: ', payload.captchaToken);
       } catch (error) {
         console.log('error: ', error);
         res.status(422).json({ status: 'not_created', error: error.message });

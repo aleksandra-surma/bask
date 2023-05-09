@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import finalize from 'services/checkout/finalize';
 import { buffer } from 'micro';
 import { renderToString } from 'react-dom/server';
-import CustomerShoppingConfirmation from 'components/Message/CustomerShoppingConfirmation';
+import ShoppingConfirmation from 'components/Message/ShoppingConfirmation';
 import postmarkClient from 'services/email/postmarkClient';
 
 export const config = {
@@ -16,12 +16,9 @@ export default async function stripeWebhooks(req, res) {
   const buf = await buffer(req);
   const sig = req.headers['stripe-signature'];
 
-  console.log('stripeWebhooks');
-
   try {
-    // buf is the raw request body from Stripe, add .toString() to convert to string and pass to stripe.webhooks.constructEvent
     const event = stripe.webhooks.constructEvent(buf.toString(), sig, process.env.STRIPE_WEBHOOK_SECRET);
-    //   console.log('event: ', event);
+
     if (event.type === 'payment_intent.succeeded') {
       console.log('stripeWebhooks payment_intent.succeeded');
       const { dealId } = event.data.object.metadata;
@@ -39,7 +36,6 @@ export default async function stripeWebhooks(req, res) {
 
       const combinedAddress = invoiceAddress ? { ...address, ...invoiceAddress } : address;
 
-      // send email to Bask and Customer
       res.json({ received: true });
       console.log('time to send confirmations to bask and customer');
 
@@ -48,13 +44,13 @@ export default async function stripeWebhooks(req, res) {
           From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
           To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
           Subject: '✔ Bask - klient opłacił zamówienie 🛒',
-          HtmlBody: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+          HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         },
         {
           From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
           To: combinedAddress.email,
           Subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-          HtmlBody: renderToString(<CustomerShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+          HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         },
       ];
 
@@ -63,14 +59,9 @@ export default async function stripeWebhooks(req, res) {
           console.error(`Unable to send via postmark: ${error.message}`);
           return;
         }
-        console.log('Messages sent to postmark, batchResults:', batchResults);
+        console.log('batchResults:', batchResults);
         console.info('Messages sent to postmark');
       });
-
-      console.log('after createTransport');
-
-      //todo: here Promise
-      console.log('confirmations sent, i hope');
     } else if (event.type === 'payment_intent.payment_failed') {
       console.log('payment failed');
       res.json({ received: true });
@@ -84,4 +75,3 @@ export default async function stripeWebhooks(req, res) {
   }
 }
 // todo: add other events
-// res.json({ received: true });
