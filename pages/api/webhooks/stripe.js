@@ -54,13 +54,17 @@ export default async function stripeWebhooks(req, res) {
         },
       ];
 
-      await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
-        if (error) {
-          console.error(`Unable to send via postmark: ${error.message}`);
-          return;
-        }
-        console.log('batchResults:', batchResults);
-        console.info('Messages sent to postmark');
+      await new Promise((resolve, reject) => {
+        postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
+          // await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
+          if (error) {
+            console.error(`Unable to send via postmark: ${error.message}`);
+            reject(error);
+          } else {
+            console.info('Messages sent to postmark');
+            resolve(batchResults);
+          }
+        });
       });
     } else if (event.type === 'payment_intent.payment_failed') {
       console.log('payment failed');
@@ -70,10 +74,8 @@ export default async function stripeWebhooks(req, res) {
       return res.json({ received: true });
     }
   } catch (error) {
-    console.log('error.message: ', error.message);
-    return res.status(400).json(`Webhook Error: ${error.message}`);
+    return res.status(400).send(`Webhook Error: ${error.message}`);
   }
-  return res.send({ received: true });
+  return res.status(200).send({ received: true });
   // return res.status(200).json({ received: true });
 }
-// todo: add other events
