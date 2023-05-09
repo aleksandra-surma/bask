@@ -38,6 +38,31 @@ export default async function stripeWebhooks(req, res) {
 
       console.log('time to send confirmations to bask and customer');
 
+      const messages = [
+        {
+          From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+          To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+          Subject: '✔ Bask - klient opłacił zamówienie 🛒',
+          HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+        },
+        {
+          From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+          To: combinedAddress.email,
+          Subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
+          HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+        },
+      ];
+
+      await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
+        // await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
+        if (error) {
+          console.error(`Unable to send via postmark: ${error.message}`);
+          return;
+        }
+        console.log('batchResults:', batchResults);
+        console.info('Messages sent to postmark');
+      });
+
       // const messages = [
       //   {
       //     From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
@@ -54,12 +79,12 @@ export default async function stripeWebhooks(req, res) {
       // ];
 
       // await new Promise(() => {
-      await postmarkClient.sendEmail({
-        From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-        To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
-        Subject: '✔ Bask - klient opłacił zamówienie 🛒',
-        HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-      });
+      // await postmarkClient.sendEmail({
+      //   From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+      //   To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+      //   Subject: '✔ Bask - klient opłacił zamówienie 🛒',
+      //   HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+      // });
       // });
 
       console.log('email to bask sent');
