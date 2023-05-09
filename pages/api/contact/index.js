@@ -38,10 +38,12 @@ const contactForm = async (req, res) => {
         console.log('error: ', error);
         res.status(422).json({ status: 'not_created', error: error.message });
       }
+      res.status(200).json({ received: true });
       break;
     }
     default:
       res.status(400);
+      break;
   }
 };
 
