@@ -10,7 +10,7 @@ import { randomUUID } from 'crypto';
  * exact link to logo: https://i.postimg.cc/T1Mzv5fR/bask-logo.png
  */
 
-const BaskShoppingConfirmation = ({ addressData, basketData }) => {
+const ShoppingConfirmation = ({ addressData, basketData }) => {
   const {
     email,
     firstName,
@@ -62,7 +62,7 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
                       <p>Nazwa produktu: {item.name}</p>
                       <p>Kolor: {item.color}</p>
                       <p>Rozmiar: {item.size}</p>
-                      <p>Cena jednego egzemplarza produktu: {item.price}zł</p>
+                      <p>Cena jednego egzemplarza produktu: {item?.price}zł</p>
                       <p>Ilość: {item.quantity}</p>
                     </div>
                   );
@@ -102,4 +102,4 @@ const BaskShoppingConfirmation = ({ addressData, basketData }) => {
   );
 };
 
-export default BaskShoppingConfirmation;
+export default ShoppingConfirmation;

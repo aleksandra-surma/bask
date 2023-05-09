@@ -31,7 +31,7 @@ export default function ContactForm() {
     <div className="mt-5 md:col-span-2 md:mt-0">
       {messageSent ? (
         <div className="flex h-full flex-col justify-between overflow-hidden rounded-md bg-white px-4 py-5 shadow sm:p-6">
-          <h2 className="mb-4 text-lg font-semibold text-green-600 text-gray-800">Twoja wiadomość została wysłana.</h2>
+          <h2 className="mb-4 text-lg font-semibold text-gray-800 text-green-600">Twoja wiadomość została wysłana.</h2>
           <p className="text-sm text-gray-700">Zwykle odpowiadamy maksymalnie w ciągu kilku godzin roboczych.</p>
           <p className="text-sm text-gray-700">Jeśli zależy Ci na czasie zadzwoń do nas.</p>
           <Link href="/">

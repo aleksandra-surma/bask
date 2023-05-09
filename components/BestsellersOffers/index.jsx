@@ -6,7 +6,7 @@ import best4 from 'public/images/bask-offer-test-image-04.jpg';
 
 export default function BestsellersOffers() {
   return (
-    <section className="w-full max-w-screen-xl py-20 px-4 tablet:px-8">
+    <section className="w-full max-w-screen-xl px-4 py-20 tablet:px-8">
       <h2 className="mb-8 text-center font-semibold laptop:mb-0">BESTSELLERS</h2>
       <div className="m-auto flex min-h-[60vh] flex-wrap items-center justify-between">
         <div className="mb-24 flex h-[450px] w-[48%] cursor-pointer flex-col justify-between laptop:mb-0 laptop:w-[20%]">

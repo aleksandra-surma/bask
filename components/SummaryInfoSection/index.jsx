@@ -168,7 +168,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
                 <div className="flex flex-col">
                   <h3 className="text-md font-semibold uppercase text-neutral-400">Dostawa do paczkomatu - już niedługo</h3>
                   <p className="mt-2 text-xs text-neutral-400">Dostawa do paczkomatu jeszcze nie jest dostępna</p>
-                  {/*<p className="text-sm text-neutral-400">Za darmo od 500zł</p>*/}
+                  {/* <p className="text-sm text-neutral-400">Za darmo od 500zł</p> */}
                 </div>
                 <div className="flex items-center">
                   <Icon icon="lucide:package-open" width={30} className="text-neutral-400" />

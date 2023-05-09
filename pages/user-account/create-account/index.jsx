@@ -11,7 +11,7 @@ export default function CreateAccount() {
   const seoData = { title, description, canonical, ogData };
   return (
     <BaseLayout seoData={seoData}>
-      <form className="mt-4 mb-12 w-full max-w-screen-sm px-4 laptop:px-10" onSubmit={() => {}}>
+      <form className="mb-12 mt-4 w-full max-w-screen-sm px-4 laptop:px-10" onSubmit={() => {}}>
         <div className="min-h-full items-center justify-center rounded-lg border border-gray-200 pt-8">
           <div className="space-y-8 px-10">
             <div>
@@ -83,10 +83,10 @@ export default function CreateAccount() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-gray-50 py-6 px-10">
+          <div className="w-full bg-gray-50 px-10 py-6">
             <button
               type="submit"
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="group relative flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <SparklesIcon className="h-5 w-5 text-green-500 group-hover:text-green-600" aria-hidden="true" />

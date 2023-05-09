@@ -265,7 +265,7 @@ export default function Product({ productData: product }) {
                                   ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
                                   : 'cursor-not-allowed bg-gray-50 text-gray-200',
                                 active ? 'ring-2 ring-green-500' : '',
-                                'group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6',
+                                'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6',
                               )
                             }
                           >
@@ -318,14 +318,14 @@ export default function Product({ productData: product }) {
                     setAddedProduct(product);
                     handleBasket.addProduct(product, selectedColor, selectedSize, dispatch, setBasketItemsAmount);
                   }}
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-neutral-600 py-3 px-8 text-base font-medium text-white hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-neutral-600 px-8 py-3 text-base font-medium text-white hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
                   Dodaj do koszyka
                 </button>
               </form>
             </div>
 
-            <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
+            <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
               {/* Description and details */}
               <div>
                 <h3 className="sr-only">Opis</h3>

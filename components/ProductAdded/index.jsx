@@ -12,7 +12,7 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
         <div className="relative mb-8 flex border-b-2 pb-6">
           <h2 className="tablet:6xl text-3xl">Produkt został dodany do koszyka</h2>
 
-          <button type="button" onClick={() => setAddedProduct(null)} className="absolute top-[-20px] right-[-20px] text-lg font-bold">
+          <button type="button" onClick={() => setAddedProduct(null)} className="absolute right-[-20px] top-[-20px] text-lg font-bold">
             X
           </button>
         </div>
@@ -46,7 +46,7 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
                 Kontynuj zakupy
               </button>
               <Link href="/card-summary" as="/koszyk">
-                <a className="mr-6 cursor-pointer p-4 underline underline-offset-4 underline-offset-4 transition hover:text-black hover:underline tablet:mr-8 tablet:ml-8 tablet:p-0 ">
+                <a className="mr-6 cursor-pointer p-4 underline underline-offset-4 underline-offset-4 transition hover:text-black hover:underline tablet:ml-8 tablet:mr-8 tablet:p-0 ">
                   Przejdź do koszyka
                 </a>
               </Link>

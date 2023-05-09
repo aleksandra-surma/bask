@@ -7,7 +7,7 @@ export default function HighlightedOffers({ products }) {
 
   return (
     <section className="w-full max-w-screen-xl px-4 tablet:px-8 laptop:py-20">
-      <h2 className="mt-20 mb-8 text-center font-semibold laptop:mt-0 laptop:mb-0">WYRÓŻNIONE</h2>
+      <h2 className="mb-8 mt-20 text-center font-semibold laptop:mb-0 laptop:mt-0">WYRÓŻNIONE</h2>
       <div className="m-auto flex min-h-[60vh] flex-wrap items-center justify-between">
         {products.slice(0, 4).map(({ fields: product }) => {
           return (
