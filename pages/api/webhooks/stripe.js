@@ -64,14 +64,15 @@ export default async function stripeWebhooks(req, res) {
       });
     } else if (event.type === 'payment_intent.payment_failed') {
       console.log('payment failed');
-      res.json({ received: true });
+      return res.json({ received: true });
     } else {
       console.log(`Unhandled event type ${event.type}`);
-      res.json({ received: true });
+      return res.json({ received: true });
     }
   } catch (error) {
     console.log('error.message: ', error.message);
-    res.status(400).json(`Webhook Error: ${error.message}`);
+    return res.status(400).json(`Webhook Error: ${error.message}`);
   }
+  return res.status(200).json({ received: true });
 }
 // todo: add other events
