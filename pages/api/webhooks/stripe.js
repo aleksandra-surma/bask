@@ -22,7 +22,6 @@ export default async function stripeWebhooks(req, res) {
     if (event.type === 'payment_intent.succeeded') {
       console.log('stripeWebhooks payment_intent.succeeded');
       const { dealId } = event.data.object.metadata;
-      // await finalize(dealId);
 
       const {
         temporaryCustomer: {
@@ -54,7 +53,6 @@ export default async function stripeWebhooks(req, res) {
       ];
 
       await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
-        // await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
         if (error) {
           console.error(`Unable to send via postmark: ${error.message}`);
           return;
@@ -62,30 +60,6 @@ export default async function stripeWebhooks(req, res) {
         console.log('batchResults:', batchResults);
         console.info('Messages sent to postmark!');
       });
-
-      // const messages = [
-      //   {
-      //     From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      //     To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
-      //     Subject: '✔ Bask - klient opłacił zamówienie 🛒',
-      //     HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-      //   },
-      //   {
-      //     From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      //     To: combinedAddress.email,
-      //     Subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-      //     HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-      //   },
-      // ];
-
-      // await new Promise(() => {
-      // await postmarkClient.sendEmail({
-      //   From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-      //   To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
-      //   Subject: '✔ Bask - klient opłacił zamówienie 🛒',
-      //   HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-      // });
-      // });
 
       console.log('email to bask sent');
       return res.json({ received: true });

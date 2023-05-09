@@ -31,9 +31,6 @@ const contactForm = async (req, res) => {
           return;
         }
 
-        // Send contactForm message to Bask
-        // await sendContactEmail(payload);
-
         await new Promise(() => {
           postmarkClient.sendEmail({
             From: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
