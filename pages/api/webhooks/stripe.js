@@ -22,7 +22,7 @@ export default async function stripeWebhooks(req, res) {
     if (event.type === 'payment_intent.succeeded') {
       console.log('stripeWebhooks payment_intent.succeeded');
       const { dealId } = event.data.object.metadata;
-      await finalize(dealId);
+      // await finalize(dealId);
 
       const {
         temporaryCustomer: {
