@@ -59,7 +59,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
   console.log('errors', errors);
 
   return (
-    <div className="mr-8 w-3/5">
+    <div className="mr-8 w-full laptop:w-3/5">
       {basket?.length > 0 ? (
         <form onSubmit={handleSubmit(() => handleFinalizeCheckout())}>
           <div className="mb-10">
@@ -67,7 +67,7 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
 
             <p className="mb-4">Użyjemy tych danych, aby poinformować Cię o dostawie.</p>
 
-            <FormInput label="Email" type="text" register={register} name="email" halfView error={errors.email ? errors.email.message : null} />
+            <FormInput label="Email" type="text" register={register} name="email" error={errors.email ? errors.email.message : null} />
           </div>
 
           <div className="flex flex-wrap justify-between">
@@ -126,12 +126,11 @@ export default function SummaryInfoSection({ basket, finalPrice, shippingCost })
               type="text"
               register={register}
               name="phoneNumber"
-              halfView
               error={errors.phoneNumber ? errors.phoneNumber.message : null}
             />
           </div>
 
-          <FormInput label="Nip" type="text" notRequired register={register} name="nip" halfView error={errors.nip ? errors.nip.message : null} />
+          <FormInput label="Nip" type="text" notRequired register={register} name="nip" error={errors.nip ? errors.nip.message : null} />
 
           <div className="my-8">
             <h2 className="text-3xl font-semibold uppercase">Dostarczenie zamówienia</h2>

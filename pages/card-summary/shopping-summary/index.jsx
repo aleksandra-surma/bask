@@ -40,14 +40,14 @@ export default function ShoppingSummary() {
 
   return (
     <BaseLayout seoData={seoData}>
-      <div className="my-8 flex w-full max-w-screen-xl px-8">
+      <div className="my-8 flex w-full max-w-screen-xl flex-col-reverse px-8 laptop:flex laptop:flex-row">
         {/* Address and other necessary data */}
         <SummaryInfoSection basket={basket} finalPrice={finalPrice} shippingCost={shippingCost} />
 
         {/* Right site of page - Summary */}
-        <div className="flex w-2/5 flex-col pl-4 text-gray-800">
+        <div className="mb-20 flex w-full flex-col text-gray-800 laptop:w-2/5 laptop:pl-4">
           <div className="flex w-full items-center">
-            <h2 className="text-xl font-semibold uppercase">Podsumowanie zamówienia</h2>
+            <h2 className="mb-2 text-3xl font-semibold uppercase">Podsumowanie zamówienia</h2>
           </div>
           <div className="my-4 flex justify-between text-lg">
             <p className="">
