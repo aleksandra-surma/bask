@@ -39,31 +39,27 @@ export default async function stripeWebhooks(req, res) {
       res.json({ received: true });
       console.log('time to send confirmations to bask and customer');
 
-      const messages = [
-        {
+      // const messages = [
+      //   {
+      //     From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+      //     To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+      //     Subject: '✔ Bask - klient opłacił zamówienie 🛒',
+      //     HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+      //   },
+      //   {
+      //     From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+      //     To: combinedAddress.email,
+      //     Subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
+      //     HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
+      //   },
+      // ];
+
+      await new Promise(() => {
+        postmarkClient.sendEmail({
           From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
           To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
           Subject: '✔ Bask - klient opłacił zamówienie 🛒',
           HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-        },
-        {
-          From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-          To: combinedAddress.email,
-          Subject: '✔ Bask - Twoje zamówienie zostało opłacone 🛒',
-          HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-        },
-      ];
-
-      await new Promise((resolve, reject) => {
-        postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
-          // await postmarkClient.sendEmailBatch(messages, function (error, batchResults) {
-          if (error) {
-            console.error(`Unable to send via postmark: ${error.message}`);
-            reject(error);
-          } else {
-            console.info('Messages sent to postmark');
-            resolve(batchResults);
-          }
         });
       });
     } else if (event.type === 'payment_intent.payment_failed') {
