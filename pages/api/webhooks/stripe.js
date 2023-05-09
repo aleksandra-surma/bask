@@ -36,7 +36,6 @@ export default async function stripeWebhooks(req, res) {
 
       const combinedAddress = invoiceAddress ? { ...address, ...invoiceAddress } : address;
 
-      res.json({ received: true });
       console.log('time to send confirmations to bask and customer');
 
       // const messages = [
@@ -62,16 +61,17 @@ export default async function stripeWebhooks(req, res) {
           HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
         });
       });
-    } else if (event.type === 'payment_intent.payment_failed') {
-      console.log('payment failed');
-      return res.json({ received: true });
-    } else {
-      console.log(`Unhandled event type ${event.type}`);
       return res.json({ received: true });
     }
+    if (event.type === 'payment_intent.payment_failed') {
+      console.log('payment failed');
+      return res.json({ received: true });
+    }
+    console.log(`Unhandled event type ${event.type}`);
+    return res.json({ received: true });
   } catch (error) {
     return res.status(400).send(`Webhook Error: ${error.message}`);
   }
-  return res.status(200).send({ received: true });
+  // return res.status(200).send({ received: true });
   // return res.status(200).json({ received: true });
 }
