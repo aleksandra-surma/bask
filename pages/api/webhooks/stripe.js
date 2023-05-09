@@ -53,14 +53,14 @@ export default async function stripeWebhooks(req, res) {
       //   },
       // ];
 
-      await new Promise(() => {
-        postmarkClient.sendEmail({
-          From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
-          To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
-          Subject: '✔ Bask - klient opłacił zamówienie 🛒',
-          HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
-        });
+      // await new Promise(() => {
+      await postmarkClient.sendEmail({
+        From: process.env.NEXT_PUBLIC_EMAIL_SHOPPING_PROD,
+        To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+        Subject: '✔ Bask - klient opłacił zamówienie 🛒',
+        HtmlBody: renderToString(<ShoppingConfirmation addressData={combinedAddress} basketData={basket} />),
       });
+      // });
 
       console.log('email to bask sent');
       return res.json({ received: true });
