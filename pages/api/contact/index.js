@@ -3,6 +3,7 @@ import { schema } from 'data/form/schema';
 import postmarkClient from 'services/email/postmarkClient';
 import { renderToString } from 'react-dom/server';
 import EmailContactTemplate from 'components/Message/ContactTemplate';
+// import nodemailer from 'nodemailer';
 
 const contactForm = async (req, res) => {
   switch (req.method) {
@@ -40,9 +41,29 @@ const contactForm = async (req, res) => {
           });
         });
 
-        res.status(200).json({
-          status: 'payload_sent',
-        });
+        // const transporter = nodemailer.createTransport({
+        //   host: 'smtp.ethereal.email',
+        //   port: 587,
+        //   auth: {
+        //     user: 'bernhard.wehner65@ethereal.email',
+        //     pass: 'CkFBWEb7rzh6mTvz4K',
+        //   },
+        // });
+        //
+        // const responseSentEmail = await transporter.sendMail({
+        //   from: 'Sender Name <sender@example.com>',
+        //   to: 'Recipient <recipient@example.com>',
+        //   subject: '✔ Bask - klient opłacił zamówienie 🛒',
+        //   html: renderToString(<EmailContactTemplate payload={payload} />),
+        // });
+
+        // console.log('responseSentEmail: ', responseSentEmail);
+
+        // console.log(`E-mail sent, Preview URL: ${nodemailer.getTestMessageUrl(responseSentEmail)}`);
+
+        // res.status(200).json({
+        //   status: 'payload_sent',
+        // });
       } catch (error) {
         console.log('error: ', error);
         res.status(422).json({ status: 'not_created', error: error.message });
