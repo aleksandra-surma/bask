@@ -1,5 +1,8 @@
-import sendContactEmail from 'services/contact/sendContactEmail';
+// import sendContactEmail from 'services/contact/sendContactEmail';
 import { schema } from 'data/form/schema';
+import postmarkClient from 'services/email/postmarkClient';
+import { renderToString } from 'react-dom/server';
+import EmailContactTemplate from 'components/Message/ContactTemplate';
 
 const contactForm = async (req, res) => {
   switch (req.method) {
@@ -29,7 +32,16 @@ const contactForm = async (req, res) => {
         }
 
         // Send contactForm message to Bask
-        await sendContactEmail(payload);
+        // await sendContactEmail(payload);
+
+        await new Promise(() => {
+          postmarkClient.sendEmail({
+            From: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+            To: process.env.NEXT_PUBLIC_EMAIL_CONTACT_PROD,
+            Subject: '✔ Bask - wiadomość z formularza kontaktowego 📝',
+            HtmlBody: renderToString(<EmailContactTemplate payload={payload} />),
+          });
+        });
 
         res.status(200).json({
           status: 'payload_sent',
