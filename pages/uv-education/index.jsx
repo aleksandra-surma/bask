@@ -6,9 +6,10 @@ import uvRadiation from 'public/images/uv-radiation.jpg';
 import { fabricTextContent, healthTextContent } from 'data/textData';
 import Description from 'components/Descritpion';
 
-const title = '';
-const description = '';
-const canonical = '';
+const title = 'Bask - Promieniowanie UV i Zdrowie Dzieci - Wiedza i Edukacja';
+const description =
+  'Dowiedz się więcej o wpływie promieniowania UV na zdrowie dzieci. W naszym artykule znajdziesz informacje o ryzykach poparzeń słonecznych, przedwczesnym starzeniu się skóry, raku skóry i innych schorzeniach. Bask to źródło wiedzy i ochrony dla Twojego dziecka!';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}`;
 const ogData = {};
 
 export default function UvEducation() {

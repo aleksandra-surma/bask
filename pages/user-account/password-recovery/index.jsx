@@ -1,9 +1,9 @@
 import BaseLayout from 'components/BaseLayout';
 import PasswordRecoveryForm from 'components/PasswordRecoveryForm';
 
-const title = 'Bask - stroje kąpielowe UV dla dzieci';
+const title = 'Bask - odzyskanie hasła';
 const description = '';
-const canonical = '';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/moje-konto/odzyskanie-hasla`;
 const ogData = {};
 
 export default function PasswordRecovery() {

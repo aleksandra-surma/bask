@@ -3,11 +3,10 @@ import Link from 'next/link';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
-const canonical = '';
 const ogData = {};
 
 export default function Cancel() {
-  const seoData = { title, description, canonical, ogData };
+  const seoData = { title, description, ogData };
 
   return (
     <BaseLayout seoData={seoData}>

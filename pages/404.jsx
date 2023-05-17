@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
-const canonical = '';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/404`;
 const ogData = {};
 
 export default function FourOneFour() {

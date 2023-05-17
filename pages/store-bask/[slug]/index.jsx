@@ -11,9 +11,10 @@ import { getAllRecords } from 'services/airtable/getAllRecords';
 import getProduct from 'services/airtable/getProduct';
 import { db } from 'data/dbData';
 
-const title = 'Bask - stroje kąpielowe UV dla dzieci';
-const description = '';
-const canonical = '';
+const title = 'Bask - Dziecięce Stroje Kąpielowe z Ochroną UV';
+const description =
+  'Przygotuj swoje dziecko na wspaniałe przygody nad wodą z naszymi strojami kąpielowymi zapewniającymi skuteczną ochronę przed szkodliwym promieniowaniem UV. Wybierz spośród naszej różnorodnej kolekcji, która łączy wygodę, styl i bezpieczeństwo. Sklep Bask - Twoje miejsce dla dziecięcej mody plażowej.';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}`;
 const ogData = {};
 
 export default function Product({ productData: product }) {

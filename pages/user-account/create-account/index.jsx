@@ -2,9 +2,9 @@ import BaseLayout from 'components/BaseLayout';
 import { SparklesIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 
-const title = 'Bask - stroje kąpielowe UV dla dzieci';
+const title = 'Bask - nowe konto użytkownika';
 const description = '';
-const canonical = '';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/moje-konto/nowe-konto`;
 const ogData = {};
 
 export default function CreateAccount() {

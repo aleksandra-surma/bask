@@ -5,11 +5,11 @@ import AboutCompany from 'components/AboutCompany';
 import EcoPl from 'components/EcoPl';
 import UvHealth from 'components/UvHealth';
 import { getFilteredRecords } from 'services/airtable/getAllRecords';
-import { db } from '../data/dbData';
+import { db } from 'data/dbData';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
-const canonical = '';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}`;
 const ogData = {};
 
 export default function Home({ products }) {
