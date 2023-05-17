@@ -1,9 +1,9 @@
 import BaseLayout from 'components/BaseLayout';
 import LogInForm from 'components/LogInForm';
 
-const title = 'Bask - stroje kąpielowe UV dla dzieci';
+const title = 'Bask - logowanie do konta';
 const description = '';
-const canonical = '';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/moje-konto/logowanie`;
 const ogData = {};
 
 export default function LogIn() {

@@ -3,9 +3,10 @@ import EcoPl from 'components/EcoPl';
 import Fabric from 'components/Fabric';
 import AboutUs from 'components/AboutCompany';
 
-const title = '';
-const description = '';
-const canonical = '';
+const title = 'Bask - Innowacyjne Stroje Kąpielowe dla Dzieci z Ochroną UV';
+const description =
+  'W Bask troszczymy się o zdrowie skóry dzieci. Oferujemy stroje kąpielowe z ochroną UV, które zapobiegają szkodliwemu promieniowaniu. Dowiedz się więcej o naszej pasji i wybierz nasze produkty, które łączą styl z ochroną Twojego dziecka!';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/o-firmie`;
 const ogData = {};
 
 export default function AboutCompany() {

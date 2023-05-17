@@ -28,7 +28,7 @@ export default function PasswordRecoveryForm() {
             </div>
           </div>
           <div className="mb-6 text-sm">
-            <Link href="/userAccount/logIn" as="/moje-konto/zaloguj">
+            <Link href="/userAccount/logIn" as="/moje-konto/logowanie">
               <a>
                 <p className="font-medium text-green-700 hover:text-green-600">Zaloguj się</p>
               </a>

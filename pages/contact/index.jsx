@@ -2,16 +2,18 @@ import BaseLayout from 'components/BaseLayout';
 import ContactForm from 'components/ContactForm';
 import Link from 'next/link';
 
-const title = '';
-const description = '';
-const canonical = '';
+const title = 'Skontaktuj się z nami - Bask: Stylowe stroje kąpielowe dla dzieci z ochroną UV';
+const description =
+  'Masz pytania dotyczące naszych stylowych strojów kąpielowych dla dzieci, zapewniających ochronę UV? Skontaktuj się z nami, a nasi eksperci pomogą Ci wybrać idealny strój Bask dla Twojego dziecka. Odkryj naszą kolekcję i ciesz się spokojem podczas letnich dni na plaży!';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/kontakt`;
 const ogData = {};
 
 export default function Contact() {
   const seoData = { title, description, canonical, ogData };
+  const indexingCondition = process.env.NEXT_PUBLIC_APP_STAGE === 'PROD';
 
   return (
-    <BaseLayout seoData={seoData}>
+    <BaseLayout seoData={seoData} indexPage={indexingCondition}>
       <div className="mx-auto max-w-screen-xl px-4 pb-16 sm:px-6">
         <div className="mt-16 w-full">
           <div className="flex flex-col laptop:flex-row">

@@ -4,9 +4,9 @@ import { getEntry } from 'services/contentful/getContent';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import richTextOptions from 'utils/contentful/richTextOptions';
 
-const title = '';
+const title = 'Bask - Regulamin sklepu internetowego';
 const description = '';
-const canonical = '';
+const canonical = `${process.env.NEXT_PUBLIC_CANONICAL_URL_BASE}/regulamin-sklepu-internetowego`;
 const ogData = {};
 
 export async function getStaticProps() {

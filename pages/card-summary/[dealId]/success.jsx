@@ -8,13 +8,12 @@ import useBasketState from 'hooks/useBasketState';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
-const canonical = '';
 const ogData = {};
 
 // todo: delete dealId from airtable
 
-export default function Success({ dealId }) {
-  const seoData = { title, description, canonical, ogData };
+export default function Success() {
+  const seoData = { title, description, ogData };
   const { setBasketItemsAmount } = useBasketState(null);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ export default function Success({ dealId }) {
     }, 100);
   }, []);
 
-  console.log('dealId: ', dealId);
   return (
     <BaseLayout seoData={seoData}>
       <div className="mb-16 rounded-lg bg-white">

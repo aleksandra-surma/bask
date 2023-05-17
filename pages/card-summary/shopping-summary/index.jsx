@@ -8,7 +8,6 @@ import SummaryInfoSection from 'components/SummaryInfoSection';
 
 const title = 'Bask - stroje kąpielowe UV dla dzieci';
 const description = '';
-const canonical = '';
 const ogData = {};
 
 export default function ShoppingSummary() {
@@ -16,7 +15,7 @@ export default function ShoppingSummary() {
   const [basket, setBasket] = useState([]);
   const [finalPrice, setFinalPrice] = useState(0);
 
-  const seoData = { title, description, canonical, ogData };
+  const seoData = { title, description, ogData };
 
   useEffect(() => {
     if (!window) return;
