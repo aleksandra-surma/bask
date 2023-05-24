@@ -42,6 +42,16 @@ const nextConfig = (phase) => {
       };
     });
 
+  const redirects = async () => {
+    return [
+      {
+        source: '/404',
+        destination: '/',
+        statusCode: 301,
+      },
+    ];
+  };
+
   const images = {
     domains: ['v5.airtableusercontent.com'],
   };
@@ -57,6 +67,7 @@ const nextConfig = (phase) => {
   return {
     images,
     reactStrictMode,
+    redirects,
     // swcMinify,
     rewrites,
     env,

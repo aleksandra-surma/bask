@@ -1,6 +1,7 @@
 module.exports = {
   pathsMap: [
     { source: '/', destination: '/' },
+    { source: '/404', destination: '/' },
     { source: '/sklep', destination: '/store-bask' },
     { source: '/sklep/:productId', destination: '/store-bask/:productId' },
     { source: '/edukacja-uv', destination: '/uv-education' },
