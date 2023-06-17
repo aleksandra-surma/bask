@@ -41,8 +41,8 @@ export default function BasketSummary() {
       <div className="m-auto my-8 flex w-full max-w-screen-xl flex-col px-4 text-gray-700 tablet:px-8 laptop:mb-8 laptop:mt-8">
         <div className="mb-8 flex w-full items-center border-b border-b-2 border-neutral-200 pb-8">
           <h2>Twój koszyk</h2>
-          <div className="ml-4 flex bg-neutral-200 p-4 text-2xl">
-            <p className="m">
+          <div className="text-md ml-4 flex w-[100px] bg-neutral-200 p-4   xs:w-[unset] xs:text-2xl">
+            <p className="">
               {basketItemsAmount} <span>prod.</span>
             </p>
           </div>

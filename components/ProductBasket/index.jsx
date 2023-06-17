@@ -53,7 +53,7 @@ export default function ProductBasket({ product }) {
             </button>
           </div>
           <div className="my-6 flex">
-            <p className="mr-4 text-lg">Rozmiar:</p>
+            <p className="text-md mr-4 text-lg">Rozmiar:</p>
             <p className="text-lg font-semibold">{product.size}</p>
           </div>
           <div className="my-6 flex">
@@ -69,7 +69,7 @@ export default function ProductBasket({ product }) {
             />
           </div>
           {/* Quantity */}
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between xs:flex-row">
             <div className="flex">
               <button
                 type="button"
@@ -92,7 +92,7 @@ export default function ProductBasket({ product }) {
               </button>
             </div>
 
-            <div className="flex">
+            <div className="mt-4 flex xs:mt-0">
               <p className="mr-4 text-lg">Cena:</p>
               <p className="text-lg font-semibold">{product.price * product.quantity} zł</p>
             </div>

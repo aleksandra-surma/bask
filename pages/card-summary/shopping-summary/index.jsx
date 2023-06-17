@@ -34,8 +34,8 @@ export default function ShoppingSummary() {
     setBasket(storedBasket.basket);
   }, [state.basket, basketItemsAmount, setBasketItemsAmount]);
 
-  const shippingCost = 0; // TODO: change to the real shipping cost
-  // const shippingCost = finalPrice > 500 ? 0 : 20;
+  // const shippingCost = 0;
+  const shippingCost = finalPrice > 500 ? 0 : 20;
 
   return (
     <BaseLayout seoData={seoData}>
