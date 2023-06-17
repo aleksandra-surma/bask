@@ -52,8 +52,8 @@ export default function BasketSummary() {
             <ProductBasket key={uuid()} product={product} />
           ))}
         </div>
-        <div className="m-6 flex justify-end">
-          <div className="flex">
+        <div className="my-6 flex xs:justify-end">
+          <div className="flex justify-between">
             <p className="mr-4 text-2xl">Łączna kwota:</p>
             <p className="text-2xl font-semibold">{finalPrice} zł</p>
           </div>
