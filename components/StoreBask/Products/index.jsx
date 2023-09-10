@@ -1,10 +1,10 @@
 import { v4 as uuid } from 'uuid';
 import Image from 'next/image';
 import Link from 'next/link';
-import sortProductByHighlight from 'helpers/sortProductByHighlight';
+import { sortProductByOrder } from 'helpers/sortProduct';
 
 export default function Products({ products }) {
-  const sortedProducts = sortProductByHighlight(products);
+  const sortedProducts = sortProductByOrder(products);
 
   return (
     <section className="mt-16 flex flex-wrap justify-between">
