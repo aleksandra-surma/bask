@@ -21,7 +21,7 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
           <div className="relative h-[210px] w-[120px] sm:h-[280px] sm:w-[160px]">
             <Image src={imgSrc} className="rounded-xl" layout="fill" objectFit="cover" />
           </div>
-          <div className="mx-auto justify-center text-lg sm:px-6 sm:text-2xl">
+          <div className="mx-auto justify-center pt-6 text-lg sm:text-2xl">
             <h3 className="font-semibold">{addedProduct.name}</h3>
             <div className="my-6 flex">
               <p className="mr-4">Rozmiar:</p>
@@ -40,14 +40,19 @@ export default function ProductAdded({ addedProduct, setAddedProduct, selectedCo
             </div>
             <div className="mt-6 flex sm:my-6">
               <p className="mr-4">Cena:</p>
-              <p className="font-semibold">{addedProduct.price} zł</p>
+
+              {addedProduct.promotionValue > 0 ? (
+                <p className="text-2xl font-semibold">{addedProduct.promotionPrice} zł</p>
+              ) : (
+                <p className="text-2xl font-semibold">{addedProduct.price} zł</p>
+              )}
             </div>
             <div className="flex justify-between">
               <button type="button" className="text-md underline underline-offset-4 sm:text-2xl" onClick={() => setAddedProduct(null)}>
                 Kontynuj zakupy
               </button>
               <Link href="/card-summary" as="/koszyk">
-                <a className="text-md cursor-pointer p-4 underline underline-offset-4 underline-offset-4 transition hover:text-black hover:underline sm:mr-6 sm:text-2xl tablet:ml-8 tablet:mr-8 tablet:p-0 ">
+                <a className="text-md cursor-pointer p-4 underline underline-offset-4 underline-offset-4 transition hover:text-black hover:underline sm:mr-6 sm:text-2xl tablet:ml-8 tablet:mr-8 tablet:p-0">
                   Przejdź do koszyka
                 </a>
               </Link>

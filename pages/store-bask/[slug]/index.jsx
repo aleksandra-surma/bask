@@ -126,7 +126,22 @@ export default function Product({ productData: product }) {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               {/* Price */}
-              <p className="text-4xl font-semibold tracking-tight text-gray-900">{product.price} zł</p>
+              {/* with promotion and without */}
+              {product.promotionValue > 0 ? (
+                <div className="flex flex-col items-start">
+                  <p className="relative text-4xl font-semibold tracking-tight text-gray-900">
+                    {product.promotionPrice} zł
+                    <span className="absolute right-[-64px] top-[-8px] rounded bg-neutral-800 p-2 text-[16px] font-semibold leading-4 text-white">
+                      - {100 * Number(product.promotionValue)} %
+                    </span>
+                  </p>
+                  <p className="text-lg font-medium tracking-tight text-gray-600 line-through">{product.price} zł</p>
+                </div>
+              ) : (
+                <div className="flex flex-col items-start">
+                  <p className="relative text-4xl font-semibold tracking-tight text-gray-900">{product.price} zł</p>
+                </div>
+              )}
 
               <form className="mt-10">
                 {/* Colors */}
