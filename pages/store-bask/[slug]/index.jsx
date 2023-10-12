@@ -135,7 +135,9 @@ export default function Product({ productData: product }) {
                       - {100 * Number(product.promotionValue)} %
                     </span>
                   </p>
-                  <p className="text-lg font-medium tracking-tight text-gray-600 line-through">{product.price} zł</p>
+                  <p className="text-md font-medium tracking-tight text-gray-600">
+                    Najniższa cena z 30 dni <span className="text-lg line-through">{product.price} zł</span>
+                  </p>
                 </div>
               ) : (
                 <div className="flex flex-col items-start">

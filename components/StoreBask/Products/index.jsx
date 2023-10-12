@@ -27,7 +27,9 @@ export default function Products({ products }) {
                 {product.promotionValue > 0 ? (
                   <>
                     <p className="text-2xl font-semibold">{product.promotionPrice} zł</p>
-                    <p className="text-md font-medium text-gray-500 line-through">{product.price} zł</p>
+                    <p className="text-[16px] font-medium tracking-tight text-gray-500">
+                      Najniższa cena z 30 dni <span className="text-lg text-gray-600 line-through">{product.price} zł</span>
+                    </p>
                   </>
                 ) : (
                   <p className="text-2xl font-semibold">{product.promotionPrice} zł</p>

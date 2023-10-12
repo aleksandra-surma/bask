@@ -26,7 +26,14 @@ export default function HighlightedOffers({ products }) {
 
                 <p className="ml-1 text-gray-600">{product.name}</p>
 
-                <p className="ml-1 font-semibold">{product.price} zł</p>
+                {product.promotionPrice ? (
+                  <>
+                    <p className="ml-1 font-semibold">{product.promotionPrice} zł</p>
+                    {/*<p className="ml-1 font-semibold">{product.price} zł</p>*/}
+                  </>
+                ) : (
+                  <p className="ml-1 font-semibold">{product.price} zł</p>
+                )}
               </div>
             </Link>
           );
