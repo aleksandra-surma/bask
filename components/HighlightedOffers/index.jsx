@@ -12,7 +12,7 @@ export default function HighlightedOffers({ products }) {
         {products.slice(0, 4).map(({ fields: product }) => {
           return (
             <Link key={uuid()} href={`/store-bask/${product.slug}`} as={`/sklep/${product.slug}`}>
-              <div className="mb-24 flex h-[450px] w-[48%] cursor-pointer flex-col justify-between tablet:w-[42%] laptop:mb-0 laptop:w-[20%]">
+              <div className="mb-24 flex h-[480px] w-[48%] cursor-pointer flex-col justify-between tablet:w-[42%] laptop:mb-0 laptop:w-[20%]">
                 <div className="relative h-[360px] overflow-hidden rounded rounded-[8px]">
                   <Image
                     src={product.highlightedPhotos[0].url}
@@ -22,18 +22,28 @@ export default function HighlightedOffers({ products }) {
                     className="transition-transform duration-300 hover:scale-105"
                     alt=""
                   />
+
+                  {product.promotionValue > 0 ? (
+                    <span className="absolute right-3 top-3 rounded bg-neutral-800 p-3 text-[20px] font-semibold leading-4 text-white">
+                      - {100 * Number(product.promotionValue)} %
+                    </span>
+                  ) : null}
                 </div>
 
                 <p className="ml-1 text-gray-600">{product.name}</p>
 
-                {product.promotionPrice ? (
-                  <>
-                    <p className="ml-1 font-semibold">{product.promotionPrice} zł</p>
-                    {/*<p className="ml-1 font-semibold">{product.price} zł</p>*/}
-                  </>
-                ) : (
-                  <p className="ml-1 font-semibold">{product.price} zł</p>
-                )}
+                <div className="ml-1">
+                  {product.promotionPrice ? (
+                    <>
+                      <p className="text-lg font-semibold">{product.promotionPrice} zł</p>
+                      <p className="text-xs font-medium tracking-tight text-gray-500 tablet:text-sm">
+                        Najniższa cena z 30 dni <span className="text-lg text-gray-600 line-through">{product.price} zł</span>
+                      </p>
+                    </>
+                  ) : (
+                    <p className="ml-1 font-semibold">{product.price} zł</p>
+                  )}
+                </div>
               </div>
             </Link>
           );
